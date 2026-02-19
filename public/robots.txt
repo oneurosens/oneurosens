@@ -1,0 +1,4 @@
+Sitemap: https://oneurosens.fr/sitemap.xml
+
+User-agent: *
+Disallow:

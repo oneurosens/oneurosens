@@ -1,0 +1,20 @@
+{
+  "name": "oneurosens-nuxt",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#internal/nuxt/paths": "./internal/nuxt/paths.mjs"
+  },
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "nuxt": "^3.15.4"
+  },
+  "overrides": {
+    "minimatch": "10.2.1"
+  }
+}

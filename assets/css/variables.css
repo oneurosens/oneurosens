@@ -1,0 +1,82 @@
+:root {
+  /*
+    O Neuro Sens - Design Tokens
+    Base douce et positive, pensée pour rester facilement extensible.
+  */
+
+  /* Brand palette */
+  --color-yellow-500: #f4c84e;
+  --color-turquoise-500: #35b8b3;
+  --color-coral-500: #ee6f63;
+  --color-blue-600: #2f5d9a;
+  --color-pink-300: #f8d8de;
+
+  /* Neutral palette */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fdfcf8;
+  --color-neutral-100: #f6f5ef;
+  --color-neutral-200: #eceae1;
+  --color-neutral-400: #b9b6aa;
+  --color-neutral-700: #4d4c45;
+  --color-neutral-900: #1f1f1c;
+
+  /* Semantic aliases */
+  --color-bg: var(--color-neutral-100);
+  --color-surface: var(--color-neutral-0);
+  --color-surface-soft: #fffaf1;
+  --color-text: var(--color-neutral-900);
+  --color-text-muted: var(--color-neutral-700);
+  --color-border: #dedace;
+  --color-focus: var(--color-blue-600);
+
+  --color-primary: var(--color-turquoise-500);
+  --color-primary-strong: #239e99;
+  --color-secondary: var(--color-blue-600);
+  --color-secondary-strong: #274e82;
+  --color-accent: var(--color-coral-500);
+  --color-highlight: var(--color-yellow-500);
+  --color-soft: var(--color-pink-300);
+
+  /* Typography */
+  --font-family-base: "basic-sans", "Avenir Next", "Segoe UI", Roboto, sans-serif;
+  --font-family-heading: "basic-sans", "Avenir Next", "Segoe UI", Roboto, sans-serif;
+
+  --font-size-100: clamp(0.82rem, 0.79rem + 0.1vw, 0.9rem);
+  --font-size-200: clamp(1rem, 0.97rem + 0.12vw, 1.06rem);
+  --font-size-300: clamp(1.12rem, 1.06rem + 0.25vw, 1.26rem);
+  --font-size-400: clamp(1.28rem, 1.16rem + 0.45vw, 1.54rem);
+  --font-size-500: clamp(1.5rem, 1.32rem + 0.7vw, 1.92rem);
+  --font-size-600: clamp(1.9rem, 1.55rem + 1.15vw, 2.65rem);
+  --font-size-700: clamp(2.3rem, 1.7rem + 1.95vw, 3.6rem);
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 700;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.65;
+  --line-height-loose: 1.78;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Radius: volontairement arrondi */
+  --radius-xs: 0.5rem;
+  --radius-sm: 0.875rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 1.75rem;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --container-width: 1120px;
+
+  /* Shadows */
+  --shadow-soft: 0 10px 30px rgba(27, 46, 61, 0.08);
+}
