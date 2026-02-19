@@ -1,0 +1,26 @@
+# Nuxt / Node
+.nuxt/
+node_modules/
+dist/
+.output/
+
+# Env
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+# Node / Nuxt
+node_modules/
+.nuxt/
+.output/
+dist/
+
+# Env
+.env
+.env.*
+
+
