@@ -13,7 +13,7 @@ export const getRouteThemeName = (path: string): RouteThemeName => {
     return 'about'
   }
 
-  if (path === '/formations' || path === '/telecharger-le-catalogue') {
+  if (path === '/formations') {
     return 'formations'
   }
 

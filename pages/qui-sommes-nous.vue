@@ -8,7 +8,8 @@
           <h1 id="qsn-title">Qui sommes-nous ?</h1>
           <p class="qsn-hero__lead">
             <strong>Ô Neuro Sens Formations</strong> est un organisme de formation certifié <strong>Qualiopi</strong>
-            depuis février 2024. Il est dirigé par Maryline TISSOT et Lisa CHEREAU SOUDANI.
+            depuis février 2024. Il est dirigé par Maryline TISSOT et Lisa CHEREAU SOUDANI, deux professionnelles
+            engagées dans la <strong>transmission de pratiques utiles et applicables</strong>.
           </p>
         </div>
 
@@ -17,7 +18,7 @@
             <article class="qsn-highlight">
               <img :src="cible" alt="Objectifs" class="qsn-highlight__icon" loading="lazy">
               <div>
-                <p class="qsn-highlight__title">Nos objectifs</p>
+                <p class="qsn-highlight__title">Notre mission</p>
                 <p>
                   <strong>Sensibiliser, informer et former</strong> les professionnels oeuvrant dans le domaine de
                   l’enfance, de la famille, de l’éducation et du handicap, ainsi que les parents désireux d’améliorer
@@ -169,6 +170,14 @@
         </div>
 
         <p class="values-text__end">“Ensemble, donnons du sens à vos pratiques”</p>
+
+        <div class="qsn-next-actions">
+          <p>Vous souhaitez maintenant explorer les sujets traités ou cadrer une demande ?</p>
+          <div class="cta-row">
+            <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME">Télécharger le catalogue</BaseButton>
+            <BaseButton to="/contact" variant="secondary">Parler de votre besoin</BaseButton>
+          </div>
+        </div>
       </section>
     </div>
   </section>
@@ -185,6 +194,7 @@ import puzzle from '~/assets/img/qui-sommes-nous/puzzle.png'
 import calendar from '~/assets/img/qui-sommes-nous/calendar.png'
 import map from '~/assets/img/qui-sommes-nous/map.png'
 import forme20 from '~/assets/img/formes/20.svg'
+import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
 
 const heroDecorItems = [
   {
@@ -275,7 +285,7 @@ p {
 .qsn-highlights {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.5rem, 2.2vw, 2.5rem);
+  gap: clamp(1.8rem, 2.6vw, 2.9rem);
   align-items: start;
 }
 
@@ -348,6 +358,7 @@ p {
   gap: var(--space-4);
   padding-top: var(--space-4);
   border-top: 3px solid transparent;
+  background: linear-gradient(180deg, color-mix(in srgb, white 82%, var(--color-surface-soft)) 0%, transparent 100%);
 }
 
 .leader-card--yellow {
@@ -473,7 +484,7 @@ p {
 .qsn-values__body {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1.3rem, 2.4vw, 2.1rem);
+  gap: clamp(1.6rem, 2.8vw, 2.4rem);
   align-items: start;
 }
 
@@ -514,6 +525,22 @@ p {
   font-weight: 700;
   text-align: center;
   background: color-mix(in srgb, white 86%, var(--color-soft));
+}
+
+.qsn-next-actions {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: center;
+  padding-top: var(--space-4);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 74%, white);
+}
+
+.qsn-next-actions p {
+  margin: 0;
+  max-width: 42rem;
+  text-align: center;
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
 }
 
 .qsn-values::after {

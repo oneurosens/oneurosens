@@ -7,7 +7,7 @@
           <div class="hero-copy">
             <p class="eyebrow">Une approche sensible, scientifique et concrète pour les métiers de l’enfance, de la famille, de l’éducation et du handicap.</p>
             <h1 class="hero-title">
-              Organisme de formation
+              Des formations qui transforment les pratiques de terrain
             </h1>
             <p class="hero-lead">
               <strong>Ô Neuro Sens Formations</strong> conçoit des <strong>parcours vivants</strong>, des
@@ -20,9 +20,28 @@
               <span class="label-chip label-chip--coral">Parentalité</span>
               <span class="label-chip label-chip--gold">Inclusion & handicap</span>
             </div>
-            <div class="cta-row">
-              <BaseButton to="/telecharger-le-catalogue">Télécharger le catalogue</BaseButton>
+            <div class="cta-row cta-row--hero">
+              <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME" class="hero-cta-primary">Télécharger le catalogue</BaseButton>
               <BaseButton to="/contact" variant="secondary">Parler de votre besoin</BaseButton>
+            </div>
+            <p class="hero-cta-note">Téléchargez immédiatement le catalogue complet pour explorer les formats, thèmes et modalités.</p>
+            <div class="hero-proof-grid" aria-label="Repères de confiance">
+              <article>
+                <strong>Certification Qualiopi</strong>
+                <span>Un cadre de formation reconnu et structuré.</span>
+              </article>
+              <article>
+                <strong>Formats adaptables</strong>
+                <span>Formations, ateliers, conférences et accompagnements.</span>
+              </article>
+              <article>
+                <strong>Réponse terrain</strong>
+                <span>Des contenus pensés pour les réalités des équipes.</span>
+              </article>
+            </div>
+            <div class="hero-assurance">
+              <p class="hero-assurance__title">Pour qui ?</p>
+              <p>Professionnels, équipes, structures et familles selon les thématiques et le contexte d’intervention.</p>
             </div>
             <img
               :src="qualiopiLogo"
@@ -61,24 +80,23 @@
           </figure>
 
           <div class="story-panel">
-            <p class="eyebrow">Un centre de formation porté sur l’humain, les réalités de terrain et la transmission.</p>
+            <p class="eyebrow">Un organisme ancré dans le terrain, la relation et la transmission.</p>
             <h2>Qui sommes-nous?</h2>
             <h3>Notre pédagogie</h3>
             <p>
               Nous accompagnons les professionnels avec une <strong>pédagogie claire, incarnée et accessible</strong>.
-              Chaque intervention vise à faire circuler des <strong>repères solides</strong> sans perdre le lien au
-              quotidien des structures.
+              Chaque intervention apporte des <strong>repères solides</strong> sans se couper du quotidien des équipes.
             </p>
             <p>
-              L’enjeu n’est pas seulement d’informer. Il s’agit de rendre les pratiques <strong>plus lisibles, plus
-              apaisées et plus efficaces</strong> dans les <strong>contextes réels de travail</strong>.
+              L’objectif n’est pas seulement d’informer. Il s’agit de rendre les pratiques <strong>plus lisibles, plus
+              apaisées et plus efficaces</strong> dans les <strong>situations réelles de travail</strong>.
             </p>
                         <ul class="editorial-list">
               <li>des contenus fondés sur les neurosciences affectives et sociales</li>
               <li>des formats vivants, concrets et adaptables</li>
               <li>une posture bienveillante sans perte d’exigence</li>
             </ul>
-            <BaseButton to="/qui-sommes-nous" variant="secondary">Découvrir l'équipe</BaseButton>
+            <BaseButton to="/qui-sommes-nous" variant="secondary">Découvrir l'organisme</BaseButton>
           </div>
         </div>
 
@@ -89,8 +107,8 @@
       <div class="container">
         <div class="home-grid home-grid--themes">
           <div class="themes-side">
-            <p class="eyebrow">Des formations conçues pour des besoins professionnels identifiables et immédiats.</p>
-            <h2>Thématiques</h2>
+            <p class="eyebrow">Des formations pensées pour des besoins professionnels concrets et identifiables.</p>
+            <h2>Nos thématiques de formation</h2>
             <p>
               Les contenus se déploient en <strong>modules, ateliers ou parcours plus longs</strong>. Ils peuvent être
               <strong>pré-programmés</strong> ou adaptés aux <strong>besoins spécifiques d’une équipe</strong>.
@@ -113,7 +131,7 @@
                 <span>Adapter les pratiques et les environnements</span>
               </article>
             </div>
-            <BaseButton to="/formations">Voir les formations</BaseButton>
+            <BaseButton to="/formations">Explorer les thématiques</BaseButton>
           </div>
 
           <div class="themes-visual">
@@ -136,15 +154,15 @@
       <div class="container">
         <div class="home-grid home-grid--actions">
           <div class="actions-copy">
-            <p class="eyebrow">Un accompagnement au plus près du terrain pour passer du diagnostic à l'action.</p>
+            <p class="eyebrow">Un accompagnement au plus près du terrain pour passer du constat à l'action.</p>
             <h2>Actions de terrain</h2>
             <p>
               Nous intervenons dans les structures pour <strong>observer les situations</strong>, clarifier les besoins,
-              soutenir les équipes et <strong>co-construire des réponses adaptées</strong> à la réalité locale.
+              soutenir les équipes et <strong>co-construire des réponses adaptées</strong> à la réalité du terrain.
             </p>
             <div class="cta-row">
-              <BaseButton to="/contact">Construire un accompagnement</BaseButton>
-              <BaseButton to="/telecharger-le-catalogue" variant="secondary">Explorer les formats</BaseButton>
+              <BaseButton to="/contact">Parler de votre besoin</BaseButton>
+              <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME" variant="secondary">Télécharger le catalogue</BaseButton>
             </div>
           </div>
 
@@ -178,13 +196,36 @@
 
     <section class="home-section home-section--references">
       <div class="container">
-        <div class="references-head">
-          <p class="eyebrow">Ils nous font confiance</p>
-          <h2>Références</h2>
-          <p>
-            Des <strong>structures, collectivités et partenaires locaux</strong> s’appuient déjà sur Ô Neuro Sens pour
-            <strong>former, ajuster ou renforcer leurs pratiques</strong>.
-          </p>
+        <div class="references-layout">
+          <div class="references-head">
+            <p class="eyebrow">Ils nous font confiance</p>
+            <h2>Références</h2>
+            <p>
+              Des <strong>structures, collectivités et partenaires locaux</strong> s’appuient déjà sur Ô Neuro Sens pour
+              <strong>former, ajuster ou renforcer leurs pratiques</strong>.
+            </p>
+            <div class="references-tags" aria-label="Types de structures accompagnées">
+              <span>Petite enfance</span>
+              <span>Éducation</span>
+              <span>Handicap</span>
+              <span>Parentalité</span>
+              <span>Collectivités</span>
+            </div>
+          </div>
+
+          <aside class="references-note">
+            <p class="references-note__eyebrow">Ce que cela montre</p>
+            <h3>Un accompagnement déjà ancré dans le réel.</h3>
+            <p>
+              Ces collaborations montrent que les contenus sont pensés pour des <strong>situations concrètes</strong>,
+              avec des formats capables de s’ajuster au <strong>niveau de maturité d’une équipe</strong>.
+            </p>
+            <ul class="references-note__list">
+              <li>interventions en structure ou en centre de formation</li>
+              <li>formats mobilisables selon le besoin</li>
+              <li>appui possible avant la demande de formation</li>
+            </ul>
+          </aside>
         </div>
 
         <div class="references-grid" aria-label="Partenaires institutionnels">
@@ -195,6 +236,11 @@
           >
             <img :src="logo.src" :alt="logo.alt" loading="lazy">
           </div>
+        </div>
+
+        <div class="references-foot">
+          <p>Vous voulez identifier le bon format pour votre structure ?</p>
+          <BaseButton to="/contact" variant="secondary">Parler de votre besoin</BaseButton>
         </div>
       </div>
     </section>
@@ -207,14 +253,20 @@
           </figure>
 
           <div class="final-copy">
-            <p class="eyebrow">Une vue d’ensemble claire de nos contenus, formats et modalités.</p>
+            <p class="eyebrow">Un point d’entrée simple pour comprendre l’offre et préparer votre demande.</p>
             <h2>Télécharger le catalogue</h2>
             <p>
               Le catalogue permet d’<strong>explorer les thématiques</strong>, de préparer une demande de formation et
               d’<strong>identifier plus vite les parcours pertinents</strong> pour votre structure.
             </p>
+            <ul class="final-points" aria-label="Contenus du catalogue">
+              <li>les thématiques et formats d’intervention</li>
+              <li>les repères pour cibler la bonne demande</li>
+              <li>une base claire pour échanger ensuite avec l’équipe</li>
+            </ul>
+            <p class="final-note">Nous vous adressons le catalogue par email, dans une version ciblée selon votre profil.</p>
             <div class="cta-row">
-              <BaseButton to="/telecharger-le-catalogue" class="catalogue-cta">
+              <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME" class="catalogue-cta">
                 <PdfLottieIcon />
                 <span>Télécharger le catalogue</span>
               </BaseButton>
@@ -236,6 +288,7 @@ import logoInfobulle from '~/assets/img/logo-infobulle.svg'
 import forme16 from '~/assets/img/formes/16.svg'
 import forme14 from '~/assets/img/formes/14.svg'
 import forme7 from '~/assets/img/formes/7.svg'
+import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
 
 import logo1 from '~/assets/img/home/logos/logo1.jpeg'
 import logo2 from '~/assets/img/home/logos/logo2.png'
@@ -383,6 +436,10 @@ const themesDecorItems = [
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
+.home-grid--hero {
+  align-items: center;
+}
+
 .hero-copy,
 .story-panel,
 .themes-side,
@@ -425,6 +482,65 @@ const themesDecorItems = [
   color: var(--color-text);
 }
 
+.cta-row--hero {
+  margin-top: 0.25rem;
+}
+
+.hero-cta-primary {
+  box-shadow: 0 14px 32px rgba(238, 111, 99, 0.18);
+}
+
+.hero-cta-note {
+  margin: -0.35rem 0 0;
+  color: var(--color-text-soft);
+  font-size: var(--font-size-100);
+}
+
+.hero-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 70%, white);
+}
+
+.hero-proof-grid article {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.hero-proof-grid strong {
+  color: var(--color-text);
+  font-size: var(--font-size-100);
+}
+
+.hero-proof-grid span {
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.hero-assurance {
+  display: grid;
+  gap: 0.35rem;
+  padding-top: var(--space-3);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 68%, white);
+}
+
+.hero-assurance__title {
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-assurance p:last-child {
+  margin: 0;
+  max-width: 56ch;
+}
+
 .hero-keywords {
   display: flex;
   flex-wrap: wrap;
@@ -462,7 +578,7 @@ const themesDecorItems = [
 .hero-qualiopi {
   width: min(170px, 48vw);
   height: auto;
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
 }
 
 .hero-visuals {
@@ -472,7 +588,7 @@ const themesDecorItems = [
   grid-template-columns: 1fr;
   gap: var(--space-4);
   align-items: start;
-  min-height: 36rem;
+  min-height: 39rem;
   overflow: visible;
   z-index: 3;
 }
@@ -526,12 +642,12 @@ const themesDecorItems = [
 }
 
 .story-photo--large {
-  grid-column: 1 / 6;
-  min-height: 29rem;
+  grid-column: 1 / 7;
+  min-height: 31rem;
 }
 
 .story-panel {
-  grid-column: 6 / 13;
+  grid-column: 7 / 13;
   align-content: center;
   min-height: 29rem;
 }
@@ -577,7 +693,7 @@ const themesDecorItems = [
 
 .themes-visual {
   position: relative;
-  grid-column: 7 / 13;
+  grid-column: 6 / 13;
   min-height: 100%;
   display: grid;
   align-content: space-between;
@@ -585,13 +701,13 @@ const themesDecorItems = [
 }
 
 .themes-visual__photo {
-  min-height: 32rem;
+  min-height: 34rem;
 }
 
 .themes-quote {
   position: absolute;
-  left: -2rem;
-  bottom: 1.2rem;
+  left: -2.4rem;
+  bottom: 1.6rem;
   width: min(18rem, 70%);
   padding: var(--space-4);
   border-left: 3px solid var(--color-secondary);
@@ -628,14 +744,14 @@ const themesDecorItems = [
 
 .actions-editorial {
   position: relative;
-  grid-column: 7 / 13;
+  grid-column: 6 / 13;
   display: block;
 }
 
 .actions-visual__photo {
   position: relative;
   width: 100%;
-  min-height: 26rem;
+  min-height: 28rem;
 }
 
 .actions-listing {
@@ -674,8 +790,71 @@ const themesDecorItems = [
 .references-head {
   display: grid;
   gap: var(--space-3);
-  margin-bottom: var(--space-6);
   max-width: 42rem;
+}
+
+.references-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 0.65fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: end;
+  margin-bottom: var(--space-6);
+}
+
+.references-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.references-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.1rem;
+  padding: 0.38rem 0.8rem;
+  background: color-mix(in srgb, white 70%, var(--color-mint-200));
+  border: 1px solid color-mix(in srgb, var(--color-border) 62%, white);
+  color: var(--color-text);
+  font-size: var(--font-size-100);
+  font-weight: var(--font-weight-semibold);
+}
+
+.references-note {
+  display: grid;
+  gap: 0.7rem;
+  padding: clamp(1.2rem, 2vw, 1.6rem);
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
+  background: color-mix(in srgb, white 78%, var(--color-apricot-200));
+  transform: translateY(-0.35rem);
+}
+
+.references-note__eyebrow {
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.references-note h3 {
+  margin: 0;
+  font-size: var(--font-size-400);
+}
+
+.references-note__list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.references-note__list li {
+  padding-left: 0.95rem;
+  border-left: 2px solid color-mix(in srgb, var(--color-secondary) 28%, white);
+  color: var(--color-text);
+  line-height: 1.55;
 }
 
 .references-grid {
@@ -703,6 +882,24 @@ const themesDecorItems = [
   mix-blend-mode: multiply;
 }
 
+.references-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
+}
+
+.references-foot p {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--color-text);
+  font-size: var(--font-size-200);
+  font-weight: var(--font-weight-semibold);
+}
+
 .final-visual {
   position: relative;
   grid-column: 1 / 7;
@@ -725,7 +922,27 @@ const themesDecorItems = [
 .final-copy {
   grid-column: 7 / 13;
   align-self: center;
-  padding-left: clamp(1rem, 2.4vw, 2.8rem);
+  padding-left: clamp(1.35rem, 2.8vw, 3.2rem);
+}
+
+.final-points {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.final-points li {
+  padding-left: 1rem;
+  border-left: 2px solid color-mix(in srgb, var(--color-primary) 44%, white);
+  color: var(--color-text);
+}
+
+.final-note {
+  margin: -0.2rem 0 0;
+  color: var(--color-text-soft);
+  font-size: var(--font-size-100);
 }
 
 .catalogue-cta {
@@ -759,10 +976,15 @@ const themesDecorItems = [
   }
 
   .story-photo--large {
-    grid-column: 1 / 6;
+    grid-column: 1 / 7;
   }
 
   .home-band__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-proof-grid,
+  .references-layout {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -816,6 +1038,17 @@ const themesDecorItems = [
     grid-template-columns: 1fr;
   }
 
+  .hero-proof-grid,
+  .references-layout,
+  .references-foot {
+    grid-template-columns: 1fr;
+  }
+
+  .references-foot {
+    display: grid;
+    justify-items: start;
+  }
+
   .hero-visual--tall,
   .hero-visual--logo,
   .story-photo--large,
@@ -847,6 +1080,7 @@ const themesDecorItems = [
   }
 
   .home-band__grid,
+  .hero-proof-grid,
   .themes-tiles,
   .actions-listing,
   .references-grid {

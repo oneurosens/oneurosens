@@ -24,8 +24,7 @@ export default defineNuxtConfig({
         '/formations',
         '/actions',
         '/temoignages',
-        '/contact',
-        '/telecharger-le-catalogue'
+        '/contact'
       ]
     }
   }

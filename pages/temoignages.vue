@@ -6,15 +6,15 @@
         <p class="eyebrow">Leurs avis</p>
         <h1>Témoignages</h1>
         <p class="testimonials-intro">
-          Quelques retours issus des <strong>accompagnements et formations</strong> menés auprès des professionnelles de
-          la <strong>petite enfance</strong> et de l’animation.
+          Des retours issus de <strong>formations et accompagnements de terrain</strong> menés auprès de professionnelles
+          de la <strong>petite enfance</strong> et de l’animation.
         </p>
       </div>
 
       <div class="testimonials-stage">
         <div class="testimonials-stage__intro">
           <p class="testimonials-stage__label">Retours de terrain</p>
-          <h2>Des paroles très directes, des situations concrètes, et des effets visibles dans la pratique.</h2>
+          <h2>Des retours concrets sur ce que les formations changent réellement dans la pratique.</h2>
           <div class="testimonials-controls">
             <button class="testimonials-control" type="button" aria-label="Témoignage précédent" @click="goToPrevious">
               <span aria-hidden="true">←</span>
@@ -25,32 +25,49 @@
           </div>
         </div>
 
-        <div class="testimonials-carousel" @mouseenter="isAutoPlaying = false" @mouseleave="resumeAutoplay">
-          <div
-            ref="trackRef"
-            class="testimonials-track"
-            :style="{ transform: `translateX(-${activeIndex * 100}%)` }"
-          >
-            <article
-              v-for="(testimonial, index) in testimonials"
-              :key="testimonial.name"
-              class="testimonial-slide"
-              :class="`testimonial-slide--${testimonial.theme}`"
-              :aria-hidden="activeIndex === index ? 'false' : 'true'"
+        <div class="testimonials-carousel-wrap">
+          <div class="testimonials-carousel" @mouseenter="isAutoPlaying = false" @mouseleave="resumeAutoplay">
+            <div
+              ref="trackRef"
+              class="testimonials-track"
+              :style="{ transform: `translateX(-${activeIndex * 100}%)` }"
             >
-              <div class="testimonial-bubble">
-                <div class="testimonial-bubble__portrait">
-                  <img :src="testimonial.portrait" :alt="testimonial.name" loading="lazy">
-                </div>
+              <article
+                v-for="(testimonial, index) in testimonials"
+                :key="testimonial.name"
+                class="testimonial-slide"
+                :class="`testimonial-slide--${testimonial.theme}`"
+                :aria-hidden="activeIndex === index ? 'false' : 'true'"
+              >
+                <div class="testimonial-bubble">
+                  <div class="testimonial-bubble__content">
+                    <div class="testimonial-bubble__portrait">
+                      <img :src="testimonial.portrait" :alt="testimonial.name" loading="lazy">
+                    </div>
 
-                <div class="testimonial-bubble__meta">
-                  <p class="testimonial-bubble__name">{{ testimonial.name }}</p>
-                  <p class="testimonial-bubble__role">{{ testimonial.role }}</p>
-                </div>
+                    <div class="testimonial-bubble__meta">
+                      <p class="testimonial-bubble__name">{{ testimonial.name }}</p>
+                      <p class="testimonial-bubble__role">{{ testimonial.role }}</p>
+                    </div>
 
-                <p class="testimonial-bubble__quote" v-html="testimonial.quote" />
-              </div>
-            </article>
+                    <p class="testimonial-bubble__quote" v-html="testimonial.quote" />
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="testimonials-pagination" aria-label="Position dans le carrousel">
+            <button
+              v-for="(testimonial, index) in testimonials"
+              :key="`${testimonial.name}-bullet`"
+              class="testimonials-pagination__dot"
+              :class="{ 'is-active': activeIndex === index }"
+              type="button"
+              :aria-label="`Aller au témoignage ${index + 1}`"
+              :aria-pressed="activeIndex === index ? 'true' : 'false'"
+              @click="goTo(index)"
+            />
           </div>
         </div>
       </div>
@@ -60,6 +77,14 @@
           <p class="testimonials-summary__title">{{ item.title }}</p>
           <p v-html="item.text" />
         </article>
+      </div>
+
+      <div class="testimonials-next-actions">
+        <p>Vous voulez passer des témoignages à une demande concrète ?</p>
+        <div class="cta-row">
+          <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME">Télécharger le catalogue</BaseButton>
+          <BaseButton to="/contact" variant="secondary">Parler de votre besoin</BaseButton>
+        </div>
       </div>
     </div>
   </section>
@@ -74,8 +99,9 @@ import melissaPortrait from '~/assets/img/temoignages/melissa-v.jpeg'
 import nicolePortrait from '~/assets/img/temoignages/nicole-g.jpeg'
 import samiaPortrait from '~/assets/img/temoignages/samia-m.jpeg'
 import forme17 from '~/assets/img/formes/17.svg'
+import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
 
-type TestimonialTheme = 'sun' | 'lagoon' | 'coral' | 'blue'
+type TestimonialTheme = 'sun' | 'lagoon' | 'coral' | 'blue' | 'pink'
 
 type Testimonial = {
   name: string
@@ -107,7 +133,7 @@ const testimonials: Testimonial[] = [
     quote:
       'Grâce à cette formation, je me sens enrichie d’informations et de connaissances qui me permettent d’<strong>avancer avec confiance et assurance</strong>.',
     portrait: melissaPortrait,
-    theme: 'lagoon'
+    theme: 'pink'
   },
   {
     name: 'Keisha T.',
@@ -237,8 +263,8 @@ onBeforeUnmount(() => {
 
 .testimonials-stage {
   display: grid;
-  grid-template-columns: 4fr 8fr;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  grid-template-columns: minmax(15rem, 3.7fr) minmax(0, 8.3fr);
+  gap: clamp(2rem, 3.5vw, 3.4rem);
   align-items: start;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
@@ -296,6 +322,18 @@ onBeforeUnmount(() => {
   overflow: hidden;
 }
 
+.testimonials-carousel-wrap {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.testimonials-carousel {
+  width: 100%;
+  min-width: 0;
+}
+
 .testimonials-track {
   display: flex;
   transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -311,11 +349,12 @@ onBeforeUnmount(() => {
 .testimonial-bubble {
   position: relative;
   display: grid;
-  align-content: start;
+  align-items: center;
   min-height: clamp(25rem, 45vw, 33rem);
   padding: clamp(2rem, 4vw, 3rem);
   color: white;
   border-radius: clamp(2rem, 3vw, 3rem);
+  box-shadow: 0 18px 42px rgba(36, 48, 64, 0.08);
 }
 
 .testimonial-slide--sun .testimonial-bubble {
@@ -334,10 +373,23 @@ onBeforeUnmount(() => {
   background: #5f87ca;
 }
 
+.testimonial-slide--pink .testimonial-bubble {
+  background: #d98cb8;
+}
+
+.testimonial-bubble__content {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: clamp(1.15rem, 2vw, 1.8rem);
+  width: min(100%, 42rem);
+  margin-inline: auto;
+  text-align: center;
+}
+
 .testimonial-bubble__portrait {
   width: clamp(4.8rem, 8vw, 6.2rem);
   aspect-ratio: 1;
-  margin-bottom: var(--space-4);
   border: 4px solid rgba(255, 255, 255, 0.82);
   overflow: hidden;
   border-radius: 999px;
@@ -351,7 +403,8 @@ onBeforeUnmount(() => {
 }
 
 .testimonial-bubble__meta {
-  margin-bottom: var(--space-5);
+  display: grid;
+  gap: 0.35rem;
 }
 
 .testimonial-bubble__name {
@@ -362,19 +415,51 @@ onBeforeUnmount(() => {
 }
 
 .testimonial-bubble__role {
-  margin: 0.12rem 0 0;
+  margin: 0;
   color: rgba(255, 255, 255, 0.86);
   font-size: var(--font-size-100);
   font-style: italic;
 }
 
 .testimonial-bubble__quote {
-  max-width: 30ch;
+  max-width: 32ch;
   margin: 0;
   color: white;
   font-size: clamp(1.08rem, 0.94rem + 0.55vw, 1.42rem);
-  line-height: 1.55;
+  line-height: 1.6;
   font-weight: 600;
+}
+
+.testimonials-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1.2rem;
+}
+
+.testimonials-pagination__dot {
+  width: 0.8rem;
+  height: 0.8rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-secondary) 24%, white);
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.testimonials-pagination__dot:hover,
+.testimonials-pagination__dot:focus-visible {
+  transform: scale(1.08);
+  background: color-mix(in srgb, var(--color-secondary) 52%, white);
+}
+
+.testimonials-pagination__dot.is-active {
+  background: var(--color-accent);
+  transform: scale(1.15);
 }
 
 .testimonials-summary {
@@ -382,7 +467,7 @@ onBeforeUnmount(() => {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-5);
   margin-bottom: var(--space-6);
-  padding-top: var(--space-5);
+  padding-top: clamp(1.75rem, 4vw, 2.6rem);
   border-top: 1px solid color-mix(in srgb, var(--color-border) 82%, white);
 }
 
@@ -400,6 +485,22 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
 }
 
+.testimonials-next-actions {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: center;
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 82%, white);
+}
+
+.testimonials-next-actions p {
+  margin: 0;
+  max-width: 38rem;
+  text-align: center;
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+}
+
 @media (max-width: 980px) {
   .testimonials-stage {
     grid-template-columns: 1fr;
@@ -411,6 +512,10 @@ onBeforeUnmount(() => {
 
   .testimonial-bubble {
     min-height: 23rem;
+  }
+
+  .testimonial-bubble__content {
+    width: min(100%, 36rem);
   }
 
   .testimonials-summary {

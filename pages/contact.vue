@@ -5,12 +5,11 @@
         <DecorativeShapes density="low" variant="hero" />
 
         <div class="contact-hero__intro">
-          <p class="eyebrow">Des informations claires pour échanger, s'inscrire et financer sa formation.</p>
+          <p class="eyebrow">Contacter l’équipe, cadrer votre demande et avancer rapidement.</p>
           <h1 id="contact-title">Contact</h1>
           <p class="contact-hero__lead">
-            Nous répondons à vos demandes sur les <strong>formations</strong>, les <strong>accompagnements</strong>, les
-            inscriptions et les modalités de prise en charge. L'objectif est simple: vous permettre d'<strong>avancer
-            rapidement</strong>, avec les <strong>bons interlocuteurs</strong>.
+            Un point d’entrée simple pour vos <strong>demandes de formation</strong>, vos questions d’<strong>inscription</strong>
+            ou de <strong>financement</strong>.
           </p>
         </div>
 
@@ -51,12 +50,27 @@
               </article>
             </div>
           </div>
+
+          <aside class="contact-summary" aria-label="Repères rapides">
+            <article>
+              <strong>Contact direct</strong>
+              <span>Email, téléphone ou WhatsApp.</span>
+            </article>
+            <article>
+              <strong>Inscription</strong>
+              <span>Fiche transmise, retour rapide, devis personnalisé.</span>
+            </article>
+            <article>
+              <strong>Financement</strong>
+              <span>Repérage simple des solutions mobilisables.</span>
+            </article>
+          </aside>
         </div>
       </section>
 
       <section class="contact-details" aria-labelledby="details-title">
         <div class="contact-section-head">
-          <p class="eyebrow">Trois repères pour comprendre le parcours: contacter, s'inscrire, financer.</p>
+          <p class="eyebrow">Trois repères utiles pour la suite.</p>
           <h2 id="details-title">Informations pratiques</h2>
         </div>
 
@@ -66,14 +80,14 @@
               <img :src="iconInscription" alt="" aria-hidden="true" class="contact-panel__icon" loading="lazy">
               <div class="contact-panel__heading">
                 <p class="contact-panel__kicker">Comment s'inscrire ?</p>
-                <h3>Un parcours en trois étapes.</h3>
+                <h3>Une démarche simple.</h3>
               </div>
             </div>
 
             <ol class="contact-steps">
-              <li>Compléter la fiche d'inscription correspondant à la formation souhaitée.</li>
-              <li>Scanner la fiche et l'envoyer par email ou par WhatsApp.</li>
-              <li>Un référent formation vous recontacte rapidement pour établir un devis personnalisé.</li>
+              <li>Compléter la fiche de la formation choisie.</li>
+              <li>L’envoyer par email ou WhatsApp.</li>
+              <li>Recevoir un retour avec la suite à donner.</li>
             </ol>
           </article>
 
@@ -82,7 +96,7 @@
               <img :src="iconFinancement" alt="" aria-hidden="true" class="contact-panel__icon" loading="lazy">
               <div class="contact-panel__heading">
                 <p class="contact-panel__kicker">Comment financer ma formation ?</p>
-                <h3>Plusieurs modalités peuvent être mobilisées.</h3>
+                <h3>Plusieurs options existent.</h3>
               </div>
             </div>
 
@@ -92,14 +106,8 @@
               <li>Financement OPCO</li>
             </ul>
 
-            <p class="contact-panel__text">
-              Les OPCO sont des opérateurs de compétences chargés d'accompagner le
-              <strong>financement des formations professionnelles</strong>. Selon votre situation, nous pouvons vous aider
-              à <strong>identifier la bonne piste de prise en charge</strong>.
-            </p>
-
             <p class="contact-panel__text contact-panel__text--strong">
-              Vous ne savez pas comment faire ? Nous sommes là pour vous guider.
+              Nous pouvons vous aider à identifier la bonne piste selon votre situation.
             </p>
           </article>
 
@@ -107,16 +115,21 @@
             <div class="contact-panel__head">
               <img :src="star" alt="" aria-hidden="true" class="contact-panel__icon" loading="lazy">
               <div class="contact-panel__heading">
-                <p class="contact-panel__kicker">Besoin d'un appui pour l'inscription ou le financement ?</p>
-                <h3 id="contact-footer-title">Accompagnement</h3>
+                <p class="contact-panel__kicker">Besoin d’aide ?</p>
+                <h3 id="contact-footer-title">Un appui concret</h3>
               </div>
             </div>
 
             <p class="contact-panel__text">
-              Nous vous aidons à <strong>identifier la bonne modalité de contact</strong>, à constituer votre demande et
-              à clarifier les <strong>pièces utiles selon votre situation</strong>.
+              Nous vous aidons à <strong>clarifier votre demande</strong>, le mode de contact le plus simple et les
+              <strong>pièces utiles</strong>.
             </p>
           </article>
+        </div>
+
+        <div class="contact-next-actions">
+          <p>Vous voulez d’abord explorer l’offre avant d’échanger ?</p>
+          <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME" variant="secondary">Télécharger le catalogue</BaseButton>
         </div>
       </section>
     </div>
@@ -129,11 +142,13 @@ import iconInscription from '~/assets/img/contact/icone-inscription.png'
 import iconMail from '~/assets/img/contact/icone-mail.png'
 import iconTel from '~/assets/img/contact/icone-tel.png'
 import star from '~/assets/img/contact/etoile.png'
+import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
 
 const iconPin = `data:image/svg+xml;utf8,${encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-    <path d="M32 7c10.493 0 19 8.507 19 19 0 13.173-15.517 27.211-17.29 28.772a2.68 2.68 0 0 1-3.42 0C28.517 53.211 13 39.173 13 26c0-10.493 8.507-19 19-19Z" fill="#ef6d64"/>
-    <circle cx="32" cy="26" r="7.25" fill="#fff5f1"/>
+    <circle cx="32" cy="32" r="29" fill="#ef6d64"/>
+    <path d="M32 16.5c7.46 0 13.5 6.04 13.5 13.5 0 9.3-10.96 19.21-12.21 20.31a1.9 1.9 0 0 1-2.58 0C29.46 49.21 18.5 39.3 18.5 30c0-7.46 6.04-13.5 13.5-13.5Z" fill="#fff"/>
+    <circle cx="32" cy="30" r="5.1" fill="#ef6d64"/>
   </svg>
 `)}`
 </script>
@@ -186,14 +201,46 @@ p {
 
 .contact-hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: clamp(1.5rem, 2vw, 2rem);
+  grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 0.9fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
   align-items: start;
 }
 
 .contact-direct-wrap {
   display: grid;
-  gap: 1.3rem;
+  gap: 1rem;
+}
+
+.contact-summary {
+  display: grid;
+  gap: var(--space-3);
+  padding: clamp(1.15rem, 2vw, 1.5rem);
+  background: color-mix(in srgb, white 78%, var(--color-highlight));
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
+  align-content: start;
+}
+
+.contact-summary article {
+  display: grid;
+  gap: 0.35rem;
+  padding-top: var(--space-3);
+  border-top: 2px solid color-mix(in srgb, var(--color-highlight) 48%, white);
+}
+
+.contact-summary article:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.contact-summary strong {
+  color: var(--color-text);
+  font-size: var(--font-size-100);
+}
+
+.contact-summary span {
+  color: var(--color-text-soft);
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
 .contact-direct__head {
@@ -261,6 +308,22 @@ p {
   gap: clamp(1.8rem, 3vw, 2.6rem);
 }
 
+.contact-next-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 74%, white);
+}
+
+.contact-next-actions p {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+}
+
 .contact-section-head {
   display: grid;
   grid-template-columns: 1fr;
@@ -284,9 +347,11 @@ p {
 
 .contact-panel {
   display: grid;
-  gap: 1.15rem;
-  padding-top: var(--space-4);
-  border-top: 3px solid transparent;
+  gap: 1rem;
+  padding: clamp(1.2rem, 2vw, 1.5rem);
+  border: 1px solid color-mix(in srgb, var(--color-border) 70%, white);
+  border-top: 4px solid transparent;
+  background: color-mix(in srgb, white 88%, var(--color-highlight));
   align-content: start;
 }
 
@@ -319,7 +384,7 @@ p {
 .contact-panel__head h3 {
   margin: 0;
   line-height: 1.12;
-  max-width: 14ch;
+  max-width: 16ch;
 }
 
 .contact-steps {
@@ -358,14 +423,14 @@ p {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.65rem;
+  gap: 0.7rem;
 }
 
 .finance-list li {
   display: grid;
-  grid-template-columns: 12px minmax(0, 1fr);
-  gap: 0.75rem;
-  align-items: start;
+  grid-template-columns: 10px minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: center;
   font-weight: 700;
 }
 
@@ -373,13 +438,14 @@ p {
   content: "";
   width: 8px;
   height: 8px;
-  margin-top: 0.5rem;
+  margin-top: 0;
   background: var(--color-coral);
+  border-radius: 999px;
 }
 
 .contact-panel__text {
   margin: 0;
-  line-height: 1.65;
+  line-height: 1.55;
 }
 
 .contact-panel__text--strong {
@@ -392,6 +458,11 @@ p {
   .contact-details__grid,
   .contact-panel__head {
     grid-template-columns: 1fr;
+  }
+
+  .contact-next-actions {
+    display: grid;
+    justify-items: start;
   }
 
   .contact-direct__icon,

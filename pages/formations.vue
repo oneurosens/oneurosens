@@ -6,8 +6,8 @@
         <p class="eyebrow">Nos thématiques de formations</p>
         <h1>Formations</h1>
         <p class="formations-intro">
-          Une sélection de thématiques construites pour répondre à des <strong>besoins de terrain récurrents</strong>,
-          avec une approche <strong>concrète, progressive et directement mobilisable</strong> dans la pratique.
+          Des thématiques conçues pour répondre à des <strong>besoins de terrain récurrents</strong>, avec une approche
+          <strong>concrète, progressive et immédiatement mobilisable</strong>.
         </p>
       </div>
 
@@ -15,19 +15,27 @@
         <aside class="formations-aside">
           <DecorativeShapes density="low" variant="aside" :items="asideDecorItems" />
           <p class="formations-aside__label">Méthode</p>
-          <h2>Une offre pensée comme un parcours clair, lisible et adaptable.</h2>
+          <h2>Une offre claire, adaptable et pensée pour vos réalités de terrain.</h2>
           <p>
             Les contenus peuvent être proposés en <strong>sessions ponctuelles</strong>, en
-            <strong>cycles de montée en compétence</strong> ou en formats ajustés à votre structure.
+            <strong>cycles de montée en compétence</strong> ou dans des formats ajustés à votre structure.
           </p>
           <div class="formations-aside__notes">
             <p><strong>présentiel ou distanciel</strong></p>
             <p><strong>professionnels, équipes et structures</strong></p>
             <p><strong>formats adaptables selon le contexte</strong></p>
           </div>
+          <div class="formations-aside__trust">
+            <p class="formations-aside__trust-title">Repères utiles</p>
+            <ul>
+              <li>catalogue téléchargeable immédiatement</li>
+              <li>formats ajustables à votre réalité</li>
+              <li>échange préalable possible avant décision</li>
+            </ul>
+          </div>
           <div class="cta-row">
-            <BaseButton to="/telecharger-le-catalogue">Télécharger le catalogue</BaseButton>
-            <BaseButton to="/contact" variant="secondary">Construire un parcours</BaseButton>
+            <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME">Télécharger le catalogue</BaseButton>
+            <BaseButton to="/contact" variant="secondary">Parler de votre besoin</BaseButton>
           </div>
         </aside>
 
@@ -70,6 +78,7 @@ import icon10 from '~/assets/img/formations/icone-10.png'
 import icon11 from '~/assets/img/formations/icone-11.png'
 import forme7 from '~/assets/img/formes/7.svg'
 import forme11 from '~/assets/img/formes/11.svg'
+import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
 
 const trainingThemes = [
   {
@@ -203,8 +212,8 @@ const asideDecorItems = [
 
 .formations-layout {
   display: grid;
-  grid-template-columns: 4fr 8fr;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  grid-template-columns: minmax(16rem, 4.2fr) minmax(0, 7.8fr);
+  gap: clamp(2rem, 3.6vw, 3.6rem);
   align-items: start;
 }
 
@@ -213,8 +222,20 @@ const asideDecorItems = [
   display: grid;
   gap: var(--space-4);
   align-content: start;
-  padding-top: var(--space-4);
+  padding: clamp(1.2rem, 2vw, 1.75rem) 0 0;
   overflow: visible;
+  max-width: 25rem;
+}
+
+.formations-aside::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 100%;
+  border-top: 3px solid color-mix(in srgb, var(--color-highlight) 72%, white);
+  background: linear-gradient(180deg, color-mix(in srgb, white 82%, var(--color-apricot-200)) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .formations-aside__label {
@@ -244,11 +265,42 @@ const asideDecorItems = [
   text-transform: lowercase;
 }
 
+.formations-aside__trust {
+  display: grid;
+  gap: 0.6rem;
+  padding-top: var(--space-2);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
+}
+
+.formations-aside__trust-title {
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.formations-aside__trust ul {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.formations-aside__trust li {
+  padding-left: 1rem;
+  border-left: 2px solid color-mix(in srgb, var(--color-primary) 28%, white);
+  color: var(--color-text);
+  line-height: 1.55;
+}
+
 .formations-list {
   position: relative;
   display: grid;
-  gap: 1rem;
-  padding-left: clamp(1rem, 2vw, 1.6rem);
+  gap: 1.15rem;
+  padding-left: clamp(1.2rem, 2.4vw, 1.9rem);
 }
 
 .formations-list__line {
@@ -275,6 +327,7 @@ const asideDecorItems = [
   gap: 1rem;
   align-items: center;
   margin-left: var(--formation-offset);
+  background: color-mix(in srgb, white 72%, transparent);
 }
 
 .formation-item:nth-child(odd) {
@@ -322,6 +375,10 @@ const asideDecorItems = [
 @media (max-width: 980px) {
   .formations-layout {
     grid-template-columns: 1fr;
+  }
+
+  .formations-aside {
+    max-width: none;
   }
 
   .formations-aside h2 {

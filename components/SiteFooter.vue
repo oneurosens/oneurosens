@@ -62,16 +62,16 @@
 
         <div class="footer-column footer-column--links">
           <p class="footer-column__eyebrow">Accès rapide</p>
-          <h2>Ressources utiles</h2>
+          <h2>Aller plus loin</h2>
 
-          <NuxtLink class="footer-link" to="/telecharger-le-catalogue">
+          <a class="footer-link" :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME">
             <span class="footer-link__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6 2.25A2.25 2.25 0 0 0 3.75 4.5v15A2.25 2.25 0 0 0 6 21.75h12A2.25 2.25 0 0 0 20.25 19.5V8.56a2.25 2.25 0 0 0-.66-1.59l-4.56-4.56a2.25 2.25 0 0 0-1.59-.66H6Zm7.5 1.9 4.85 4.85H15a1.5 1.5 0 0 1-1.5-1.5V4.15ZM7.5 13.5h9v1.5h-9v-1.5Zm0 3h9V18h-9v-1.5Zm0-6h3.75V12H7.5v-1.5Z" />
               </svg>
             </span>
             <span>Télécharger le catalogue</span>
-          </NuxtLink>
+          </a>
 
           <div class="footer-socials">
             <p class="footer-socials__label">Suivez-nous</p>
@@ -104,6 +104,7 @@ import mascotFormation from '~/assets/img/footer/mascotte-formation.svg'
 import mascotQuiSommesNous from '~/assets/img/footer/mascotte-qui-sommes-nous.svg'
 import mascotTemoignage from '~/assets/img/footer/mascotte-temoignage.svg'
 import menuToggleShape from '~/assets/img/menu/menu-toggle-shape.svg'
+import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
 import { getRouteThemeName } from '~/utils/routeTheme'
 
 const route = useRoute()
@@ -114,7 +115,7 @@ const footerMascot = computed(() => {
     return mascotQuiSommesNous
   }
 
-  if (route.path === '/formations' || route.path === '/telecharger-le-catalogue') {
+  if (route.path === '/formations') {
     return mascotFormation
   }
 
