@@ -1,7 +1,7 @@
 :root {
   /*
     O Neuro Sens - Design Tokens
-    Base douce et positive, pensée pour rester facilement extensible.
+    Direction editoriale plus vive, pensée comme une plaquette web.
   */
 
   /* Brand palette */
@@ -10,6 +10,10 @@
   --color-coral-500: #ee6f63;
   --color-blue-600: #2f5d9a;
   --color-pink-300: #f8d8de;
+  --color-ink-700: #1d3657;
+  --color-mint-200: #dff6ef;
+  --color-apricot-200: #ffe4cf;
+  --color-sky-200: #dcecff;
 
   /* Neutral palette */
   --color-neutral-0: #ffffff;
@@ -21,12 +25,15 @@
   --color-neutral-900: #1f1f1c;
 
   /* Semantic aliases */
-  --color-bg: var(--color-neutral-100);
+  --color-bg: #f8f3e8;
   --color-surface: var(--color-neutral-0);
-  --color-surface-soft: #fffaf1;
+  --color-surface-soft: #fff8ee;
+  --color-surface-strong: #fff3de;
   --color-text: var(--color-neutral-900);
   --color-text-muted: var(--color-neutral-700);
-  --color-border: #dedace;
+  --color-text-soft: color-mix(in srgb, var(--color-text-muted) 72%, white);
+  --color-border: #e4d8c6;
+  --color-border-strong: #d4c1a6;
   --color-focus: var(--color-blue-600);
 
   --color-primary: var(--color-turquoise-500);
@@ -34,12 +41,18 @@
   --color-secondary: var(--color-blue-600);
   --color-secondary-strong: #274e82;
   --color-accent: var(--color-coral-500);
+  --color-ribbon: #ec6d69;
   --color-highlight: var(--color-yellow-500);
   --color-soft: var(--color-pink-300);
+  --color-spot-1: rgba(255, 214, 127, 0.28);
+  --color-spot-2: rgba(53, 184, 179, 0.18);
+  --color-spot-3: rgba(238, 111, 99, 0.14);
+  --color-spot-4: rgba(47, 93, 154, 0.12);
 
   /* Typography */
   --font-family-base: "basic-sans", "Avenir Next", "Segoe UI", Roboto, sans-serif;
-  --font-family-heading: "basic-sans", "Avenir Next", "Segoe UI", Roboto, sans-serif;
+  --font-family-heading: "rig-shaded", "basic-sans", "Avenir Next", "Segoe UI", Roboto, sans-serif;
+  --font-family-display: "rig-shaded", "basic-sans", "Avenir Next", "Segoe UI", Roboto, sans-serif;
 
   --font-size-100: clamp(0.82rem, 0.79rem + 0.1vw, 0.9rem);
   --font-size-200: clamp(1rem, 0.97rem + 0.12vw, 1.06rem);
@@ -66,17 +79,31 @@
   --space-6: 2rem;
   --space-7: 3rem;
   --space-8: 4rem;
+  --space-9: 5.5rem;
+  --space-10: 7rem;
 
-  /* Radius: volontairement arrondi */
-  --radius-xs: 0.5rem;
-  --radius-sm: 0.875rem;
-  --radius-md: 1.25rem;
-  --radius-lg: 1.75rem;
-  --radius-pill: 999px;
+  /* Radius */
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-pill: 0;
 
   /* Layout */
-  --container-width: 1120px;
+  --container-width: 1180px;
+  --container-narrow: 960px;
+  --grid-gap: clamp(1rem, 0.5rem + 1.6vw, 2rem);
+  --section-padding: clamp(1.3rem, 0.8rem + 2vw, 2.6rem);
+  --section-padding-lg: clamp(1.8rem, 1.2rem + 2.6vw, 3.5rem);
 
   /* Shadows */
-  --shadow-soft: 0 10px 30px rgba(27, 46, 61, 0.08);
+  --shadow-soft: 0 14px 40px rgba(27, 46, 61, 0.08);
+  --shadow-card: 0 18px 42px rgba(44, 51, 60, 0.09);
+  --shadow-float: 0 24px 60px rgba(35, 52, 74, 0.12);
+
+  /* Motion */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 160ms var(--ease-smooth);
+  --transition-base: 260ms var(--ease-smooth);
 }

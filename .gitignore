@@ -8,6 +8,10 @@ dist/
 .env
 .env.*
 
+# Project task files
+tasks.md
+tasks-assets/
+
 # macOS
 .DS_Store
 
@@ -22,5 +26,4 @@ dist/
 # Env
 .env
 .env.*
-
 

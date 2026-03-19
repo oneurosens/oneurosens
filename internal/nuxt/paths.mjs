@@ -1,5 +1,5 @@
 import { joinRelativeURL } from 'ufo'
-import { useRuntimeConfig } from 'nitropack/runtime'
+import { useRuntimeConfig } from 'nitropack/dist/runtime/internal/config'
 
 export function baseURL() {
   return useRuntimeConfig().app.baseURL
