@@ -135,7 +135,7 @@ const themeName = computed(() => getRouteThemeName(displayedThemePath.value))
 const socialLinks = [
   {
     label: 'Instagram',
-    href: '#',
+    href: 'https://www.instagram.com/oneurosens/',
     icon: `
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm4.25 2.7A5.5 5.5 0 1 1 6.5 12 5.5 5.5 0 0 1 12 6.5Zm0 1.8A3.7 3.7 0 1 0 15.7 12 3.7 3.7 0 0 0 12 8.3Zm5.1-2.15a1.3 1.3 0 1 1-1.3 1.3 1.3 1.3 0 0 1 1.3-1.3Z" />
@@ -144,7 +144,7 @@ const socialLinks = [
   },
   {
     label: 'LinkedIn',
-    href: '#',
+    href: 'https://www.linkedin.com/company/o-neuro-sens-formations/',
     icon: `
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path d="M5.45 8.35A1.65 1.65 0 1 1 5.4 5.05a1.65 1.65 0 0 1 .05 3.3ZM3.95 9.75h3v9.3h-3v-9.3Zm4.9 0h2.88v1.28h.05c.4-.75 1.38-1.56 2.85-1.56 3.05 0 3.62 2 3.62 4.62v4.96h-3v-4.4c0-1.05-.02-2.4-1.47-2.4s-1.7 1.14-1.7 2.32v4.48h-3v-9.3Z" />
@@ -153,7 +153,7 @@ const socialLinks = [
   },
   {
     label: 'Facebook',
-    href: '#',
+    href: 'https://www.facebook.com/profile.php?id=100067188012365',
     icon: `
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path d="M13.33 21v-7.1h2.38l.36-2.77h-2.74V9.36c0-.8.22-1.35 1.37-1.35h1.46V5.6c-.25-.04-1.12-.11-2.13-.11-2.11 0-3.55 1.29-3.55 3.65v1.99H8.1v2.77h2.38V21h2.85Z" />

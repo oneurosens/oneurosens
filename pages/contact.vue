@@ -2,8 +2,6 @@
   <section class="contact-page">
     <div class="container contact-flow">
       <section class="contact-hero" aria-labelledby="contact-title">
-        <DecorativeShapes density="low" variant="hero" />
-
         <div class="contact-hero__intro">
           <p class="eyebrow">Contacter l’équipe, cadrer votre demande et avancer rapidement.</p>
           <h1 id="contact-title">Contact</h1>
@@ -77,18 +75,20 @@
         <div class="contact-details__grid">
           <article class="contact-panel contact-panel--steps">
             <div class="contact-panel__head">
-              <img :src="iconInscription" alt="" aria-hidden="true" class="contact-panel__icon" loading="lazy">
+              <img :src="iconInscription" alt="" aria-hidden="true" class="contact-panel__icon contact-panel__icon--steps" loading="lazy">
               <div class="contact-panel__heading">
                 <p class="contact-panel__kicker">Comment s'inscrire ?</p>
                 <h3>Une démarche simple.</h3>
               </div>
             </div>
 
-            <ol class="contact-steps">
-              <li>Compléter la fiche de la formation choisie.</li>
-              <li>L’envoyer par email ou WhatsApp.</li>
-              <li>Recevoir un retour avec la suite à donner.</li>
-            </ol>
+            <div class="contact-panel__body">
+              <ol class="contact-steps">
+                <li>Compléter la fiche de la formation choisie.</li>
+                <li>L’envoyer par email ou WhatsApp.</li>
+                <li>Recevoir un retour avec la suite à donner.</li>
+              </ol>
+            </div>
           </article>
 
           <article class="contact-panel contact-panel--finance">
@@ -100,30 +100,34 @@
               </div>
             </div>
 
-            <ul class="finance-list">
-              <li>À titre individuel</li>
-              <li>Par mon employeur</li>
-              <li>Financement OPCO</li>
-            </ul>
+            <div class="contact-panel__body contact-panel__body--finance">
+              <ul class="finance-list">
+                <li>À titre individuel</li>
+                <li>Par mon employeur</li>
+                <li>Financement OPCO</li>
+              </ul>
 
-            <p class="contact-panel__text contact-panel__text--strong">
-              Nous pouvons vous aider à identifier la bonne piste selon votre situation.
-            </p>
+              <p class="contact-panel__text contact-panel__text--strong">
+                Nous pouvons vous aider à identifier la bonne piste selon votre situation.
+              </p>
+            </div>
           </article>
 
           <article class="contact-panel contact-panel--support" aria-labelledby="contact-footer-title">
             <div class="contact-panel__head">
-              <img :src="star" alt="" aria-hidden="true" class="contact-panel__icon" loading="lazy">
+              <img :src="mascotteParapluie" alt="" aria-hidden="true" class="contact-panel__icon contact-panel__icon--support" loading="lazy">
               <div class="contact-panel__heading">
                 <p class="contact-panel__kicker">Besoin d’aide ?</p>
                 <h3 id="contact-footer-title">Un appui concret</h3>
               </div>
             </div>
 
-            <p class="contact-panel__text">
-              Nous vous aidons à <strong>clarifier votre demande</strong>, le mode de contact le plus simple et les
-              <strong>pièces utiles</strong>.
-            </p>
+            <div class="contact-panel__body contact-panel__body--support">
+              <p class="contact-panel__text">
+                Nous vous aidons à <strong>clarifier votre demande</strong>, le mode de contact le plus simple et les
+                <strong>pièces utiles</strong>.
+              </p>
+            </div>
           </article>
         </div>
 
@@ -141,7 +145,7 @@ import iconFinancement from '~/assets/img/contact/icone-financement.png'
 import iconInscription from '~/assets/img/contact/icone-inscription.png'
 import iconMail from '~/assets/img/contact/icone-mail.png'
 import iconTel from '~/assets/img/contact/icone-tel.png'
-import star from '~/assets/img/contact/etoile.png'
+import mascotteParapluie from '~/assets/img/mascotte-parapluie.png'
 import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
 
 const iconPin = `data:image/svg+xml;utf8,${encodeURIComponent(`
@@ -163,6 +167,8 @@ p {
 }
 
 .contact-page {
+  --page-tint: #ffcc00;
+  --page-cta-fg: #181818;
   padding-bottom: var(--space-7);
 }
 
@@ -217,6 +223,7 @@ p {
   padding: clamp(1.15rem, 2vw, 1.5rem);
   background: color-mix(in srgb, white 78%, var(--color-highlight));
   border: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
+  border-radius: clamp(1.2rem, 2vw, 1.8rem);
   align-content: start;
 }
 
@@ -275,6 +282,12 @@ p {
   width: 76px;
   height: 76px;
   object-fit: contain;
+}
+
+.contact-panel__icon--support {
+  width: 110px;
+  height: 110px;
+  margin-left: -0.35rem;
 }
 
 .contact-direct__label,
@@ -347,44 +360,66 @@ p {
 
 .contact-panel {
   display: grid;
-  gap: 1rem;
-  padding: clamp(1.2rem, 2vw, 1.5rem);
+  grid-template-rows: auto 1fr;
+  gap: clamp(1.4rem, 1.9vw, 1.7rem);
+  min-height: clamp(29rem, 34vw, 34rem);
+  padding: clamp(1.5rem, 2.1vw, 1.95rem);
   border: 1px solid color-mix(in srgb, var(--color-border) 70%, white);
-  border-top: 4px solid transparent;
+  border-radius: clamp(1.2rem, 2vw, 1.8rem);
   background: color-mix(in srgb, white 88%, var(--color-highlight));
   align-content: start;
 }
 
-.contact-panel--steps {
-  border-top-color: #e47673;
-}
-
-.contact-panel--finance {
-  border-top-color: #efb03f;
-}
-
-.contact-panel--support {
-  border-top-color: #f2c246;
-}
-
 .contact-panel__head {
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
-  gap: 1.1rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   align-items: start;
 }
 
 .contact-panel__heading {
   display: grid;
-  gap: 0.35rem;
+  gap: 0.5rem;
   align-content: start;
-  min-height: 100%;
 }
 
 .contact-panel__head h3 {
   margin: 0;
-  line-height: 1.12;
-  max-width: 16ch;
+  line-height: 1.08;
+ 
+  font-size: clamp(1.95rem, 1.5rem + 1vw, 2.85rem);
+}
+
+.contact-panel__icon {
+  width: clamp(108px, 8vw, 124px);
+  height: clamp(108px, 8vw, 124px);
+  object-position: top left;
+  justify-self: center;
+}
+
+.contact-panel__icon--steps {
+  object-position: bottom left;
+}
+
+.contact-panel__icon--support {
+  width: clamp(108px, 8vw, 124px);
+  height: clamp(108px, 8vw, 124px);
+  margin-left: 0;
+}
+
+.contact-panel__body {
+  display: grid;
+  align-content: start;
+  gap: 1.35rem;
+  min-height: 100%;
+}
+
+.contact-panel__body--finance {
+  grid-template-rows: auto 1fr auto;
+}
+
+.contact-panel__body--support {
+  padding-top: 0.35rem;
 }
 
 .contact-steps {
@@ -393,28 +428,31 @@ p {
   list-style: none;
   counter-reset: step;
   display: grid;
-  gap: 0.85rem;
+  gap: 1rem;
+  align-content: start;
 }
 
 .contact-steps li {
   counter-increment: step;
   display: grid;
-  grid-template-columns: 1.7rem minmax(0, 1fr);
-  gap: 0.85rem;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.95rem;
   align-items: start;
-  line-height: 1.62;
+  line-height: 1.7;
+  font-size: clamp(1rem, 0.98rem + 0.22vw, 1.14rem);
 }
 
 .contact-steps li::before {
   content: counter(step);
   display: grid;
   place-items: center;
-  width: 1.7rem;
-  height: 1.7rem;
-  margin-top: 0.1rem;
-  background: color-mix(in srgb, var(--color-coral) 88%, white);
-  color: white;
-  font-size: 0.88rem;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.05rem;
+  border-radius: 999px;
+  background: #ef6d64;
+  color: #fff7f1;
+  font-size: 0.92rem;
   font-weight: 700;
 }
 
@@ -423,40 +461,47 @@ p {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.7rem;
+  gap: 1rem;
+  align-content: start;
 }
 
 .finance-list li {
   display: grid;
-  grid-template-columns: 10px minmax(0, 1fr);
-  gap: 0.55rem;
-  align-items: center;
+  grid-template-columns: 0.85rem minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: start;
   font-weight: 700;
+  font-size: clamp(1.02rem, 0.99rem + 0.24vw, 1.16rem);
+  line-height: 1.45;
 }
 
 .finance-list li::before {
   content: "";
-  width: 8px;
-  height: 8px;
-  margin-top: 0;
-  background: var(--color-coral);
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.5rem;
+  background: #ef6d64;
   border-radius: 999px;
 }
 
 .contact-panel__text {
   margin: 0;
-  line-height: 1.55;
+  max-width: 24ch;
+  line-height: 1.68;
+  font-size: clamp(1rem, 0.98rem + 0.22vw, 1.12rem);
+  color: var(--color-text-soft);
 }
 
 .contact-panel__text--strong {
   font-weight: 700;
+  color: var(--color-text);
+  align-self: end;
 }
 
 @media (max-width: 980px) {
   .contact-hero__grid,
   .contact-section-head,
-  .contact-details__grid,
-  .contact-panel__head {
+  .contact-details__grid {
     grid-template-columns: 1fr;
   }
 
@@ -467,8 +512,16 @@ p {
 
   .contact-direct__icon,
   .contact-panel__icon {
-    width: 64px;
-    height: 64px;
+    width: 92px;
+    height: 92px;
+  }
+
+  .contact-panel__head h3 {
+    max-width: 11ch;
+  }
+
+  .contact-panel {
+    min-height: auto;
   }
 }
 
@@ -479,8 +532,22 @@ p {
 
   .contact-direct__icon,
   .contact-panel__icon {
-    width: 56px;
-    height: 56px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .contact-panel__icon--support {
+    width: 88px;
+    height: 88px;
+    margin-left: 0;
+  }
+
+  .contact-panel {
+    padding: 1.25rem 1.15rem;
+  }
+
+  .contact-panel__text {
+    max-width: none;
   }
 }
 </style>

@@ -1,0 +1,385 @@
+.decorative-shapes__item--shape-a,
+.decorative-shapes__item--hero-a,
+.decorative-shapes__item--gallery-c,
+.decorative-shapes__item--hero-a-large {
+  --shape-image: url("/img/formes/17.svg");
+}
+
+.decorative-shapes__item--hero-a-large {
+    --shape-image: url("/img/formes/13.svg");
+
+}
+
+.decorative-shapes__item--shape-b,
+.decorative-shapes__item--hero-b,
+.decorative-shapes__item--gallery-b,
+.decorative-shapes__item--formations-aside-shape,
+.decorative-shapes__item--themes-shape-right {
+  --shape-image: url("/img/formes/7.svg");
+}
+.decorative-shapes__item--formations-aside-shape {
+   --shape-image: url("/img/formes/10.svg");
+}
+
+.decorative-shapes__item--shape-c,
+.decorative-shapes__item--aside-a,
+.decorative-shapes__item--formations-head-shape {
+  --shape-image: url("/img/formes/11.svg");
+}
+
+.decorative-shapes__item--shape-d,
+.decorative-shapes__item--aside-b,
+.decorative-shapes__item--footer-a {
+  --shape-image: url("/img/formes/14.svg");
+}
+
+.decorative-shapes__item--hero-c,
+.decorative-shapes__item--shape-e,
+.decorative-shapes__item--page-formations-3 {
+  --shape-image: url("/img/formes/4.svg");
+}
+
+.decorative-shapes__item--gallery-a,
+.decorative-shapes__item--shape-f,
+.decorative-shapes__item--page-contact-4 {
+  --shape-image: url("/img/formes/1.svg");
+}
+
+.decorative-shapes__item--hero-shape-right,
+.decorative-shapes__item--page-home-4,
+.decorative-shapes__item--page-contact-2 {
+  --shape-image: url("/img/formes/16.svg");
+}
+
+.decorative-shapes__item--page-home-4 {
+  --shape-image: url("/img/formes/15.svg");
+}
+.decorative-shapes__item--page-contact-2 {
+  --shape-image: url("/img/formes/9.svg");
+}
+.decorative-shapes__item--page-home-1,
+.decorative-shapes__item--page-temoignages-4 {
+  --shape-image: url("/img/formes/18.svg");
+}
+
+.decorative-shapes__item--page-home-3 {
+  --shape-image: url("/img/formes/12.svg");
+}
+
+.decorative-shapes__item--qsn-hero-shape {
+  --shape-image: url("/img/formes/20.svg");
+}
+.decorative-shapes__item--values-shape-side {
+  --shape-image: url("/img/formes/17.svg");
+}
+.decorative-shapes__item--page-about-3,
+.decorative-shapes__item--page-contact-1 {
+--shape-image: url("/img/formes/14.svg");
+}
+
+.decorative-shapes__item--page-formations-1 {
+  --shape-image: url("/img/formes/19.svg");
+}
+
+.decorative-shapes__item--page-formations-4 {
+  --shape-image: url("/img/formes/15.svg");
+}
+
+.decorative-shapes__item--page-temoignages-1 {
+  --shape-image: url("/img/formes/6.svg");
+}
+
+.decorative-shapes__item--page-temoignages-3 {
+  --shape-image: url("/img/formes/5.svg");
+}
+
+.decorative-shapes__item--page-contact-3 {
+  --shape-image: url("/img/formes/8.svg");
+  --shape-top: 40%;
+  --shape-right: 27.2vw;
+  --shape-size: 23vw;
+  --shape-rotate: 14deg;
+  opacity: 1 !important;
+}
+
+.decorative-shapes__item--shape-a {
+  --shape-top: -4%;
+  --shape-right: -2%;
+  --shape-size: clamp(72px, 10vw, 138px);
+  --shape-rotate: 10deg;
+}
+
+.decorative-shapes__item--shape-b {
+  --shape-bottom: 8%;
+  --shape-left: -1%;
+  --shape-size: clamp(96px, 14vw, 174px);
+  --shape-rotate: -12deg;
+}
+
+.decorative-shapes__item--shape-c {
+  --shape-top: 22%;
+  --shape-left: 7%;
+  --shape-size: clamp(54px, 6.4vw, 88px);
+  --shape-rotate: -4deg;
+}
+
+.decorative-shapes__item--shape-d {
+  --shape-bottom: -5%;
+  --shape-right: 12%;
+  --shape-size: clamp(64px, 8vw, 108px);
+  --shape-rotate: 16deg;
+}
+
+.decorative-shapes__item--shape-e {
+  --shape-top: 58%;
+  --shape-right: 5%;
+  --shape-size: clamp(42px, 4.4vw, 68px);
+  --shape-rotate: 8deg;
+}
+
+.decorative-shapes__item--shape-f {
+  --shape-top: 12%;
+  --shape-right: 24%;
+  --shape-size: clamp(38px, 3.8vw, 58px);
+  --shape-rotate: -16deg;
+}
+
+.decorative-shapes__item--hero-a {
+--shape-top: -8%;
+  --shape-right: 15%;
+  --shape-size: 24vw;
+  --shape-rotate: 10deg;
+  opacity: 1 !important;
+}
+
+.decorative-shapes__item--hero-b {
+  --shape-top: 10%;
+  --shape-left: -4%;
+  --shape-size: clamp(110px, 16vw, 188px);
+  --shape-rotate: -18deg;
+}
+
+.decorative-shapes__item--hero-c {
+--shape-bottom: -10%;
+  --shape-right: 9%;
+  --shape-size: 20vw;
+  --shape-rotate: 6deg;
+  opacity: 1 !important;
+}
+
+
+.decorative-shapes__item--aside-a {
+  --shape-top: 5%;
+  --shape-right: 2%;
+  --shape-size: clamp(40px, 5vw, 62px);
+  --shape-rotate: -4deg;
+}
+
+.decorative-shapes__item--aside-b {
+  --shape-bottom: -3%;
+  --shape-left: -2%;
+  --shape-size: clamp(58px, 7vw, 88px);
+  --shape-rotate: 14deg;
+}
+
+.decorative-shapes__item--gallery-a {
+  --shape-top: 8%;
+  --shape-right: 4%;
+  --shape-size: clamp(36px, 4vw, 58px);
+  --shape-rotate: -12deg;
+}
+
+.decorative-shapes__item--gallery-b {
+  --shape-bottom: 4%;
+  --shape-left: -3%;
+  --shape-size: clamp(78px, 10vw, 128px);
+  --shape-rotate: -10deg;
+}
+
+.decorative-shapes__item--gallery-c {
+  --shape-top: -2%;
+  --shape-left: 20%;
+  --shape-size: clamp(60px, 8vw, 94px);
+  --shape-rotate: 8deg;
+}
+
+.decorative-shapes__item--footer-a {
+  --shape-top: -10%;
+  --shape-right: 3%;
+  --shape-size: clamp(56px, 7vw, 92px);
+  --shape-rotate: 14deg;
+}
+
+.decorative-shapes__item--hero-shape-right {
+--shape-top: -8.5rem;
+  --shape-right: -8.5vw;
+  --shape-size: 28vw;
+  --shape-rotate: 6deg;
+
+}
+
+.decorative-shapes__item--themes-shape-right {
+--shape-bottom: 0;
+  --shape-right: -1%;
+  --shape-size: 19vw;
+  --shape-rotate: -10deg;
+  opacity: 1 !important;
+}
+
+.decorative-shapes__item--formations-head-shape {
+  --shape-top: -9%;
+  --shape-right: -5vw;
+  --shape-size: 30vw;
+  --shape-rotate: 4deg;
+  opacity: 1 !important;
+}
+
+.decorative-shapes__item--formations-aside-shape {
+--shape-bottom: -14%;
+  --shape-left: 66vw;
+  --shape-size: 11vw;
+  --shape-rotate: -18deg;
+  opacity: 1 !important;
+}
+
+.decorative-shapes__item--qsn-hero-shape {
+--shape-top: 0.4rem;
+  --shape-right: -7vw;
+  --shape-size: 30vw;
+  --shape-rotate: 0deg;
+}
+
+.decorative-shapes__item--values-shape-side {
+--shape-top: 30%;
+  --shape-left: -12.5vw;
+  --shape-size: 26vw;
+  --shape-rotate: -8deg;
+  --shape-right: auto;
+
+}
+
+.decorative-shapes__item--hero-a-large {
+--shape-top: 90.2rem;
+  --shape-right: 74vw;
+  --shape-size: 30vw;
+  --shape-rotate: 10deg;
+
+}
+
+.decorative-shapes__item--page-home-1 {
+  --shape-top: 14%;
+  --shape-left: -3vw;
+  --shape-size: 30vw;
+  --shape-rotate: -12deg;
+  opacity: 1 !important;
+  --shape-right: auto;
+}
+
+.decorative-shapes__item--page-home-3 {
+  --shape-top: 54%;
+  --shape-left: -2.8vw;
+  --shape-size: clamp(160px, 17vw, 290px);
+  --shape-rotate: 10deg;
+}
+
+.decorative-shapes__item--page-home-4 {
+--shape-top: 69%;
+  --shape-right: 6.4vw;
+  --shape-size: 27vw;
+  --shape-rotate: 36deg;
+}
+
+.decorative-shapes__item--page-about-3 {
+--shape-top: 59%;
+  --shape-right: -3.8vw;
+  --shape-size: 20vw;
+  --shape-rotate: 42deg;
+  opacity: 1 !important;
+}
+
+.decorative-shapes__item--page-formations-1 {
+--shape-top: 8%;
+  --shape-left: -7.4vw;
+  --shape-size: 20vw;
+  --shape-rotate: 38deg;
+  opacity: 1 !important;
+}
+
+.decorative-shapes__item--page-formations-3 {
+--shape-top: 87%;
+  --shape-left: -2.8vw;
+  --shape-size: 33vw;
+  --shape-rotate: -8deg;
+  opacity: 1 !important;
+}
+
+
+
+.decorative-shapes__item--page-formations-4 {
+	--shape-top: 99%;
+	--shape-right: -3.8vw;
+	--shape-size: 20vw;
+	--shape-rotate: 31deg;
+}
+
+.decorative-shapes__item--page-temoignages-1 {
+--shape-top: -2%;
+  --shape-left: 69.4vw;
+  --shape-size: 27vw;
+  --shape-rotate: 18deg;
+  opacity: 1!important;
+}
+
+.decorative-shapes__item--page-temoignages-3 {
+  --shape-top: 58%;
+  --shape-left: -2.8vw;
+  --shape-size: clamp(164px, 18vw, 315px);
+  --shape-rotate: 12deg;
+}
+
+.decorative-shapes__item--page-temoignages-4 {
+--shape-top: 84%;
+  --shape-right: -3.8vw;
+  --shape-size: 34vw;
+  --shape-rotate: -10deg;
+}
+
+.decorative-shapes__item--page-contact-1 {
+  --shape-top: 8%;
+  --shape-right: -3vw;
+  --shape-size: clamp(176px, 19vw, 330px);
+  --shape-rotate: 10deg;
+}
+
+.decorative-shapes__item--page-contact-2 {
+--shape-top: 32%;
+  --shape-left: 76.5vw;
+  --shape-size: 30vw;
+  --shape-rotate: -57deg;
+
+}
+
+
+
+.decorative-shapes__item--page-contact-4 {
+--shape-top: 94%;
+  --shape-left: -2.6vw;
+  --shape-size: 25vw;
+  --shape-rotate: 0deg;
+  opacity: 1 !important;}
+
+@media (max-width: 980px) {
+  .decorative-shapes__item--formations-head-shape,
+  .decorative-shapes__item--formations-aside-shape,
+  .decorative-shapes__item--values-shape-side,
+  .decorative-shapes__item--qsn-hero-shape {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .decorative-shapes__item--hero-a-large,
+  .decorative-shapes__item--hero-shape-right {
+    display: none;
+  }
+}

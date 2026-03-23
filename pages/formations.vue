@@ -2,7 +2,6 @@
   <section class="formations-page">
     <div class="container">
       <div class="formations-head">
-        <DecorativeShapes density="low" variant="hero" :items="headDecorItems" />
         <p class="eyebrow">Nos thématiques de formations</p>
         <h1>Formations</h1>
         <p class="formations-intro">
@@ -12,8 +11,7 @@
       </div>
 
       <div class="formations-layout">
-        <aside class="formations-aside">
-          <DecorativeShapes density="low" variant="aside" :items="asideDecorItems" />
+        <aside class="formations-aside theme-tint-panel">
           <p class="formations-aside__label">Méthode</p>
           <h2>Une offre claire, adaptable et pensée pour vos réalités de terrain.</h2>
           <p>
@@ -40,15 +38,11 @@
         </aside>
 
         <div class="formations-list" aria-label="Liste des thématiques de formations">
-          <div class="formations-list__line" aria-hidden="true" />
           <article
-            v-for="(item, index) in trainingThemes"
+            v-for="item in trainingThemes"
             :key="item.title"
             class="formation-item"
-            :style="{
-              '--formation-color': item.color,
-              '--formation-offset': formationOffsets[index] ?? '0rem'
-            }"
+            :style="{ '--formation-color': item.color }"
           >
             <div class="formation-item__icon">
               <img :src="item.icon" :alt="''" loading="lazy">
@@ -76,8 +70,6 @@ import icon8 from '~/assets/img/formations/icone-8.png'
 import icon9 from '~/assets/img/formations/icone-9.png'
 import icon10 from '~/assets/img/formations/icone-10.png'
 import icon11 from '~/assets/img/formations/icone-11.png'
-import forme7 from '~/assets/img/formes/7.svg'
-import forme11 from '~/assets/img/formes/11.svg'
 import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
 
 const trainingThemes = [
@@ -149,37 +141,6 @@ const trainingThemes = [
   }
 ]
 
-const formationOffsets = ['0rem', '1.4rem', '0.45rem', '1.8rem', '0.7rem', '1.55rem', '0.35rem', '1.7rem', '0.6rem', '1.3rem', '0.25rem']
-
-const headDecorItems = [
-  {
-    id: 'formations-head-shape',
-    src: forme11,
-    top: '-2%',
-    right: '-5vw',
-    size: 'clamp(96px, 12vw, 186px)',
-    rotate: '4deg',
-    opacity: 0.92,
-    depth: 14,
-    zIndex: 1,
-    tone: 'accent'
-  }
-]
-
-const asideDecorItems = [
-  {
-    id: 'formations-aside-shape',
-    src: forme7,
-    bottom: '-4%',
-    left: '-7vw',
-    size: 'clamp(96px, 11vw, 172px)',
-    rotate: '-18deg',
-    opacity: 0.28,
-    depth: 8,
-    zIndex: 0,
-    tone: 'soft'
-  }
-]
 </script>
 
 <style scoped>
@@ -188,6 +149,8 @@ const asideDecorItems = [
 }
 
 .formations-page {
+  --page-tint: #2f5d9a;
+  --page-cta-fg: #ffffff;
   padding-bottom: var(--space-7);
 }
 
@@ -222,21 +185,12 @@ const asideDecorItems = [
   display: grid;
   gap: var(--space-4);
   align-content: start;
-  padding: clamp(1.2rem, 2vw, 1.75rem) 0 0;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
   overflow: visible;
   max-width: 25rem;
 }
 
-.formations-aside::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100%;
-  border-top: 3px solid color-mix(in srgb, var(--color-highlight) 72%, white);
-  background: linear-gradient(180deg, color-mix(in srgb, white 82%, var(--color-apricot-200)) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: -1;
-}
+
 
 .formations-aside__label {
   margin: 0;
@@ -300,24 +254,7 @@ const asideDecorItems = [
   position: relative;
   display: grid;
   gap: 1.15rem;
-  padding-left: clamp(1.2rem, 2.4vw, 1.9rem);
-}
-
-.formations-list__line {
-  position: absolute;
-  top: 2.5rem;
-  bottom: 2.5rem;
-  left: 2.25rem;
-  width: 2px;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--color-secondary) 55%, white) 0,
-      color-mix(in srgb, var(--color-secondary) 55%, white) 6px,
-      transparent 6px,
-      transparent 14px
-    );
-  opacity: 0.7;
+  padding-left: 0;
 }
 
 .formation-item {
@@ -326,12 +263,7 @@ const asideDecorItems = [
   grid-template-columns: 4.5rem minmax(0, 1fr);
   gap: 1rem;
   align-items: center;
-  margin-left: var(--formation-offset);
   background: color-mix(in srgb, white 72%, transparent);
-}
-
-.formation-item:nth-child(odd) {
-  margin-left: 0;
 }
 
 .formation-item__icon {
@@ -385,18 +317,10 @@ const asideDecorItems = [
     max-width: 16ch;
   }
 
-  .formations-list__line {
-    left: 2rem;
-  }
-
   .formation-item {
     margin-left: 0;
   }
 
-  :deep(.decorative-shapes__item--formations-head-shape),
-  :deep(.decorative-shapes__item--formations-aside-shape) {
-    display: none;
-  }
 }
 
 @media (max-width: 640px) {

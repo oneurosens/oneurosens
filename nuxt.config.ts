@@ -15,7 +15,7 @@ export default defineNuxtConfig({
       meta: [{ name: 'theme-color', content: '#ffffff' }]
     }
   },
-  css: ['~/assets/css/variables.css', '~/assets/css/base.css', '~/assets/css/components.css'],
+  css: ['~/assets/css/variables.css', '~/assets/css/base.css', '~/assets/css/formes.css', '~/assets/css/components.css'],
   nitro: {
     prerender: {
       routes: [

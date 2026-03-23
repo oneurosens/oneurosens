@@ -2,7 +2,6 @@
   <section class="qsn-page">
     <div class="container qsn-flow">
       <section class="qsn-hero" aria-labelledby="qsn-title">
-        <DecorativeShapes density="low" variant="hero" :items="heroDecorItems" />
         <div class="qsn-hero__intro">
           <p class="eyebrow">Un organisme de formation porté par le terrain, la relation et la transmission.</p>
           <h1 id="qsn-title">Qui sommes-nous ?</h1>
@@ -67,7 +66,7 @@
       </section>
 
       <section class="qsn-team" aria-labelledby="team-title">
-        <div class="qsn-team__head">
+        <div class="qsn-team__head theme-tint-panel">
           <p class="eyebrow">Deux profils complémentaires, une même exigence de qualité humaine et professionnelle.</p>
           <h2 id="team-title">L'équipe</h2>
           <p class="qsn-team__lead">
@@ -137,7 +136,6 @@
       </section>
 
       <section class="qsn-values" aria-labelledby="values-title">
-        <DecorativeShapes density="low" variant="editorial" :items="valuesDecorItems" />
         <div class="qsn-values__head">
           <p class="eyebrow">Une pédagogie rigoureuse, articulée autour de l'humain, de la science et du terrain.</p>
           <h2 id="values-title">Nos valeurs</h2>
@@ -171,7 +169,7 @@
 
         <p class="values-text__end">“Ensemble, donnons du sens à vos pratiques”</p>
 
-        <div class="qsn-next-actions">
+        <div class="qsn-next-actions theme-tint-panel">
           <p>Vous souhaitez maintenant explorer les sujets traités ou cadrer une demande ?</p>
           <div class="cta-row">
             <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME">Télécharger le catalogue</BaseButton>
@@ -193,38 +191,7 @@ import cible from '~/assets/img/qui-sommes-nous/cible.png'
 import puzzle from '~/assets/img/qui-sommes-nous/puzzle.png'
 import calendar from '~/assets/img/qui-sommes-nous/calendar.png'
 import map from '~/assets/img/qui-sommes-nous/map.png'
-import forme20 from '~/assets/img/formes/20.svg'
 import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
-
-const heroDecorItems = [
-  {
-    id: 'qsn-hero-shape',
-    src: forme20,
-    top: '0.4rem',
-    right: '-7vw',
-    size: 'clamp(180px, 20vw, 320px)',
-    rotate: '0deg',
-    opacity: 1,
-    depth: 8,
-    zIndex: 2,
-    tone: 'accent'
-  }
-]
-
-const valuesDecorItems = [
-  {
-    id: 'values-shape-side',
-    src: forme20,
-    top: '10%',
-    right: '-4.5vw',
-    size: 'clamp(130px, 15vw, 240px)',
-    rotate: '-8deg',
-    opacity: 1,
-    depth: 10,
-    zIndex: 3,
-    tone: 'highlight'
-  }
-]
 </script>
 
 <style scoped>
@@ -237,6 +204,8 @@ p {
 }
 
 .qsn-page {
+  --page-tint: #f08bac;
+  --page-cta-fg: #181818;
   padding-bottom: var(--space-7);
 }
 
@@ -535,6 +504,11 @@ p {
   border-top: 1px solid color-mix(in srgb, var(--color-border) 74%, white);
 }
 
+.qsn-team__head.theme-tint-panel,
+.qsn-next-actions.theme-tint-panel {
+  padding: clamp(1.35rem, 2.2vw, 1.9rem);
+}
+
 .qsn-next-actions p {
   margin: 0;
   max-width: 42rem;
@@ -577,13 +551,6 @@ p {
     height: 88px;
   }
 
-  :deep(.decorative-shapes__item--values-shape-side) {
-    display: none;
-  }
-
-  :deep(.decorative-shapes__item--qsn-hero-shape) {
-    display: none;
-  }
 }
 
 @media (max-width: 640px) {

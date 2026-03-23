@@ -1,7 +1,6 @@
 <template>
   <div class="home-page">
     <section class="home-hero">
-      <DecorativeShapes class="home-hero__decor" density="low" variant="hero" :items="heroFloatingItems" />
       <div class="container">
         <div class="home-grid home-grid--hero">
           <div class="hero-copy">
@@ -9,50 +8,25 @@
             <h1 class="hero-title">
               Des formations qui transforment les pratiques de terrain
             </h1>
-            <p class="hero-lead">
-              <strong>Ô Neuro Sens Formations</strong> conçoit des <strong>parcours vivants</strong>, des
-              <strong>interventions de terrain</strong> et des outils immédiatement mobilisables pour les
-              <strong>professionnels</strong>, les <strong>structures</strong> et les <strong>familles</strong>.
-            </p>
             <div class="hero-keywords">
               <span class="label-chip label-chip--blue">Neurosciences affectives</span>
               <span class="label-chip label-chip--mint">Compétences psychosociales</span>
               <span class="label-chip label-chip--coral">Parentalité</span>
               <span class="label-chip label-chip--gold">Inclusion & handicap</span>
             </div>
+            <p class="hero-lead">
+              <strong>Ô Neuro Sens Formations</strong> conçoit des <strong>parcours vivants</strong>, des
+              <strong>interventions de terrain</strong> et des outils immédiatement mobilisables pour les
+              <strong>professionnels</strong>, les <strong>structures</strong> et les <strong>familles</strong>.
+            </p>
             <div class="cta-row cta-row--hero">
               <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME" class="hero-cta-primary">Télécharger le catalogue</BaseButton>
               <BaseButton to="/contact" variant="secondary">Parler de votre besoin</BaseButton>
             </div>
-            <p class="hero-cta-note">Téléchargez immédiatement le catalogue complet pour explorer les formats, thèmes et modalités.</p>
-            <div class="hero-proof-grid" aria-label="Repères de confiance">
-              <article>
-                <strong>Certification Qualiopi</strong>
-                <span>Un cadre de formation reconnu et structuré.</span>
-              </article>
-              <article>
-                <strong>Formats adaptables</strong>
-                <span>Formations, ateliers, conférences et accompagnements.</span>
-              </article>
-              <article>
-                <strong>Réponse terrain</strong>
-                <span>Des contenus pensés pour les réalités des équipes.</span>
-              </article>
-            </div>
-            <div class="hero-assurance">
-              <p class="hero-assurance__title">Pour qui ?</p>
-              <p>Professionnels, équipes, structures et familles selon les thématiques et le contexte d’intervention.</p>
-            </div>
-            <img
-              :src="qualiopiLogo"
-              alt="Certification Qualiopi - Actions de formation"
-              class="hero-qualiopi"
-              loading="lazy"
-            >
+
           </div>
 
           <div class="hero-visuals">
-            <DecorativeShapes density="low" variant="hero" :items="heroDecorItems" />
             <figure class="hero-visual hero-visual--logo">
               <img :src="logoInfobulle" alt="Infobulle Ô Neuro Sens" loading="lazy">
             </figure>
@@ -61,13 +35,16 @@
       </div>
     </section>
 
-    <section class="home-band">
+    <section class="home-section home-section--qualiopi">
       <div class="container">
-        <div class="home-band__grid">
-          <p>Former autrement</p>
-          <p>Accompagner les équipes</p>
-          <p>Soutenir les familles</p>
-          <p>Relier science et pratique</p>
+        <div class="qualiopi-section">
+          <p class="eyebrow">Un cadre de formation reconnu et structuré</p>
+          <img
+            :src="qualiopiLogo"
+            alt="Certification Qualiopi - Actions de formation"
+            class="qualiopi-section__logo"
+            loading="lazy"
+          >
         </div>
       </div>
     </section>
@@ -79,7 +56,7 @@
             <img :src="homePhotoThree" alt="Portrait d'un échange professionnel" loading="lazy">
           </figure>
 
-          <div class="story-panel">
+          <div class="story-panel theme-tint-panel">
             <p class="eyebrow">Un organisme ancré dans le terrain, la relation et la transmission.</p>
             <h2>Qui sommes-nous?</h2>
             <h3>Notre pédagogie</h3>
@@ -106,45 +83,45 @@
     <section class="home-section">
       <div class="container">
         <div class="home-grid home-grid--themes">
-          <div class="themes-side">
+          <div class="themes-side theme-tint-panel">
             <p class="eyebrow">Des formations pensées pour des besoins professionnels concrets et identifiables.</p>
             <h2>Nos thématiques de formation</h2>
-            <p>
+            <p class="themes-intro">
               Les contenus se déploient en <strong>modules, ateliers ou parcours plus longs</strong>. Ils peuvent être
               <strong>pré-programmés</strong> ou adaptés aux <strong>besoins spécifiques d’une équipe</strong>.
             </p>
-            <div class="themes-tiles">
-              <article>
-                <strong>Développement de l’enfant</strong>
-                <span>Observer, comprendre, ajuster</span>
-              </article>
-              <article>
-                <strong>Communication bienveillante</strong>
-                <span>Mieux coopérer dans les relations quotidiennes</span>
-              </article>
-              <article>
-                <strong>Parentalité et accompagnement</strong>
-                <span>Renforcer les appuis des familles</span>
-              </article>
-              <article>
-                <strong>Handicap & inclusion</strong>
-                <span>Adapter les pratiques et les environnements</span>
-              </article>
+            <div class="themes-footer">
+              <p class="themes-footnote">Formats mobilisables en équipe, en structure ou dans un parcours plus ciblé.</p>
+              <BaseButton to="/formations">Explorer les thématiques</BaseButton>
             </div>
-            <BaseButton to="/formations">Explorer les thématiques</BaseButton>
           </div>
 
           <div class="themes-visual">
-            <DecorativeShapes density="low" variant="gallery" :items="themesDecorItems" />
             <figure class="themes-visual__photo">
               <img :src="illustrationPhoto" alt="Illustration d'accompagnement et de formation" loading="lazy">
             </figure>
-            <div class="themes-quote">
-              <p>
-                « Ensemble, donnons du sens à vos pratiques » devient ici un principe de conception, pas seulement une
-                signature.
-              </p>
+            <div class="themes-quote theme-tint-panel"> 
+              <p class="themes-quote__text">Ensemble, donnons du sens à vos pratiques</p>
             </div>
+          </div>
+
+          <div class="themes-tiles" aria-label="Thématiques de formation">
+            <article>
+              <strong>Développement de l’enfant</strong>
+              <span>Observer, comprendre, ajuster</span>
+            </article>
+            <article>
+              <strong>Communication bienveillante</strong>
+              <span>Mieux coopérer dans les relations quotidiennes</span>
+            </article>
+            <article>
+              <strong>Parentalité et accompagnement</strong>
+              <span>Renforcer les appuis des familles</span>
+            </article>
+            <article>
+              <strong>Handicap & inclusion</strong>
+              <span>Adapter les pratiques et les environnements</span>
+            </article>
           </div>
         </div>
       </div>
@@ -153,7 +130,7 @@
     <section id="actions-terrain" class="home-section">
       <div class="container">
         <div class="home-grid home-grid--actions">
-          <div class="actions-copy">
+          <div class="actions-copy theme-tint-panel">
             <p class="eyebrow">Un accompagnement au plus près du terrain pour passer du constat à l'action.</p>
             <h2>Actions de terrain</h2>
             <p>
@@ -213,19 +190,7 @@
             </div>
           </div>
 
-          <aside class="references-note">
-            <p class="references-note__eyebrow">Ce que cela montre</p>
-            <h3>Un accompagnement déjà ancré dans le réel.</h3>
-            <p>
-              Ces collaborations montrent que les contenus sont pensés pour des <strong>situations concrètes</strong>,
-              avec des formats capables de s’ajuster au <strong>niveau de maturité d’une équipe</strong>.
-            </p>
-            <ul class="references-note__list">
-              <li>interventions en structure ou en centre de formation</li>
-              <li>formats mobilisables selon le besoin</li>
-              <li>appui possible avant la demande de formation</li>
-            </ul>
-          </aside>
+
         </div>
 
         <div class="references-grid" aria-label="Partenaires institutionnels">
@@ -266,10 +231,7 @@
             </ul>
             <p class="final-note">Nous vous adressons le catalogue par email, dans une version ciblée selon votre profil.</p>
             <div class="cta-row">
-              <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME" class="catalogue-cta">
-                <PdfLottieIcon />
-                <span>Télécharger le catalogue</span>
-              </BaseButton>
+              <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME">Télécharger le catalogue</BaseButton>
             </div>
           </div>
         </div>
@@ -285,9 +247,6 @@ import homePhotoTwo from '~/assets/img/home/photos/2.jpeg'
 import homePhotoThree from '~/assets/img/home/photos/3.jpeg'
 import illustrationPhoto from '~/assets/img/home/photos/illustration1.jpeg'
 import logoInfobulle from '~/assets/img/logo-infobulle.svg'
-import forme16 from '~/assets/img/formes/16.svg'
-import forme14 from '~/assets/img/formes/14.svg'
-import forme7 from '~/assets/img/formes/7.svg'
 import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
 
 import logo1 from '~/assets/img/home/logos/logo1.jpeg'
@@ -322,48 +281,6 @@ const partnerLogos = [
   { src: logo14, alt: 'Partenaire 14' }
 ]
 
-const heroFloatingItems = [
-  {
-    id: 'hero-shape-right',
-    src: forme16,
-    top: '-1.5rem',
-    right: '-2.5vw',
-    size: 'clamp(150px, 16vw, 280px)',
-    rotate: '6deg',
-    opacity: 1,
-    depth: 18,
-    zIndex: 5,
-    tone: 'accent'
-  }
-]
-
-const heroDecorItems = [
-  {
-    id: 'hero-shape-soft',
-    src: forme7,
-    bottom: '10%',
-    right: '2%',
-    size: 'clamp(42px, 5vw, 70px)',
-    rotate: '-10deg',
-    opacity: 0.18,
-    depth: 8,
-    tone: 'highlight'
-  },
-]
-
-const themesDecorItems = [
-  {
-    id: 'themes-shape-right',
-    src: forme7,
-    bottom: '8%',
-    right: '6%',
-    size: 'clamp(46px, 5vw, 72px)',
-    rotate: '-10deg',
-    opacity: 0.26,
-    depth: 8,
-    tone: 'highlight'
-  }
-]
 </script>
 
 <style scoped>
@@ -372,52 +289,23 @@ const themesDecorItems = [
 }
 
 .home-page {
+  --page-tint: #ee6f63;
+  --page-cta-fg: #ffffff;
   padding-bottom: var(--space-7);
 }
 
 .home-section,
-.home-hero,
-.home-band {
+.home-hero {
   position: relative;
 }
 
-.home-hero__decor {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-}
 
-.home-hero,
 .home-section {
   padding-block: clamp(4.25rem, 7vw, 6.5rem);
 }
 
 .home-section {
   border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
-}
-
-.home-band {
-  padding-block: var(--space-4);
-  border-top: 0;
-  border-bottom: 0;
-}
-
-.home-band__grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-4);
-}
-
-.home-band__grid p {
-  margin: 0;
-  padding-top: var(--space-3);
-  border-top: 2px solid color-mix(in srgb, var(--color-secondary) 28%, white);
-  color: var(--color-text);
-  font-size: var(--font-size-100);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .home-grid {
@@ -471,7 +359,7 @@ const themesDecorItems = [
 }
 
 .hero-title {
-  max-width: 11ch;
+  
   margin-bottom: 0;
   color: var(--color-ink-700);
 }
@@ -494,30 +382,6 @@ const themesDecorItems = [
   margin: -0.35rem 0 0;
   color: var(--color-text-soft);
   font-size: var(--font-size-100);
-}
-
-.hero-proof-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-3);
-  padding-top: var(--space-4);
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 70%, white);
-}
-
-.hero-proof-grid article {
-  display: grid;
-  gap: 0.35rem;
-}
-
-.hero-proof-grid strong {
-  color: var(--color-text);
-  font-size: var(--font-size-100);
-}
-
-.hero-proof-grid span {
-  color: var(--color-text-soft);
-  font-size: 0.9rem;
-  line-height: 1.45;
 }
 
 .hero-assurance {
@@ -575,12 +439,6 @@ const themesDecorItems = [
   background: color-mix(in srgb, var(--color-apricot-200) 80%, white);
 }
 
-.hero-qualiopi {
-  width: min(170px, 48vw);
-  height: auto;
-  margin-top: var(--space-4);
-}
-
 .hero-visuals {
   position: relative;
   grid-column: 7 / 13;
@@ -626,7 +484,6 @@ const themesDecorItems = [
   grid-column: 1 / -1;
   min-height: 34rem;
   padding: clamp(1.75rem, 3vw, 2.8rem);
-  background: color-mix(in srgb, white 94%, var(--color-soft));
   position: relative;
   z-index: 1;
 }
@@ -635,6 +492,22 @@ const themesDecorItems = [
   width: min(100%, 29rem);
   height: auto;
   object-fit: contain;
+}
+
+.home-section--qualiopi {
+  padding-block: clamp(2.25rem, 4vw, 3.4rem);
+}
+
+.qualiopi-section {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.qualiopi-section__logo {
+  width: min(240px, 62vw);
+  height: auto;
 }
 
 .home-grid--story {
@@ -650,6 +523,11 @@ const themesDecorItems = [
   grid-column: 7 / 13;
   align-content: center;
   min-height: 29rem;
+}
+
+.story-panel.theme-tint-panel,
+.actions-copy.theme-tint-panel {
+  padding: clamp(1.5rem, 2.6vw, 2.3rem);
 }
 
 .story-side {
@@ -694,52 +572,125 @@ const themesDecorItems = [
 .themes-visual {
   position: relative;
   grid-column: 6 / 13;
-  min-height: 100%;
   display: grid;
-  align-content: space-between;
-  gap: var(--space-4);
+  align-content: start;
+  gap: clamp(1rem, 2vw, 1.4rem);
+}
+
+.themes-side.theme-tint-panel {
+  padding: clamp(1.75rem, 3vw, 2.6rem);
+  gap: clamp(1rem, 1.8vw, 1.35rem);
+}
+
+.themes-intro {
+  margin: 0;
+  max-width: 34rem;
+  font-size: clamp(1.02rem, 1rem + 0.18vw, 1.16rem);
+  line-height: 1.72;
+}
+
+.themes-side h2 {
+  max-width: 11ch;
+  margin-bottom: 0;
 }
 
 .themes-visual__photo {
   min-height: 34rem;
+  overflow: hidden;
+  border-radius: clamp(1.4rem, 2vw, 2rem);
+  background: color-mix(in srgb, white 92%, var(--color-highlight));
+  box-shadow: 0 22px 54px rgba(28, 44, 77, 0.08);
 }
 
 .themes-quote {
-  position: absolute;
-  left: -2.4rem;
-  bottom: 1.6rem;
-  width: min(18rem, 70%);
-  padding: var(--space-4);
-  border-left: 3px solid var(--color-secondary);
-  background: color-mix(in srgb, white 88%, var(--color-mint-200));
+  position: relative;
+  margin-top: -4.2rem;
+  margin-left: auto;
+  z-index: 2;
+  padding: 1.2rem 1.3rem 1.35rem 1.55rem;
+  border: 1px solid color-mix(in srgb, var(--color-border) 70%, white);
+  border-radius: clamp(1.2rem, 2vw, 1.8rem);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, white 96%, var(--color-highlight)) 0%, rgba(255, 255, 255, 0.98) 100%);
+  box-shadow: 0 22px 44px rgba(28, 44, 77, 0.09);
 }
 
 .themes-quote p {
   margin: 0;
   color: var(--color-text);
+  max-width: none;
+}
+
+.themes-quote__eyebrow {
+  margin: 0 0 0.45rem;
+  color: var(--color-secondary);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.themes-quote__text {
+  position: relative;
+  padding-left: 1.05rem;
+  font-size: clamp(1.2rem, 1.05rem + 0.65vw, 1.65rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.themes-quote__text::before {
+  content: "“";
+  position: absolute;
+  left: -0.1rem;
+  top: -0.18rem;
+  color: color-mix(in srgb, var(--color-accent) 58%, white);
+  font-size: 1.65em;
+  line-height: 1;
 }
 
 .themes-tiles {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-column: 1 / 13;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-3);
+  margin-top: var(--space-3);
 }
 
 .themes-tiles article {
   display: grid;
   gap: 0.35rem;
   padding-top: var(--space-3);
-  border-top: 2px solid color-mix(in srgb, var(--color-primary) 40%, white);
+  border-top: 2px solid color-mix(in srgb, var(--color-accent) 26%, white);
 }
 
 .themes-tiles strong {
   color: var(--color-text);
   font-size: var(--font-size-200);
+  line-height: 1.4;
 }
 
 .themes-tiles span {
   color: var(--color-text-soft);
   font-size: var(--font-size-100);
+  line-height: 1.65;
+}
+
+.themes-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.35rem;
+}
+
+.themes-footnote {
+  margin: 0;
+  max-width: 18rem;
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .actions-editorial {
@@ -945,28 +896,6 @@ const themesDecorItems = [
   font-size: var(--font-size-100);
 }
 
-.catalogue-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  min-height: 4.2rem;
-  padding: 0.95rem 1.45rem;
-  border-color: color-mix(in srgb, var(--color-primary-strong) 78%, white);
-  background: linear-gradient(135deg, #5fe1d4 0%, #35b8b3 56%, #239e99 100%);
-  color: #ffffff !important;
-  box-shadow: 0 16px 34px rgba(35, 158, 153, 0.2);
-}
-
-.catalogue-cta:hover,
-.catalogue-cta:focus-visible {
-  box-shadow: 0 18px 38px rgba(35, 158, 153, 0.26);
-}
-
-.catalogue-cta span {
-  display: inline-flex;
-  align-items: center;
-}
-
 @media (max-width: 1100px) {
   .story-panel,
   .themes-side,
@@ -979,11 +908,6 @@ const themesDecorItems = [
     grid-column: 1 / 7;
   }
 
-  .home-band__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .hero-proof-grid,
   .references-layout {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1009,6 +933,7 @@ const themesDecorItems = [
   .story-side,
   .story-support,
   .themes-side,
+  .themes-tiles,
   .themes-visual,
   .actions-copy,
   .actions-editorial,
@@ -1028,17 +953,22 @@ const themesDecorItems = [
     min-height: auto;
   }
 
+  .themes-footer {
+    align-items: start;
+    flex-direction: column;
+  }
+
   .hero-visuals {
     grid-template-columns: 1fr;
   }
 
   .story-support,
+  .themes-tiles,
   .actions-editorial,
   .actions-listing {
     grid-template-columns: 1fr;
   }
 
-  .hero-proof-grid,
   .references-layout,
   .references-foot {
     grid-template-columns: 1fr;
@@ -1066,6 +996,7 @@ const themesDecorItems = [
     bottom: auto;
     width: auto;
     margin-top: var(--space-4);
+    margin-left: 0;
   }
 
   .references-grid {
@@ -1079,24 +1010,18 @@ const themesDecorItems = [
     padding-block: var(--space-8);
   }
 
-  .home-band__grid,
-  .hero-proof-grid,
   .themes-tiles,
   .actions-listing,
   .references-grid {
     grid-template-columns: 1fr;
   }
 
+  .themes-side.theme-tint-panel {
+    padding: 1.35rem 1.15rem;
+  }
+
   .hero-note {
     grid-template-columns: 1fr;
-  }
-
-  :deep(.decorative-shapes__item--hero-shape-right) {
-    display: none;
-  }
-
-  .home-hero__decor {
-    display: none;
   }
 }
 </style>

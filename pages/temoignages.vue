@@ -2,7 +2,6 @@
   <section class="testimonials-page">
     <div class="container">
       <div class="testimonials-head">
-        <DecorativeShapes class="testimonials-head__decor" density="low" variant="hero" :items="headDecorItems" />
         <p class="eyebrow">Leurs avis</p>
         <h1>Témoignages</h1>
         <p class="testimonials-intro">
@@ -12,7 +11,7 @@
       </div>
 
       <div class="testimonials-stage">
-        <div class="testimonials-stage__intro">
+        <div class="testimonials-stage__intro theme-tint-panel">
           <p class="testimonials-stage__label">Retours de terrain</p>
           <h2>Des retours concrets sur ce que les formations changent réellement dans la pratique.</h2>
           <div class="testimonials-controls">
@@ -73,7 +72,7 @@
       </div>
 
       <div class="testimonials-summary">
-        <article v-for="item in summaryPoints" :key="item.title">
+        <article v-for="item in summaryPoints" :key="item.title" class="theme-tint-panel">
           <p class="testimonials-summary__title">{{ item.title }}</p>
           <p v-html="item.text" />
         </article>
@@ -98,7 +97,6 @@ import keishaPortrait from '~/assets/img/temoignages/keisha-t.jpeg'
 import melissaPortrait from '~/assets/img/temoignages/melissa-v.jpeg'
 import nicolePortrait from '~/assets/img/temoignages/nicole-g.jpeg'
 import samiaPortrait from '~/assets/img/temoignages/samia-m.jpeg'
-import forme17 from '~/assets/img/formes/17.svg'
 import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
 
 type TestimonialTheme = 'sun' | 'lagoon' | 'coral' | 'blue' | 'pink'
@@ -167,20 +165,6 @@ const summaryPoints = [
   }
 ]
 
-const headDecorItems = [
-  {
-    id: 'hero-a-large',
-    src: forme17,
-    top: '0.2rem',
-    right: '-6vw',
-    size: 'clamp(132px, 16vw, 240px)',
-    rotate: '10deg',
-    opacity: 1,
-    depth: 18,
-    tone: 'accent'
-  }
-]
-
 const activeIndex = ref(0)
 const isAutoPlaying = ref(true)
 const trackRef = ref<HTMLElement | null>(null)
@@ -234,6 +218,8 @@ onBeforeUnmount(() => {
 }
 
 .testimonials-page {
+  --page-tint: #8acfda;
+  --page-cta-fg: #181818;
   padding-bottom: var(--space-7);
 }
 
@@ -250,10 +236,6 @@ onBeforeUnmount(() => {
   max-width: 10ch;
   margin-bottom: 0;
   color: var(--color-accent);
-}
-
-.testimonials-head__decor {
-  overflow: visible;
 }
 
 .testimonials-intro {
@@ -274,6 +256,10 @@ onBeforeUnmount(() => {
   gap: var(--space-4);
   align-content: start;
   padding-top: var(--space-5);
+}
+
+.testimonials-stage__intro.theme-tint-panel {
+  padding: clamp(1.35rem, 2.2vw, 1.9rem);
 }
 
 .testimonials-stage__label {
@@ -524,10 +510,6 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 640px) {
-  :deep(.decorative-shapes__item--hero-a-large) {
-    display: none;
-  }
-
   .testimonial-slide {
     padding: 0;
   }

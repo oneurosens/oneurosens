@@ -245,7 +245,7 @@
   gap: var(--space-2);
   min-height: 2.75rem;
   padding: 0.8rem 1.2rem;
-  border-radius: 0;
+  border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 75%, white);
   font-family: var(--font-family-base);
   font-size: var(--font-size-200);
@@ -257,46 +257,47 @@
   box-shadow: none;
   transition:
     transform var(--transition-fast),
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
+    background-size 280ms ease,
     color var(--transition-fast),
     box-shadow var(--transition-fast);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: none;
-}
-
-.btn--primary,
-.btn:not(.btn--secondary) {
-  background: linear-gradient(135deg, #4ad1c7 0%, #35b8b3 100%);
-  border-color: color-mix(in srgb, var(--color-primary-strong) 65%, white);
-  color: #083433;
-}
-
-.btn--primary:hover,
-.btn:not(.btn--secondary):hover {
-  background: var(--color-primary-strong);
-  border-color: var(--color-primary-strong);
-  color: #ffffff;
-}
-
-.btn--secondary {
-  background: color-mix(in srgb, white 82%, var(--color-soft));
-  border-color: var(--color-secondary);
-  color: var(--color-secondary);
-}
-
-.btn--secondary:hover {
-  background: var(--color-secondary);
-  color: #ffffff;
 }
 
 .cta-row {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
+  align-items: stretch;
+  margin-bottom: var(--space-2);
+}
+
+.site-main__content .btn {
+  --btn-bg: var(--page-tint, var(--color-accent));
+  --btn-fg: var(--page-cta-fg, #ffffff);
+  --btn-hover-fg: #161616;
+  border-color: var(--btn-bg);
+  background:
+    linear-gradient(var(--btn-bg) 0 0) left / 50.5% 100% no-repeat,
+    linear-gradient(var(--btn-bg) 0 0) right / 50.5% 100% no-repeat,
+    #ffffff;
+  color: var(--btn-fg);
+}
+
+.site-main__content .btn:hover,
+.site-main__content .btn:focus-visible {
+  transform: translateY(-1px);
+  background-size: 0 100%, 0 100%, auto;
+  color: var(--btn-hover-fg);
+  box-shadow: none;
+}
+
+.site-main__content .cta-row > .btn:first-child:nth-last-child(2),
+.site-main__content .cta-row > .btn:first-child:nth-last-child(2) ~ .btn {
+  flex: 1 1 15.5rem;
+  min-width: min(100%, 15.5rem);
+}
+
+.site-main__content .cta-row > .btn {
+  min-width: fit-content;
 }
 
 .badge-row {
@@ -729,13 +730,18 @@
   column-gap: clamp(1.5rem, 2.8vw, 3.4rem);
   row-gap: clamp(1.5rem, 2.5vw, 2.25rem);
   padding-top: clamp(1.4rem, 3vw, 2rem);
-  align-items: start;
+  align-items: stretch;
 }
 
 .footer-column {
   display: grid;
   align-content: start;
   gap: 0.9rem;
+  height: 100%;
+  padding: clamp(1.15rem, 1.8vw, 1.5rem);
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
 .footer-column--contact {
@@ -804,9 +810,6 @@
 .footer-socials {
   display: grid;
   gap: 0.85rem;
-  margin-top: var(--space-3);
-  padding-top: var(--space-3);
-  border-top: 1px solid color-mix(in srgb, var(--ribbon-fg) 18%, transparent);
 }
 
 .footer-socials__label {
@@ -1037,6 +1040,90 @@
     bottom: 0.7rem;
     width: 3rem;
     height: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-footer {
+    padding-bottom: max(5.5rem, calc(4.8rem + env(safe-area-inset-bottom)));
+  }
+
+  .site-footer__cap-inner {
+    padding-top: 0.35rem;
+  }
+
+  .site-footer__mascot {
+    width: clamp(4.6rem, 22vw, 6rem);
+    transform: translateY(0.4rem);
+  }
+
+  .site-footer__top-shape {
+    aspect-ratio: 1920 / 180;
+  }
+
+  .site-footer__inner {
+    margin-top: -0.55rem;
+  }
+
+  .footer-grid {
+    gap: 1rem;
+    padding-top: 0.4rem;
+  }
+
+  .footer-column {
+    gap: 0.85rem;
+    padding: 1.15rem 1rem;
+    border-radius: 1.25rem;
+  }
+
+  .footer-column h2 {
+    font-size: clamp(1.1rem, 5.4vw, 1.55rem);
+    line-height: 1.1;
+  }
+
+  .footer-column__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.09em;
+  }
+
+  .footer-link {
+    grid-template-columns: 1.35rem minmax(0, 1fr);
+    gap: 0.7rem;
+    font-size: 0.98rem;
+    line-height: 1.42;
+  }
+
+  .footer-link__icon {
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-top: 0.04rem;
+  }
+
+  .footer-link__icon svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .footer-socials {
+    gap: 0.7rem;
+    margin-top: 0.15rem;
+    padding-top: 0.9rem;
+  }
+
+  .footer-socials__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    justify-items: center;
+  }
+
+  .footer-social {
+    width: min(4.5rem, 100%);
+    height: 4.5rem;
+  }
+
+  .footer-social__icon {
+    padding: 1.2rem;
   }
 }
 
