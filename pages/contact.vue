@@ -49,19 +49,48 @@
             </div>
           </div>
 
-          <aside class="contact-summary" aria-label="Repères rapides">
-            <article>
-              <strong>Contact direct</strong>
-              <span>Email, téléphone ou WhatsApp.</span>
-            </article>
-            <article>
-              <strong>Inscription</strong>
-              <span>Fiche transmise, retour rapide, devis personnalisé.</span>
-            </article>
-            <article>
-              <strong>Financement</strong>
-              <span>Repérage simple des solutions mobilisables.</span>
-            </article>
+          <aside class="contact-summary contact-form-card" aria-labelledby="contact-form-title">
+            <div class="contact-form-card__head">
+              <strong id="contact-form-title">Écrivez-nous</strong>
+              <span>Un message structuré pour orienter rapidement votre demande.</span>
+            </div>
+
+            <form class="contact-form" @submit.prevent>
+              <div class="contact-form__grid">
+                <label class="contact-form__field">
+                  <span>Nom / prénom <em>*</em></span>
+                  <input type="text" name="fullName" autocomplete="name" required>
+                </label>
+
+                <label class="contact-form__field">
+                  <span>Email <em>*</em></span>
+                  <input type="email" name="email" autocomplete="email" required>
+                </label>
+
+                <label class="contact-form__field">
+                  <span>Téléphone</span>
+                  <input type="tel" name="phone" autocomplete="tel">
+                </label>
+
+                <label class="contact-form__field">
+                  <span>Objet</span>
+                  <select name="subject">
+                    <option value="catalogue">Recevoir le catalogue</option>
+                    <option value="devis">Demander un devis</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </label>
+
+                <label class="contact-form__field contact-form__field--full">
+                  <span>Message</span>
+                  <textarea name="message" rows="5"></textarea>
+                </label>
+              </div>
+
+              <button class="btn btn--primary contact-form__cta" type="submit">
+                Envoyer la demande
+              </button>
+            </form>
           </aside>
         </div>
       </section>
@@ -207,7 +236,7 @@ p {
 
 .contact-hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 0.9fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(1.5rem, 3vw, 3rem);
   align-items: start;
 }
@@ -227,27 +256,118 @@ p {
   align-content: start;
 }
 
-.contact-summary article {
-  display: grid;
-  gap: 0.35rem;
-  padding-top: var(--space-3);
-  border-top: 2px solid color-mix(in srgb, var(--color-highlight) 48%, white);
-}
-
-.contact-summary article:first-child {
-  padding-top: 0;
-  border-top: 0;
-}
-
 .contact-summary strong {
   color: var(--color-text);
-  font-size: var(--font-size-100);
+  font-size: clamp(1.5rem, 1.2rem + 0.8vw, 2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 .contact-summary span {
   color: var(--color-text-soft);
   font-size: 0.92rem;
   line-height: 1.5;
+}
+
+.contact-form-card {
+  gap: 1.15rem;
+  padding: clamp(1.3rem, 2.2vw, 1.7rem);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.14)),
+    color-mix(in srgb, var(--color-highlight) 30%, white);
+  border-color: color-mix(in srgb, var(--color-highlight) 42%, var(--color-border));
+  box-shadow: 0 18px 48px rgba(84, 61, 18, 0.08);
+}
+
+.contact-form-card__head {
+  display: grid;
+  gap: 0.45rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--color-highlight) 44%, white);
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.contact-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.95rem 0.85rem;
+}
+
+.contact-form__field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contact-form__field--full {
+  grid-column: 1 / -1;
+}
+
+.contact-form__field span {
+  color: var(--color-text);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contact-form__field em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.contact-form__field input,
+.contact-form__field select,
+.contact-form__field textarea {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 78%, white);
+  border-radius: 1rem;
+  background: rgba(255, 251, 239, 0.72);
+  color: var(--color-text);
+  font: inherit;
+  padding: 0.9rem 1rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.contact-form__field select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--color-text) 50%),
+    linear-gradient(135deg, var(--color-text) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.15rem) calc(50% - 0.12rem),
+    calc(100% - 0.85rem) calc(50% - 0.12rem);
+  background-size: 0.35rem 0.35rem, 0.35rem 0.35rem;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
+}
+
+.contact-form__field textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+.contact-form__field input::placeholder,
+.contact-form__field textarea::placeholder {
+  color: color-mix(in srgb, var(--color-text-soft) 80%, white);
+}
+
+.contact-form__field input:focus,
+.contact-form__field select:focus,
+.contact-form__field textarea:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--color-accent) 52%, var(--color-border));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-highlight) 22%, white);
+  background: rgba(255, 252, 243, 0.95);
+}
+
+.contact-form__cta {
+  width: 100%;
+  justify-content: center;
 }
 
 .contact-direct__head {
@@ -523,9 +643,21 @@ p {
   .contact-panel {
     min-height: auto;
   }
+
+  .contact-form-card {
+    max-width: 42rem;
+  }
 }
 
 @media (max-width: 640px) {
+  .contact-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form__field--full {
+    grid-column: auto;
+  }
+
   .contact-direct__item {
     grid-template-columns: 1fr;
   }
@@ -544,6 +676,11 @@ p {
 
   .contact-panel {
     padding: 1.25rem 1.15rem;
+  }
+
+  .contact-form-card {
+    padding: 1.2rem 1rem;
+    border-radius: 1.35rem;
   }
 
   .contact-panel__text {

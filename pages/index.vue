@@ -308,6 +308,10 @@ const partnerLogos = [
   border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
 }
 
+#actions-terrain {
+  scroll-margin-top: 8.5rem;
+}
+
 .home-grid {
   display: grid;
   align-items: start;
@@ -918,6 +922,10 @@ const partnerLogos = [
 }
 
 @media (max-width: 900px) {
+  #actions-terrain {
+    scroll-margin-top: 6.75rem;
+  }
+
   .home-grid--hero,
   .home-grid--story,
   .home-grid--themes,

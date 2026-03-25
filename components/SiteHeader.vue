@@ -78,6 +78,7 @@ const navItems: NavItem[] = [
   { label: 'Accueil', to: '/', color: 'var(--ribbon-fg)' },
   { label: 'Qui sommes-nous', to: '/qui-sommes-nous', color: 'var(--ribbon-fg)' },
   { label: 'Formations', to: '/formations', color: 'var(--ribbon-fg)' },
+  { label: 'Actions', to: '/#actions-terrain', color: 'var(--ribbon-fg)' },
   { label: 'Témoignages', to: '/temoignages', color: 'var(--ribbon-fg)' },
   { label: 'Contact', to: '/contact', color: 'var(--ribbon-fg)' }
 ]
