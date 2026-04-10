@@ -221,10 +221,6 @@
           <div class="registration-modal__head">
             <p class="eyebrow">Inscription</p>
             <h2 id="registration-modal-title">Formulaire d'inscription</h2>
-            <p>
-              Cette popup reprend les champs visibles sur la fiche d'inscription 2025-2026.
-            </p>
-            <p class="registration-modal__eyebrow-note">Choisissez votre profil, puis complétez les informations utiles pour préparer votre inscription.</p>
           </div>
 
           <form class="registration-form" @submit.prevent="submitRegistrationForm">
@@ -361,10 +357,7 @@
             </div>
 
             <div class="registration-form__actions">
-              <BaseButton>Envoyer l'inscription</BaseButton>
-              <BaseButton :href="REGISTRATION_DOWNLOAD_URL" :download="REGISTRATION_DOWNLOAD_NAME" variant="secondary">
-                Télécharger la fiche PDF
-              </BaseButton>
+              <BaseButton class="registration-form__submit">Envoyer l'inscription</BaseButton>
             </div>
           </form>
         </div>
@@ -381,7 +374,6 @@ import iconMail from '~/assets/img/contact/icone-mail.png'
 import iconTel from '~/assets/img/contact/icone-tel.png'
 import mascotteParapluie from '~/assets/img/mascotte-parapluie.png'
 import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
-import { REGISTRATION_DOWNLOAD_NAME, REGISTRATION_DOWNLOAD_URL } from '~/utils/registrationDownload'
 
 const contactSubjectOptions = [
   'demande de formation',
@@ -916,10 +908,7 @@ p {
   padding: clamp(1.35rem, 2.2vw, 2rem);
   border-radius: 1.8rem;
   border: 1px solid color-mix(in srgb, var(--color-border) 76%, white);
-  background:
-    radial-gradient(circle at top right, color-mix(in srgb, white 38%, var(--color-highlight)) 0%, transparent 24%),
-    radial-gradient(circle at bottom left, color-mix(in srgb, white 40%, var(--color-primary)) 0%, transparent 26%),
-    linear-gradient(180deg, #fffdf8 0%, #fffaf1 100%);
+  background: #f7f4ee;
   box-shadow: 0 24px 60px rgba(29, 30, 32, 0.14);
 }
 
@@ -949,18 +938,6 @@ p {
 
 .registration-modal__head h2 {
   margin: 0;
-}
-
-.registration-modal__head p:last-child {
-  color: var(--color-text-soft);
-  line-height: 1.65;
-}
-
-.registration-modal__eyebrow-note {
-  max-width: 48ch;
-  margin: 0;
-  color: var(--color-text);
-  font-size: var(--font-size-100);
 }
 
 .registration-form,
@@ -1021,6 +998,18 @@ p {
 
 .registration-form__actions > * {
   width: 100%;
+}
+
+:deep(.registration-form__submit) {
+  border-color: #ffcc00;
+  background: #ffcc00;
+  color: #181818;
+}
+
+:deep(.registration-form__submit:hover),
+:deep(.registration-form__submit:focus-visible) {
+  background: #f2c200;
+  color: #181818;
 }
 
 @media (max-width: 980px) {
