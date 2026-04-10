@@ -83,19 +83,19 @@ const trainingThemes = [
     icon: icon2,
     color: '#8ed3de',
     title: 'S’initier aux neurosciences affectives et sociales',
-    text: 'Relier les <strong>apports scientifiques</strong> aux <strong>enjeux relationnels du quotidien</strong>.'
+    text: 'Relier les <strong>apports scientifiques</strong> aux <strong>situations concretes du quotidien</strong> pour mieux comprendre les besoins relationnels et educatifs.'
   },
   {
     icon: icon3,
     color: '#4f72bf',
-    title: 'Accompagner les habiletés motrices globales et la sensorialité',
-    text: 'Favoriser une <strong>lecture plus fine</strong> du corps, du mouvement et des <strong>besoins de l’enfant</strong>.'
+    title: 'Comprendre les mécanismes de l’intelligence émotionnelle',
+    text: 'Mieux lire les <strong>mecanismes emotionnels</strong> pour ajuster les postures professionnelles et soutenir des relations plus apaisées.'
   },
   {
     icon: icon4,
     color: '#e6827e',
     title: 'Développer et animer des ateliers en compétences psychosociales',
-    text: 'Concevoir des <strong>temps concrets</strong> pour soutenir les interactions et la <strong>régulation</strong>.'
+    text: 'Concevoir des <strong>temps concrets privilegies</strong> pour soutenir le bon developpement des enfants et des adolescents, favoriser les <strong>relations intrapersonnelles bienveillantes</strong>, les interactions et la regulation.'
   },
   {
     icon: icon5,
@@ -113,19 +113,19 @@ const trainingThemes = [
     icon: icon7,
     color: '#8ad0db',
     title: 'Favoriser l’accueil et l’inclusion de l’enfant en situation de handicap',
-    text: 'Adapter <strong>l’environnement, les postures et les pratiques</strong> au plus près du terrain.'
+    text: 'Adapter <strong>l’environnement, les postures et les pratiques professionnelles</strong> au plus pres du terrain pour repondre au mieux aux besoins des enfants et adolescents.'
   },
   {
     icon: icon8,
     color: '#506fc0',
     title: 'Aménager un espace Snoezelen',
-    text: 'Penser un <strong>cadre sensoriel cohérent, sécurisant et utile</strong> dans les usages quotidiens.'
+    text: 'Mettre en place un <strong>cadre multi-sensoriel stimulant et securisant</strong>, utile pour accompagner les enfants et les familles.'
   },
   {
     icon: icon9,
     color: '#de8bb6',
     title: 'Favoriser son écoute active et sa posture empathique',
-    text: 'Développer une <strong>présence professionnelle</strong> plus apaisée, plus stable et plus ajustée.'
+    text: 'Developper une <strong>presence professionnelle</strong> plus stable, plus ajustee et plus soutenante dans les relations du quotidien.'
   },
   {
     icon: icon10,
@@ -137,7 +137,7 @@ const trainingThemes = [
     icon: icon11,
     color: '#d96d63',
     title: 'Prévention de l’épuisement professionnel',
-    text: 'Repérer les <strong>signaux faibles</strong> et renforcer des <strong>ressources durables</strong> pour les équipes.'
+    text: 'Identifier les <strong>facteurs de tension</strong>, prevenir l’usure et consolider des appuis durables pour les professionnels et les equipes.'
   }
 ]
 

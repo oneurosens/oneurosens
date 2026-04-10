@@ -78,7 +78,7 @@ const navItems: NavItem[] = [
   { label: 'Accueil', to: '/', color: 'var(--ribbon-fg)' },
   { label: 'Qui sommes-nous', to: '/qui-sommes-nous', color: 'var(--ribbon-fg)' },
   { label: 'Formations', to: '/formations', color: 'var(--ribbon-fg)' },
-  { label: 'Actions', to: '/#actions-terrain', color: 'var(--ribbon-fg)' },
+  { label: 'Prestations', to: '/#prestations', color: 'var(--ribbon-fg)' },
   { label: 'Témoignages', to: '/temoignages', color: 'var(--ribbon-fg)' },
   { label: 'Contact', to: '/contact', color: 'var(--ribbon-fg)' }
 ]
@@ -100,7 +100,13 @@ const closeMenu = () => {
   isMenuOpen.value = false
 }
 
-const isActive = (path: string) => route.path === path
+const isActive = (path: string) => {
+  if (path.includes('#')) {
+    return route.path === '/' && route.hash === path.slice(path.indexOf('#'))
+  }
+
+  return route.path === path
+}
 
 const registerLink = (element: Element | ComponentPublicInstance | null, path: string) => {
   const candidate = element instanceof HTMLElement ? element : element?.$el

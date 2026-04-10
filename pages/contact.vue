@@ -6,23 +6,24 @@
           <p class="eyebrow">Contacter l’équipe, cadrer votre demande et avancer rapidement.</p>
           <h1 id="contact-title">Contact</h1>
           <p class="contact-hero__lead">
-            Un point d’entrée simple pour vos <strong>demandes de formation</strong>, vos questions d’<strong>inscription</strong>
-            ou de <strong>financement</strong>.
+            Un point d’entrée simple pour vos <strong>demandes de formation</strong>, vos questions d’<strong>inscription</strong>,
+            vos <strong>demandes d'informations complementaires</strong>, vos <strong>demandes de RDV</strong> ou de
+            <strong>financement</strong>.
           </p>
         </div>
 
         <div class="contact-hero__grid">
           <div class="contact-direct-wrap">
             <div class="contact-direct__head">
-              <p class="eyebrow">Les informations essentielles, présentées sans détour.</p>
-              <h2>Coordonnées</h2>
+              <p class="eyebrow">Les informations essentielles, presentées sans detour.</p>
+              <h2>Coordonnees</h2>
             </div>
 
             <div class="contact-direct">
               <article class="contact-direct__item">
                 <img :src="iconTel" alt="" aria-hidden="true" class="contact-direct__icon" loading="lazy">
                 <div>
-                  <p class="contact-direct__label">Par téléphone ou WhatsApp</p>
+                  <p class="contact-direct__label">Par telephone ou WhatsApp</p>
                   <p class="contact-direct__value">06 90 67 88 63</p>
                   <p class="contact-direct__value">06 90 48 21 99</p>
                 </div>
@@ -49,49 +50,73 @@
             </div>
           </div>
 
-          <aside class="contact-summary contact-form-card" aria-labelledby="contact-form-title">
+          <article class="contact-form-card theme-tint-panel">
             <div class="contact-form-card__head">
-              <strong id="contact-form-title">Écrivez-nous</strong>
-              <span>Un message structuré pour orienter rapidement votre demande.</span>
+              <h2 id="contact-form-title">Écrivez-nous</h2>
+              <p>
+                Un message structure pour orienter rapidement votre demande.
+              </p>
             </div>
 
-            <form class="contact-form" @submit.prevent>
-              <div class="contact-form__grid">
-                <label class="contact-form__field">
-                  <span>Nom / prénom <em>*</em></span>
-                  <input type="text" name="fullName" autocomplete="name" required>
+            <form class="contact-form" @submit.prevent="submitContactForm">
+              <div class="form-row">
+                <label class="form-field">
+                  <input
+                    v-model.trim="contactForm.fullName"
+                    type="text"
+                    autocomplete="name"
+                    placeholder="Nom / prenom"
+                    aria-label="Nom / prenom"
+                    required
+                  >
                 </label>
 
-                <label class="contact-form__field">
-                  <span>Email <em>*</em></span>
-                  <input type="email" name="email" autocomplete="email" required>
-                </label>
-
-                <label class="contact-form__field">
-                  <span>Téléphone</span>
-                  <input type="tel" name="phone" autocomplete="tel">
-                </label>
-
-                <label class="contact-form__field">
-                  <span>Objet</span>
-                  <select name="subject">
-                    <option value="catalogue">Recevoir le catalogue</option>
-                    <option value="devis">Demander un devis</option>
-                    <option value="autre">Autre</option>
-                  </select>
-                </label>
-
-                <label class="contact-form__field contact-form__field--full">
-                  <span>Message</span>
-                  <textarea name="message" rows="5"></textarea>
+                <label class="form-field">
+                  <input
+                    v-model.trim="contactForm.email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="Email"
+                    aria-label="Email"
+                    required
+                  >
                 </label>
               </div>
 
-              <button class="btn btn--primary contact-form__cta" type="submit">
-                Envoyer la demande
-              </button>
+              <div class="form-row">
+                <label class="form-field">
+                  <input
+                    v-model.trim="contactForm.phone"
+                    type="tel"
+                    autocomplete="tel"
+                    placeholder="Telephone"
+                    aria-label="Telephone"
+                  >
+                </label>
+
+                <label class="form-field">
+                  <select v-model="contactForm.subject" aria-label="Objet" required>
+                    <option value="" disabled>Selectionner un objet</option>
+                    <option v-for="option in contactSubjectOptions" :key="option" :value="option">{{ option }}</option>
+                  </select>
+                </label>
+              </div>
+
+              <label class="form-field">
+                <textarea
+                  v-model.trim="contactForm.message"
+                  rows="6"
+                  placeholder="Message"
+                  aria-label="Message"
+                  required
+                />
+              </label>
+
+              <div class="contact-form__actions">
+                <BaseButton>Envoyer la demande</BaseButton>
+              </div>
             </form>
-          </aside>
+          </article>
         </div>
       </section>
 
@@ -112,11 +137,16 @@
             </div>
 
             <div class="contact-panel__body">
-              <ol class="contact-steps">
-                <li>Compléter la fiche de la formation choisie.</li>
-                <li>L’envoyer par email ou WhatsApp.</li>
-                <li>Recevoir un retour avec la suite à donner.</li>
-              </ol>
+              <p class="contact-panel__text">
+                Vous pouvez soit <strong>telecharger la fiche PDF</strong>, soit passer par le
+                <strong>formulaire d'inscription en ligne</strong> pour transmettre directement votre demande.
+              </p>
+              <div class="registration-actions">
+                <BaseButton @click="openRegistrationModal">Ouvrir le formulaire d'inscription</BaseButton>
+                <BaseButton :href="REGISTRATION_DOWNLOAD_URL" :download="REGISTRATION_DOWNLOAD_NAME" variant="secondary">
+                  Télécharger la fiche PDF
+                </BaseButton>
+              </div>
             </div>
           </article>
 
@@ -131,13 +161,13 @@
 
             <div class="contact-panel__body contact-panel__body--finance">
               <ul class="finance-list">
-                <li>À titre individuel</li>
+                <li>A titre individuel</li>
                 <li>Par mon employeur</li>
                 <li>Financement OPCO</li>
               </ul>
 
               <p class="contact-panel__text contact-panel__text--strong">
-                Nous pouvons vous aider à identifier la bonne piste selon votre situation.
+                Nous pouvons vous aider a identifier la bonne piste selon votre situation.
               </p>
             </div>
           </article>
@@ -146,36 +176,345 @@
             <div class="contact-panel__head">
               <img :src="mascotteParapluie" alt="" aria-hidden="true" class="contact-panel__icon contact-panel__icon--support" loading="lazy">
               <div class="contact-panel__heading">
-                <p class="contact-panel__kicker">Besoin d’aide ?</p>
+                <p class="contact-panel__kicker">Besoin d'aide ?</p>
                 <h3 id="contact-footer-title">Un appui concret</h3>
               </div>
             </div>
 
             <div class="contact-panel__body contact-panel__body--support">
               <p class="contact-panel__text">
-                Nous vous aidons à <strong>clarifier votre demande</strong>, le mode de contact le plus simple et les
-                <strong>pièces utiles</strong>.
+                Nous vous aidons a <strong>clarifier votre besoin de formation ou d'accompagnement</strong>, a choisir le
+                bon mode de contact et a preparer les <strong>pieces utiles</strong>.
+              </p>
+              <p class="contact-panel__text">
+                Vous devez repondre a un <strong>appel a projet</strong> ? Nous sommes a votre ecoute pour vous soutenir
+                dans cette demarche.
               </p>
             </div>
           </article>
         </div>
 
         <div class="contact-next-actions">
-          <p>Vous voulez d’abord explorer l’offre avant d’échanger ?</p>
+          <p>Vous voulez d'abord explorer l'offre avant d'echanger ?</p>
           <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME" variant="secondary">Télécharger le catalogue</BaseButton>
         </div>
       </section>
     </div>
+
+    <Teleport to="body">
+      <div
+        v-if="isRegistrationModalOpen"
+        class="modal-overlay"
+        role="presentation"
+        @click.self="closeRegistrationModal"
+      >
+        <div
+          class="registration-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="registration-modal-title"
+        >
+          <button class="modal-close" type="button" aria-label="Fermer le formulaire d'inscription" @click="closeRegistrationModal">
+            ×
+          </button>
+
+          <div class="registration-modal__head">
+            <p class="eyebrow">Inscription</p>
+            <h2 id="registration-modal-title">Formulaire d'inscription</h2>
+            <p>
+              Cette popup reprend les champs visibles sur la fiche d'inscription 2025-2026.
+            </p>
+            <p class="registration-modal__eyebrow-note">Choisissez votre profil, puis complétez les informations utiles pour préparer votre inscription.</p>
+          </div>
+
+          <form class="registration-form" @submit.prevent="submitRegistrationForm">
+            <fieldset class="registration-type registration-card">
+              <legend>Type d'inscription</legend>
+              <label>
+                <input v-model="registrationForm.type" type="radio" value="intra" name="registrationType">
+                <span>Inscription intra-entreprise</span>
+              </label>
+              <label>
+                <input v-model="registrationForm.type" type="radio" value="individual" name="registrationType">
+                <span>Inscription personne individuelle</span>
+              </label>
+            </fieldset>
+
+            <div v-if="registrationForm.type === 'intra'" class="registration-section registration-card">
+              <div class="form-row">
+                <label class="form-field">
+                  <span>Nom de l'entreprise / association</span>
+                  <input v-model.trim="registrationForm.enterpriseName" type="text" required>
+                </label>
+                <label class="form-field">
+                  <span>Nom du responsable de la structure</span>
+                  <input v-model.trim="registrationForm.structureManager" type="text" required>
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label class="form-field">
+                  <span>Nombre de personnes a former</span>
+                  <input v-model.trim="registrationForm.traineeCount" type="number" min="1" inputmode="numeric" required>
+                </label>
+                <label class="form-field">
+                  <span>Nom de l'OPCO</span>
+                  <input v-model.trim="registrationForm.opcoName" type="text">
+                </label>
+              </div>
+            </div>
+
+            <div v-else class="registration-section registration-card">
+              <div class="form-row">
+                <label class="form-field">
+                  <span>Nom</span>
+                  <input v-model.trim="registrationForm.lastName" type="text" required>
+                </label>
+                <label class="form-field">
+                  <span>Prenom</span>
+                  <input v-model.trim="registrationForm.firstName" type="text" required>
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label class="form-field">
+                  <span>Date de naissance</span>
+                  <input v-model="registrationForm.birthDate" type="date">
+                </label>
+                <label class="form-field">
+                  <span>Telephone</span>
+                  <input v-model.trim="registrationForm.phone" type="tel" autocomplete="tel">
+                </label>
+              </div>
+
+              <label class="form-field">
+                <span>Adresse</span>
+                <textarea v-model.trim="registrationForm.address" rows="3"></textarea>
+              </label>
+
+              <div class="form-row">
+                <label class="form-field">
+                  <span>Email</span>
+                  <input v-model.trim="registrationForm.email" type="email" autocomplete="email">
+                </label>
+                <label class="form-field">
+                  <span>Profession</span>
+                  <input v-model.trim="registrationForm.profession" type="text">
+                </label>
+              </div>
+
+              <label class="form-field">
+                <span>Nom de la structure employeur</span>
+                <input v-model.trim="registrationForm.employerName" type="text">
+              </label>
+            </div>
+
+            <div class="registration-section registration-card">
+              <label class="form-field">
+                <span>Intitule de(s) formation(s)</span>
+                <input v-model.trim="registrationForm.trainingTitle" type="text" required>
+              </label>
+
+              <label class="form-field">
+                <span>Dates de(s) formation(s)</span>
+                <input v-model.trim="registrationForm.trainingDates" type="text" required>
+              </label>
+            </div>
+
+            <fieldset class="registration-consents registration-card">
+              <legend>Protection des donnees et droits a l'image</legend>
+              <label>
+                <input v-model="registrationForm.dataConsent" type="checkbox">
+                <span>J'autorise l'organisme de formation a collecter mes donnees personnelles.</span>
+              </label>
+              <label>
+                <input v-model="registrationForm.imageConsent" type="checkbox">
+                <span>J'autorise l'organisme a me prendre en photo a des fins pedagogiques ou de communication.</span>
+              </label>
+              <label>
+                <input v-model="registrationForm.newsletterConsent" type="checkbox">
+                <span>J'autorise l'envoi par mail d'informations relatives aux formations et newsletters.</span>
+              </label>
+            </fieldset>
+
+            <fieldset class="registration-handicap registration-card">
+              <legend>Etes vous en situation de handicap ?</legend>
+              <label>
+                <input v-model="registrationForm.handicap" type="radio" value="oui" name="handicap">
+                <span>Oui</span>
+              </label>
+              <label>
+                <input v-model="registrationForm.handicap" type="radio" value="non" name="handicap">
+                <span>Non</span>
+              </label>
+            </fieldset>
+
+            <div class="form-row registration-signature registration-card">
+              <label class="form-field">
+                <span>Date</span>
+                <input v-model="registrationForm.signatureDate" type="date">
+              </label>
+              <label class="form-field">
+                <span>Nom pour signature</span>
+                <input v-model.trim="registrationForm.signatureName" type="text">
+              </label>
+            </div>
+
+            <div class="registration-form__actions">
+              <BaseButton>Envoyer l'inscription</BaseButton>
+              <BaseButton :href="REGISTRATION_DOWNLOAD_URL" :download="REGISTRATION_DOWNLOAD_NAME" variant="secondary">
+                Télécharger la fiche PDF
+              </BaseButton>
+            </div>
+          </form>
+        </div>
+      </div>
+    </Teleport>
   </section>
 </template>
 
 <script setup lang="ts">
+import { onBeforeUnmount, ref, watch } from 'vue'
 import iconFinancement from '~/assets/img/contact/icone-financement.png'
 import iconInscription from '~/assets/img/contact/icone-inscription.png'
 import iconMail from '~/assets/img/contact/icone-mail.png'
 import iconTel from '~/assets/img/contact/icone-tel.png'
 import mascotteParapluie from '~/assets/img/mascotte-parapluie.png'
 import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
+import { REGISTRATION_DOWNLOAD_NAME, REGISTRATION_DOWNLOAD_URL } from '~/utils/registrationDownload'
+
+const contactSubjectOptions = [
+  'demande de formation',
+  "demande d'informations complementaires",
+  'demande de RDV telephonique',
+  'demande de RDV en presentiel',
+  'demande de financement',
+  'autre demande'
+]
+
+const contactForm = ref({
+  fullName: '',
+  email: '',
+  phone: '',
+  subject: '',
+  message: ''
+})
+
+const registrationForm = ref({
+  type: 'individual',
+  enterpriseName: '',
+  structureManager: '',
+  traineeCount: '',
+  opcoName: '',
+  lastName: '',
+  firstName: '',
+  birthDate: '',
+  address: '',
+  phone: '',
+  email: '',
+  employerName: '',
+  profession: '',
+  trainingTitle: '',
+  trainingDates: '',
+  dataConsent: false,
+  imageConsent: false,
+  newsletterConsent: false,
+  handicap: '',
+  signatureDate: '',
+  signatureName: ''
+})
+
+const isRegistrationModalOpen = ref(false)
+const emailTarget = 'oneurosens.formation@gmail.com'
+
+const buildMailtoLink = (subject: string, body: string) =>
+  `mailto:${emailTarget}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
+const submitContactForm = () => {
+  const body = [
+    `Nom / prenom : ${contactForm.value.fullName}`,
+    `Email : ${contactForm.value.email}`,
+    `Telephone : ${contactForm.value.phone || '-'}`,
+    `Objet : ${contactForm.value.subject}`,
+    '',
+    'Message :',
+    contactForm.value.message
+  ].join('\n')
+
+  window.location.href = buildMailtoLink(`Contact site - ${contactForm.value.subject}`, body)
+}
+
+const submitRegistrationForm = () => {
+  const specificLines = registrationForm.value.type === 'intra'
+    ? [
+        `Type d'inscription : intra-entreprise`,
+        `Nom de l'entreprise / association : ${registrationForm.value.enterpriseName}`,
+        `Nom du responsable de la structure : ${registrationForm.value.structureManager}`,
+        `Nombre de personnes a former : ${registrationForm.value.traineeCount}`,
+        `Nom de l'OPCO : ${registrationForm.value.opcoName || '-'}`
+      ]
+    : [
+        `Type d'inscription : personne individuelle`,
+        `Nom : ${registrationForm.value.lastName}`,
+        `Prenom : ${registrationForm.value.firstName}`,
+        `Date de naissance : ${registrationForm.value.birthDate || '-'}`,
+        `Adresse : ${registrationForm.value.address || '-'}`,
+        `Telephone : ${registrationForm.value.phone || '-'}`,
+        `Email : ${registrationForm.value.email || '-'}`,
+        `Nom de la structure employeur : ${registrationForm.value.employerName || '-'}`,
+        `Profession : ${registrationForm.value.profession || '-'}`
+      ]
+
+  const commonLines = [
+    '',
+    `Intitule de(s) formation(s) : ${registrationForm.value.trainingTitle}`,
+    `Dates de(s) formation(s) : ${registrationForm.value.trainingDates}`,
+    '',
+    'Protection des donnees et droits a l image :',
+    `- Collecte des donnees personnelles : ${registrationForm.value.dataConsent ? 'Oui' : 'Non'}`,
+    `- Droit a l'image : ${registrationForm.value.imageConsent ? 'Oui' : 'Non'}`,
+    `- Informations / newsletters : ${registrationForm.value.newsletterConsent ? 'Oui' : 'Non'}`,
+    `Situation de handicap : ${registrationForm.value.handicap || '-'}`,
+    `Date : ${registrationForm.value.signatureDate || '-'}`,
+    `Nom pour signature : ${registrationForm.value.signatureName || '-'}`
+  ]
+
+  window.location.href = buildMailtoLink('Inscription formation - site web', [...specificLines, ...commonLines].join('\n'))
+}
+
+const openRegistrationModal = () => {
+  isRegistrationModalOpen.value = true
+}
+
+const closeRegistrationModal = () => {
+  isRegistrationModalOpen.value = false
+}
+
+const handleKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape' && isRegistrationModalOpen.value) {
+    closeRegistrationModal()
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('keydown', handleKeydown)
+}
+
+watch(isRegistrationModalOpen, (isOpen) => {
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+  }
+})
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('keydown', handleKeydown)
+  }
+
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = ''
+  }
+})
 
 const iconPin = `data:image/svg+xml;utf8,${encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
@@ -236,155 +575,56 @@ p {
 
 .contact-hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1.5rem, 3vw, 3rem);
   align-items: start;
 }
 
-.contact-direct-wrap {
+.contact-direct-wrap,
+.contact-form-card,
+.contact-form,
+.contact-form-card__head,
+.contact-details,
+.contact-panel,
+.contact-panel__head,
+.contact-panel__heading,
+.contact-panel__body,
+.registration-modal__head,
+.registration-form,
+.registration-section {
   display: grid;
+}
+
+.contact-direct-wrap,
+.contact-form-aside,
+.contact-details {
   gap: 1rem;
 }
 
-.contact-summary {
-  display: grid;
-  gap: var(--space-3);
-  padding: clamp(1.15rem, 2vw, 1.5rem);
-  background: color-mix(in srgb, white 78%, var(--color-highlight));
+.contact-panel,
+.contact-form-card {
+  background: color-mix(in srgb, white 82%, var(--color-highlight));
   border: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
   border-radius: clamp(1.2rem, 2vw, 1.8rem);
-  align-content: start;
-}
-
-.contact-summary strong {
-  color: var(--color-text);
-  font-size: clamp(1.5rem, 1.2rem + 0.8vw, 2rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-}
-
-.contact-summary span {
-  color: var(--color-text-soft);
-  font-size: 0.92rem;
-  line-height: 1.5;
 }
 
 .contact-form-card {
-  gap: 1.15rem;
-  padding: clamp(1.3rem, 2.2vw, 1.7rem);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.14)),
-    color-mix(in srgb, var(--color-highlight) 30%, white);
-  border-color: color-mix(in srgb, var(--color-highlight) 42%, var(--color-border));
-  box-shadow: 0 18px 48px rgba(84, 61, 18, 0.08);
+  padding: clamp(1.15rem, 2vw, 1.5rem);
 }
 
-.contact-form-card__head {
-  display: grid;
-  gap: 0.45rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid color-mix(in srgb, var(--color-highlight) 44%, white);
-}
-
-.contact-form {
-  display: grid;
-  gap: 1.1rem;
-}
-
-.contact-form__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.95rem 0.85rem;
-}
-
-.contact-form__field {
+.contact-direct__head,
+.contact-section-head {
   display: grid;
   gap: 0.45rem;
 }
 
-.contact-form__field--full {
-  grid-column: 1 / -1;
-}
-
-.contact-form__field span {
-  color: var(--color-text);
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.contact-form__field em {
-  font-style: normal;
-  color: var(--color-accent);
-}
-
-.contact-form__field input,
-.contact-form__field select,
-.contact-form__field textarea {
-  width: 100%;
-  border: 1px solid color-mix(in srgb, var(--color-border-strong) 78%, white);
-  border-radius: 1rem;
-  background: rgba(255, 251, 239, 0.72);
-  color: var(--color-text);
-  font: inherit;
-  padding: 0.9rem 1rem;
-  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
-}
-
-.contact-form__field select {
-  appearance: none;
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--color-text) 50%),
-    linear-gradient(135deg, var(--color-text) 50%, transparent 50%);
-  background-position:
-    calc(100% - 1.15rem) calc(50% - 0.12rem),
-    calc(100% - 0.85rem) calc(50% - 0.12rem);
-  background-size: 0.35rem 0.35rem, 0.35rem 0.35rem;
-  background-repeat: no-repeat;
-  padding-right: 2.5rem;
-}
-
-.contact-form__field textarea {
-  min-height: 8.5rem;
-  resize: vertical;
-}
-
-.contact-form__field input::placeholder,
-.contact-form__field textarea::placeholder {
-  color: color-mix(in srgb, var(--color-text-soft) 80%, white);
-}
-
-.contact-form__field input:focus,
-.contact-form__field select:focus,
-.contact-form__field textarea:focus {
-  outline: none;
-  border-color: color-mix(in srgb, var(--color-accent) 52%, var(--color-border));
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-highlight) 22%, white);
-  background: rgba(255, 252, 243, 0.95);
-}
-
-.contact-form__cta {
-  width: 100%;
-  justify-content: center;
-}
-
-.contact-direct__head {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.45rem;
-  align-items: start;
-}
-
-.contact-direct__head h2 {
+.contact-direct__head h2,
+.contact-section-head h2 {
   margin: 0;
-  max-width: 20ch;
 }
 
 .contact-direct {
   display: grid;
-  gap: 0;
   border-top: 2px solid color-mix(in srgb, var(--color-accent) 18%, white);
 }
 
@@ -411,13 +651,24 @@ p {
 }
 
 .contact-direct__label,
-.contact-panel__kicker {
+.contact-panel__kicker,
+.form-field span,
+.registration-type legend,
+.registration-consents legend,
+.registration-handicap legend,
+.contact-panel__note-title {
   margin: 0 0 0.4rem;
   color: #3f5ea0;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.84rem;
+}
+
+.contact-panel__kicker {
+  display: flex;
+  align-items: end;
+  min-height: 2.8em;
 }
 
 .contact-direct__value {
@@ -427,8 +678,10 @@ p {
   font-weight: 700;
 }
 
-.contact-direct p:last-child {
-  margin-bottom: 0;
+.contact-direct p:last-child,
+.contact-form-note strong,
+.contact-form-card__head h2 {
+  margin: 0;
 }
 
 .contact-direct a {
@@ -436,8 +689,75 @@ p {
   text-decoration: none;
 }
 
-.contact-details {
+.contact-form-card {
+  gap: 1.35rem;
+}
+
+.contact-form-card__head {
+  gap: 0.7rem;
+}
+
+.contact-form-card__head p:last-child {
+  color: var(--color-text-soft);
+  line-height: 1.65;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
+}
+
+.contact-form {
+  gap: 1rem;
+}
+
+.form-row {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--color-border) 74%, white);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 0.9rem 1rem;
+  color: var(--color-text);
+  font: inherit;
+}
+
+.form-field select {
+  padding-right: 3rem;
+}
+
+.form-field textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.contact-form__actions,
+.registration-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.registration-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+.registration-actions > * {
+  width: 100%;
+}
+
+.contact-details {
   gap: clamp(1.8rem, 3vw, 2.6rem);
 }
 
@@ -458,17 +778,8 @@ p {
 }
 
 .contact-section-head {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.45rem;
-  align-items: start;
   padding-top: var(--space-3);
   border-top: 2px solid color-mix(in srgb, var(--color-accent) 20%, white);
-}
-
-.contact-section-head h2 {
-  margin: 0;
-  max-width: 28ch;
 }
 
 .contact-details__grid {
@@ -479,35 +790,29 @@ p {
 }
 
 .contact-panel {
-  display: grid;
   grid-template-rows: auto 1fr;
   gap: clamp(1.4rem, 1.9vw, 1.7rem);
-  min-height: clamp(29rem, 34vw, 34rem);
+  min-height: clamp(28rem, 34vw, 34rem);
   padding: clamp(1.5rem, 2.1vw, 1.95rem);
-  border: 1px solid color-mix(in srgb, var(--color-border) 70%, white);
-  border-radius: clamp(1.2rem, 2vw, 1.8rem);
-  background: color-mix(in srgb, white 88%, var(--color-highlight));
   align-content: start;
 }
 
 .contact-panel__head {
-  display: grid;
-  grid-template-columns: 1fr;
+  grid-template-rows: clamp(108px, 8vw, 124px) auto;
   gap: 1rem;
-  align-items: start;
 }
 
 .contact-panel__heading {
-  display: grid;
-  gap: 0.5rem;
   align-content: start;
+  gap: 0.5rem;
+  min-height: clamp(8.5rem, 10vw, 10rem);
 }
 
 .contact-panel__head h3 {
   margin: 0;
   line-height: 1.08;
- 
   font-size: clamp(1.95rem, 1.5rem + 1vw, 2.85rem);
+  min-height: 2.25em;
 }
 
 .contact-panel__icon {
@@ -515,6 +820,7 @@ p {
   height: clamp(108px, 8vw, 124px);
   object-position: top left;
   justify-self: center;
+  align-self: end;
 }
 
 .contact-panel__icon--steps {
@@ -528,61 +834,48 @@ p {
 }
 
 .contact-panel__body {
-  display: grid;
+  gap: 1.2rem;
   align-content: start;
-  gap: 1.35rem;
-  min-height: 100%;
 }
 
 .contact-panel__body--finance {
   grid-template-rows: auto 1fr auto;
 }
 
-.contact-panel__body--support {
-  padding-top: 0.35rem;
-}
-
-.contact-steps {
+.contact-panel__text {
   margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
-  display: grid;
-  gap: 1rem;
-  align-content: start;
+  max-width: 24ch;
+  line-height: 1.68;
+  font-size: clamp(1rem, 0.98rem + 0.22vw, 1.12rem);
+  color: var(--color-text-soft);
 }
 
-.contact-steps li {
-  counter-increment: step;
-  display: grid;
-  grid-template-columns: 2rem minmax(0, 1fr);
-  gap: 0.95rem;
-  align-items: start;
-  line-height: 1.7;
-  font-size: clamp(1rem, 0.98rem + 0.22vw, 1.14rem);
-}
-
-.contact-steps li::before {
-  content: counter(step);
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
-  margin-top: 0.05rem;
-  border-radius: 999px;
-  background: #ef6d64;
-  color: #fff7f1;
-  font-size: 0.92rem;
+.contact-panel__text--strong {
   font-weight: 700;
+  color: var(--color-text);
+  align-self: end;
 }
 
+.contact-panel__note {
+  gap: 0.7rem;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
+}
+
+.contact-panel__note ul,
 .finance-list {
+  display: grid;
+  gap: 0.6rem;
   margin: 0;
   padding: 0;
   list-style: none;
-  display: grid;
-  gap: 1rem;
-  align-content: start;
+}
+
+.contact-panel__note li {
+  padding-left: 1rem;
+  border-left: 2px solid color-mix(in srgb, var(--color-primary) 28%, white);
+  color: var(--color-text);
+  line-height: 1.55;
 }
 
 .finance-list li {
@@ -604,23 +897,134 @@ p {
   border-radius: 999px;
 }
 
-.contact-panel__text {
-  margin: 0;
-  max-width: 24ch;
-  line-height: 1.68;
-  font-size: clamp(1rem, 0.98rem + 0.22vw, 1.12rem);
-  color: var(--color-text-soft);
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(24, 24, 24, 0.48);
+  backdrop-filter: blur(6px);
 }
 
-.contact-panel__text--strong {
-  font-weight: 700;
+.registration-modal {
+  position: relative;
+  width: min(56rem, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  padding: clamp(1.35rem, 2.2vw, 2rem);
+  border-radius: 1.8rem;
+  border: 1px solid color-mix(in srgb, var(--color-border) 76%, white);
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, white 38%, var(--color-highlight)) 0%, transparent 24%),
+    radial-gradient(circle at bottom left, color-mix(in srgb, white 40%, var(--color-primary)) 0%, transparent 26%),
+    linear-gradient(180deg, #fffdf8 0%, #fffaf1 100%);
+  box-shadow: 0 24px 60px rgba(29, 30, 32, 0.14);
+}
+
+.modal-close {
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, white 70%, var(--color-highlight));
   color: var(--color-text);
-  align-self: end;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.registration-modal__head {
+  gap: 0.7rem;
+  margin-top: -1.2rem;
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 0 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 76%, white);
+}
+
+.registration-modal__head h2 {
+  margin: 0;
+}
+
+.registration-modal__head p:last-child {
+  color: var(--color-text-soft);
+  line-height: 1.65;
+}
+
+.registration-modal__eyebrow-note {
+  max-width: 48ch;
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--font-size-100);
+}
+
+.registration-form,
+.registration-section {
+  gap: 1rem;
+}
+
+.registration-form {
+  gap: 1.15rem;
+}
+
+.registration-card {
+  padding: 1rem 1rem 1.05rem;
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
+  border-radius: 1.3rem;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.registration-type,
+.registration-consents,
+.registration-handicap {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 1rem 1rem 1.05rem;
+  border: 0;
+  border-top: 0;
+}
+
+.registration-type label,
+.registration-consents label,
+.registration-handicap label {
+  display: grid;
+  grid-template-columns: 1.1rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  color: var(--color-text);
+  line-height: 1.55;
+  padding: 0.25rem 0;
+}
+
+.registration-type input,
+.registration-consents input,
+.registration-handicap input {
+  margin-top: 0.18rem;
+}
+
+.registration-signature {
+  align-items: end;
+}
+
+.registration-form__actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.registration-form__actions > * {
+  width: 100%;
 }
 
 @media (max-width: 980px) {
   .contact-hero__grid,
-  .contact-section-head,
   .contact-details__grid {
     grid-template-columns: 1fr;
   }
@@ -638,26 +1042,32 @@ p {
 
   .contact-panel__head h3 {
     max-width: 11ch;
+    min-height: 0;
   }
 
   .contact-panel {
     min-height: auto;
   }
 
-  .contact-form-card {
-    max-width: 42rem;
+  .contact-panel__head {
+    grid-template-rows: auto auto;
+  }
+
+  .contact-panel__heading,
+  .contact-panel__kicker {
+    min-height: 0;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-form__actions {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 640px) {
-  .contact-form__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-form__field--full {
-    grid-column: auto;
-  }
-
   .contact-direct__item {
     grid-template-columns: 1fr;
   }
@@ -671,16 +1081,12 @@ p {
   .contact-panel__icon--support {
     width: 88px;
     height: 88px;
-    margin-left: 0;
   }
 
-  .contact-panel {
+  .contact-panel,
+  .contact-form-card,
+  .registration-modal {
     padding: 1.25rem 1.15rem;
-  }
-
-  .contact-form-card {
-    padding: 1.2rem 1rem;
-    border-radius: 1.35rem;
   }
 
   .contact-panel__text {

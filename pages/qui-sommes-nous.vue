@@ -43,8 +43,8 @@
               <div>
                 <p class="qsn-info-strip__title">Une équipe pluridisciplinaire</p>
                 <p>
-                  Des <strong>professionnels du terrain</strong> et des formateurs pour adultes, complétés par des
-                  <strong>experts</strong> selon les domaines d’intervention.
+                  Nous elaborons nos formations avec des <strong>professionnels du terrain</strong> et des
+                  <strong>formateurs pour adultes</strong>, tous experts dans leur domaine.
                 </p>
               </div>
             </article>
@@ -60,6 +60,16 @@
                 <p><strong>1315 Route de Cocoyer au Gosier</strong></p>
                 <p><strong>Guadeloupe</strong></p>
               </div>
+            </article>
+
+            <article class="qsn-callout" aria-label="Profils mobilisés selon les besoins">
+              <p>
+                Selon les besoins, nous nous appuyons notamment sur des profils de
+                <strong>puericultrice</strong>, <strong>assistante de service social</strong>,
+                <strong>psychologue</strong>, <strong>sage-femme</strong> et
+                <strong>psychomotricien(ne)</strong> pour garder un ancrage concret, credible et au plus pres des
+                realites de terrain.
+              </p>
             </article>
           </div>
         </div>
@@ -124,12 +134,14 @@
               <ul class="leader__list">
                 <li><img :src="bulletRouge" alt="" aria-hidden="true">Programmation neuro-linguistique</li>
                 <li><img :src="bulletRouge" alt="" aria-hidden="true">Braingym et réflexes archaïques IMP</li>
+                <li><img :src="bulletRouge" alt="" aria-hidden="true">Sophrologue Caycédienne</li>
+                <li><img :src="bulletRouge" alt="" aria-hidden="true">Facilitatrice graphique et animatrice en pensée visuelle</li>
               </ul>
             </div>
 
             <p class="leader__quote">
-              “Également <strong>Sophrologue</strong>, mon approche s’oriente vers la prévention du stress et de
-              l’épuisement professionnel.”
+              “Mon approche relie la relation d’aide, la prevention du stress et des outils concrets pour soutenir les
+              professionnels, les enfants et les familles.”
             </p>
           </article>
         </div>
@@ -290,6 +302,20 @@ p {
 
 .qsn-highlight:last-child p {
   line-height: 1.34;
+}
+
+.qsn-callout {
+  grid-column: 1 / -1;
+  padding: clamp(1.15rem, 2.4vw, 1.6rem) clamp(1.2rem, 2.8vw, 1.8rem);
+  border-radius: 1.6rem;
+  background: color-mix(in srgb, #fdf2ec 84%, white);
+  border: 1px solid color-mix(in srgb, var(--color-border) 58%, white);
+}
+
+.qsn-callout p {
+  margin: 0;
+  color: #353841;
+  line-height: 1.68;
 }
 
 .qsn-team {

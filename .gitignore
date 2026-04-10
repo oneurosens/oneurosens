@@ -11,19 +11,11 @@ dist/
 # Project task files
 tasks.md
 tasks-assets/
+MAJ-09-04-2026/
 
 # macOS
 .DS_Store
 
 # Editor
 .vscode/
-# Node / Nuxt
-node_modules/
-.nuxt/
-.output/
-dist/
-
-# Env
-.env
-.env.*
 

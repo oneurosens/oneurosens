@@ -32,10 +32,11 @@ const MIN_LOADER_DURATION = 2000
 const route = useRoute()
 const router = useRouter()
 const displayedThemePath = useState('displayed-theme-path', () => route.path)
+const initialRouteColor = getRouteThemeColor(route.path)
 
 const loaderVisible = ref(true)
-const loaderFromColor = ref('#ffffff')
-const loaderToColor = ref('#ffffff')
+const loaderFromColor = ref(initialRouteColor)
+const loaderToColor = ref(initialRouteColor)
 const loaderCycle = ref(0)
 const pendingNavigationPath = ref<string | null>(null)
 const pendingFromPath = ref<string | null>(null)
@@ -68,11 +69,9 @@ let removeAfterEach: (() => void) | undefined
 
 onMounted(async () => {
   const initialTargetColor = getRouteThemeColor(route.path)
-  const initialBaseColor = '#ffffff'
-  const initialDisplayColor = route.path === '/' ? '#ffffff' : initialTargetColor
   displayedThemePath.value = route.path
 
-  await showLoader(initialBaseColor, initialDisplayColor)
+  await showLoader(initialTargetColor, initialTargetColor)
   await wait(MIN_LOADER_DURATION)
   await hideLoader()
 

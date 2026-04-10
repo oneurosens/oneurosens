@@ -4,7 +4,7 @@
       <div class="container">
         <div class="home-grid home-grid--hero">
           <div class="hero-copy">
-            <p class="eyebrow">Une approche sensible, scientifique et concrète pour les métiers de l’enfance, de la famille, de l’éducation et du handicap.</p>
+            <p class="eyebrow">Notre mission : former les professionnels de l’enfance, de l’éducation et de la famille.</p>
             <h1 class="hero-title">
               Des formations qui transforment les pratiques de terrain
             </h1>
@@ -15,8 +15,8 @@
               <span class="label-chip label-chip--gold">Inclusion & handicap</span>
             </div>
             <p class="hero-lead">
-              <strong>Ô Neuro Sens Formations</strong> conçoit des <strong>parcours vivants</strong>, des
-              <strong>interventions de terrain</strong> et des outils immédiatement mobilisables pour les
+              <strong>Ô Neuro Sens Formations</strong> conçoit des <strong>formations innovantes</strong> basées sur une
+              <strong>pédagogie active</strong> et des outils immédiatement mobilisables pour les
               <strong>professionnels</strong>, les <strong>structures</strong> et les <strong>familles</strong>.
             </p>
             <div class="cta-row cta-row--hero">
@@ -39,12 +39,37 @@
       <div class="container">
         <div class="qualiopi-section">
           <p class="eyebrow">Un cadre de formation reconnu et structuré</p>
-          <img
-            :src="qualiopiLogo"
-            alt="Certification Qualiopi - Actions de formation"
-            class="qualiopi-section__logo"
-            loading="lazy"
+          <a
+            :href="QUALIOPI_CERTIFICATE_URL"
+            :download="QUALIOPI_CERTIFICATE_NAME"
+            class="qualiopi-section__link"
+            target="_blank"
+            rel="noopener"
+            aria-label="Consulter le certificat Qualiopi en PDF"
           >
+            <img
+              :src="qualiopiLogo"
+              alt="Certification Qualiopi - Actions de formation"
+              class="qualiopi-section__logo"
+              loading="lazy"
+            >
+          </a>
+          <a
+            :href="QUALIOPI_CERTIFICATE_URL"
+            :download="QUALIOPI_CERTIFICATE_NAME"
+            class="qualiopi-section__text-link"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="qualiopi-section__text-link-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M14 3v5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="m9 14 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span>Consulter le certificat Qualiopi</span>
+          </a>
         </div>
       </div>
     </section>
@@ -127,12 +152,12 @@
       </div>
     </section>
 
-    <section id="actions-terrain" class="home-section">
+    <section id="prestations" class="home-section">
       <div class="container">
         <div class="home-grid home-grid--actions">
           <div class="actions-copy theme-tint-panel">
             <p class="eyebrow">Un accompagnement au plus près du terrain pour passer du constat à l'action.</p>
-            <h2>Actions de terrain</h2>
+            <h2>Prestations</h2>
             <p>
               Nous intervenons dans les structures pour <strong>observer les situations</strong>, clarifier les besoins,
               soutenir les équipes et <strong>co-construire des réponses adaptées</strong> à la réalité du terrain.
@@ -149,22 +174,12 @@
             </figure>
           </div>
 
-          <div class="actions-listing" aria-label="Formats d'intervention">
-            <article>
-              <strong>Formations</strong>
-              <span>Des interventions adaptées aux équipes, aux structures et aux contextes locaux.</span>
-            </article>
-            <article>
-              <strong>Conférences</strong>
-              <span>Des temps forts pour sensibiliser, transmettre et ouvrir des pistes d'action.</span>
-            </article>
-            <article>
-              <strong>Ateliers</strong>
-              <span>Des formats concrets pour les enfants, les parents et les professionnels.</span>
-            </article>
-            <article>
-              <strong>Accompagnements</strong>
-              <span>Du diagnostic à la mise en œuvre, avec un suivi au plus près de la réalité de terrain.</span>
+          <div class="actions-listing" aria-label="Prestations proposées">
+            <article
+              v-for="item in serviceOfferings"
+              :key="item"
+            >
+              <strong>{{ item }}</strong>
             </article>
           </div>
         </div>
@@ -182,11 +197,11 @@
               <strong>former, ajuster ou renforcer leurs pratiques</strong>.
             </p>
             <div class="references-tags" aria-label="Types de structures accompagnées">
-              <span>Petite enfance</span>
-              <span>Éducation</span>
-              <span>Handicap</span>
-              <span>Parentalité</span>
-              <span>Collectivités</span>
+              <span class="references-tags__item references-tags__item--blue">Petite enfance</span>
+              <span class="references-tags__item references-tags__item--mint">Éducation</span>
+              <span class="references-tags__item references-tags__item--gold">Handicap</span>
+              <span class="references-tags__item references-tags__item--coral">Parentalité</span>
+              <span class="references-tags__item references-tags__item--blue">Collectivités</span>
             </div>
           </div>
 
@@ -229,7 +244,6 @@
               <li>les repères pour cibler la bonne demande</li>
               <li>une base claire pour échanger ensuite avec l’équipe</li>
             </ul>
-            <p class="final-note">Nous vous adressons le catalogue par email, dans une version ciblée selon votre profil.</p>
             <div class="cta-row">
               <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME">Télécharger le catalogue</BaseButton>
             </div>
@@ -248,6 +262,10 @@ import homePhotoThree from '~/assets/img/home/photos/3.jpeg'
 import illustrationPhoto from '~/assets/img/home/photos/illustration1.jpeg'
 import logoInfobulle from '~/assets/img/logo-infobulle.svg'
 import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
+import {
+  QUALIOPI_CERTIFICATE_NAME,
+  QUALIOPI_CERTIFICATE_URL
+} from '~/utils/qualiopiCertificate'
 
 import logo1 from '~/assets/img/home/logos/logo1.jpeg'
 import logo2 from '~/assets/img/home/logos/logo2.png'
@@ -281,6 +299,20 @@ const partnerLogos = [
   { src: logo14, alt: 'Partenaire 14' }
 ]
 
+const serviceOfferings = [
+  "Groupe d'analyse des pratiques professionnelles à destination des équipes",
+  "Groupe d'analyse des pratiques professionnelles spécifiques aux équipes de direction",
+  'Journée pédagogique',
+  'Conférences',
+  'Ti Kozé / groupe de parole',
+  'Séances de sophrologie enfants et/ou parents',
+  'Séances snoezelen',
+  'Ateliers conseils 1000 premiers jours',
+  'Handidanse',
+  'Ateliers en compétences psychosociales',
+  'Ateliers en facilitation graphique et intelligence collective'
+]
+
 </script>
 
 <style scoped>
@@ -306,10 +338,6 @@ const partnerLogos = [
 
 .home-section {
   border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
-}
-
-#actions-terrain {
-  scroll-margin-top: 8.5rem;
 }
 
 .home-grid {
@@ -338,6 +366,10 @@ const partnerLogos = [
 .actions-copy,
 .final-copy {
   max-width: 36rem;
+}
+
+#prestations {
+  scroll-margin-top: clamp(6rem, 10vw, 8.5rem);
 }
 
 .hero-copy {
@@ -376,6 +408,7 @@ const partnerLogos = [
 
 .cta-row--hero {
   margin-top: 0.25rem;
+  margin-bottom: clamp(1.2rem, 2.5vw, 2rem);
 }
 
 .hero-cta-primary {
@@ -505,13 +538,70 @@ const partnerLogos = [
 .qualiopi-section {
   display: grid;
   justify-items: center;
-  gap: var(--space-4);
+  gap: 0.85rem;
   text-align: center;
+}
+
+.qualiopi-section__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  text-decoration: none;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.qualiopi-section__link:hover,
+.qualiopi-section__link:focus-visible {
+  transform: translateY(-2px);
+  opacity: 0.95;
 }
 
 .qualiopi-section__logo {
   width: min(240px, 62vw);
   height: auto;
+}
+
+.qualiopi-section__text-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.55rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 26%, white);
+  border-radius: 999px;
+  background: color-mix(in srgb, white 88%, var(--color-sky-200));
+  color: var(--color-secondary);
+  font-size: 0.96rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.15;
+  text-decoration: none;
+  transition:
+    transform var(--transition-fast),
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.qualiopi-section__text-link-icon {
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  color: color-mix(in srgb, var(--color-secondary) 82%, white);
+}
+
+.qualiopi-section__text-link-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.qualiopi-section__text-link:hover,
+.qualiopi-section__text-link:focus-visible {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--color-accent) 28%, white);
+  background: color-mix(in srgb, white 82%, var(--color-soft));
+  color: var(--color-accent);
 }
 
 .home-grid--story {
@@ -521,6 +611,8 @@ const partnerLogos = [
 .story-photo--large {
   grid-column: 1 / 7;
   min-height: 31rem;
+  overflow: hidden;
+  border-radius: clamp(1.4rem, 2vw, 2rem);
 }
 
 .story-panel {
@@ -582,6 +674,8 @@ const partnerLogos = [
 }
 
 .themes-side.theme-tint-panel {
+  min-height: 34rem;
+  grid-template-rows: auto auto 1fr auto;
   padding: clamp(1.75rem, 3vw, 2.6rem);
   gap: clamp(1rem, 1.8vw, 1.35rem);
 }
@@ -607,16 +701,18 @@ const partnerLogos = [
 }
 
 .themes-quote {
-  position: relative;
-  margin-top: -4.2rem;
+  position: absolute;
+  top: 1.4rem;
+  left: 1.4rem;
+  right: 1.4rem;
   margin-left: auto;
   z-index: 2;
-  padding: 1.2rem 1.3rem 1.35rem 1.55rem;
-  border: 1px solid color-mix(in srgb, var(--color-border) 70%, white);
+  padding: 0.95rem 1.15rem;
+  border: 1px solid color-mix(in srgb, white 58%, transparent);
   border-radius: clamp(1.2rem, 2vw, 1.8rem);
-  background:
-    linear-gradient(135deg, color-mix(in srgb, white 96%, var(--color-highlight)) 0%, rgba(255, 255, 255, 0.98) 100%);
-  box-shadow: 0 22px 44px rgba(28, 44, 77, 0.09);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 34px rgba(28, 44, 77, 0.08);
 }
 
 .themes-quote p {
@@ -636,21 +732,33 @@ const partnerLogos = [
 
 .themes-quote__text {
   position: relative;
-  padding-left: 1.05rem;
-  font-size: clamp(1.2rem, 1.05rem + 0.65vw, 1.65rem);
-  font-weight: var(--font-weight-semibold);
-  line-height: 1.4;
+  padding-inline: 1.35rem;
+  font-size: clamp(1.08rem, 0.98rem + 0.42vw, 1.4rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.45;
   letter-spacing: -0.02em;
   text-wrap: balance;
+  text-align: center;
 }
 
 .themes-quote__text::before {
   content: "“";
   position: absolute;
-  left: -0.1rem;
-  top: -0.18rem;
+  left: 0;
+  top: -0.08rem;
   color: color-mix(in srgb, var(--color-accent) 58%, white);
-  font-size: 1.65em;
+  font-size: 1.45em;
+  line-height: 1;
+}
+
+.themes-quote__text::after {
+  content: "”";
+  position: absolute;
+  right: 0;
+  top: -0.08rem;
+  color: color-mix(in srgb, var(--color-primary) 54%, white);
+  font-size: 1.45em;
   line-height: 1;
 }
 
@@ -683,10 +791,16 @@ const partnerLogos = [
 
 .themes-footer {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1rem;
   padding-top: 0.35rem;
+  margin-top: auto;
+}
+
+.themes-footer .btn {
+  flex: 0 0 auto;
 }
 
 .themes-footnote {
@@ -695,6 +809,14 @@ const partnerLogos = [
   color: var(--color-text-soft);
   font-size: 0.9rem;
   line-height: 1.5;
+}
+
+.actions-copy .cta-row {
+  flex-wrap: wrap;
+}
+
+.actions-copy .cta-row > * {
+  flex: 0 0 auto;
 }
 
 .actions-editorial {
@@ -707,31 +829,37 @@ const partnerLogos = [
   position: relative;
   width: 100%;
   min-height: 28rem;
+  overflow: hidden;
+  border-radius: clamp(1.4rem, 2vw, 2rem);
 }
 
 .actions-listing {
   display: grid;
   grid-column: 1 / 13;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 1.8vw, 1.4rem) clamp(1.2rem, 2vw, 1.8rem);
   margin-top: var(--space-3);
 }
 
 .actions-listing article {
   display: grid;
-  gap: 0.35rem;
-  padding-top: var(--space-3);
+  align-content: start;
+  gap: 0.45rem;
+  min-height: 100%;
+  padding: 1rem 0 0;
   border-top: 2px solid color-mix(in srgb, var(--color-accent) 34%, white);
 }
 
 .actions-listing strong {
   color: var(--color-text);
   font-size: var(--font-size-200);
+  line-height: 1.4;
 }
 
 .actions-listing span {
   color: var(--color-text-soft);
   font-size: var(--font-size-100);
+  line-height: 1.65;
 }
 
 .home-section--references {
@@ -762,16 +890,32 @@ const partnerLogos = [
   gap: 0.65rem;
 }
 
-.references-tags span {
+.references-tags__item {
   display: inline-flex;
   align-items: center;
-  min-height: 2.1rem;
-  padding: 0.38rem 0.8rem;
-  background: color-mix(in srgb, white 70%, var(--color-mint-200));
-  border: 1px solid color-mix(in srgb, var(--color-border) 62%, white);
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 0;
   color: var(--color-text);
   font-size: var(--font-size-100);
   font-weight: var(--font-weight-semibold);
+}
+
+.references-tags__item--blue {
+  background: color-mix(in srgb, var(--color-sky-200) 70%, white);
+}
+
+.references-tags__item--mint {
+  background: color-mix(in srgb, var(--color-mint-200) 78%, white);
+}
+
+.references-tags__item--coral {
+  background: color-mix(in srgb, var(--color-soft) 70%, white);
+}
+
+.references-tags__item--gold {
+  background: color-mix(in srgb, var(--color-apricot-200) 80%, white);
 }
 
 .references-note {
@@ -844,7 +988,6 @@ const partnerLogos = [
   gap: var(--space-4);
   margin-top: var(--space-5);
   padding-top: var(--space-4);
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
 }
 
 .references-foot p {
@@ -861,6 +1004,8 @@ const partnerLogos = [
   min-height: 18rem;
   width: 100%;
   justify-self: start;
+  overflow: hidden;
+  border-radius: clamp(1.4rem, 2vw, 2rem);
 }
 
 .final-visual img {
@@ -921,17 +1066,18 @@ const partnerLogos = [
   }
 }
 
-@media (max-width: 900px) {
-  #actions-terrain {
-    scroll-margin-top: 6.75rem;
-  }
-
+@media (max-width: 980px) {
   .home-grid--hero,
   .home-grid--story,
   .home-grid--themes,
   .home-grid--actions,
   .final-grid {
     grid-template-columns: 1fr;
+  }
+
+  .home-grid--actions > * {
+    grid-column: 1 / -1 !important;
+    justify-self: stretch;
   }
 
   .hero-copy,
@@ -948,6 +1094,10 @@ const partnerLogos = [
   .final-copy,
   .final-visual {
     grid-column: auto;
+  }
+
+  .home-grid--actions {
+    row-gap: clamp(1.25rem, 4vw, 2rem);
   }
 
   .final-copy {
@@ -975,6 +1125,23 @@ const partnerLogos = [
   .actions-editorial,
   .actions-listing {
     grid-template-columns: 1fr;
+  }
+
+  .actions-copy {
+    order: 1;
+    max-width: none;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .actions-listing {
+    order: 2;
+    margin-top: 0;
+    gap: 1rem;
+  }
+
+  .actions-editorial {
+    order: 3;
   }
 
   .references-layout,
@@ -1012,7 +1179,7 @@ const partnerLogos = [
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 980px) {
   .home-hero,
   .home-section {
     padding-block: var(--space-8);
@@ -1022,6 +1189,30 @@ const partnerLogos = [
   .actions-listing,
   .references-grid {
     grid-template-columns: 1fr;
+  }
+
+  .actions-copy.theme-tint-panel {
+    padding: 1.35rem 1.15rem;
+    width: 100%;
+  }
+
+  .actions-editorial {
+    display: none;
+  }
+
+  .actions-copy .cta-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .actions-copy .cta-row > * {
+    width: 100%;
+  }
+
+  .actions-listing article {
+    gap: 0.35rem;
+    padding-top: 0.85rem;
   }
 
   .themes-side.theme-tint-panel {

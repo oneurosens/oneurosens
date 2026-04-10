@@ -247,14 +247,15 @@ onBeforeUnmount(() => {
   display: grid;
   grid-template-columns: minmax(15rem, 3.7fr) minmax(0, 8.3fr);
   gap: clamp(2rem, 3.5vw, 3.4rem);
-  align-items: start;
+  align-items: stretch;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .testimonials-stage__intro {
   display: grid;
   gap: var(--space-4);
-  align-content: start;
+  align-content: space-between;
+  min-height: clamp(25rem, 45vw, 33rem);
   padding-top: var(--space-5);
 }
 
@@ -322,14 +323,14 @@ onBeforeUnmount(() => {
 
 .testimonials-track {
   display: flex;
-  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 460ms cubic-bezier(0.32, 0.72, 0, 1);
   will-change: transform;
 }
 
 .testimonial-slide {
   flex: 0 0 100%;
   min-width: 0;
-  padding: 1rem;
+  padding: 0;
 }
 
 .testimonial-bubble {
@@ -340,7 +341,6 @@ onBeforeUnmount(() => {
   padding: clamp(2rem, 4vw, 3rem);
   color: white;
   border-radius: clamp(2rem, 3vw, 3rem);
-  box-shadow: 0 18px 42px rgba(36, 48, 64, 0.08);
 }
 
 .testimonial-slide--sun .testimonial-bubble {
@@ -374,7 +374,7 @@ onBeforeUnmount(() => {
 }
 
 .testimonial-bubble__portrait {
-  width: clamp(4.8rem, 8vw, 6.2rem);
+  width: clamp(6.4rem, 11vw, 8.8rem);
   aspect-ratio: 1;
   border: 4px solid rgba(255, 255, 255, 0.82);
   overflow: hidden;
@@ -411,8 +411,8 @@ onBeforeUnmount(() => {
   max-width: 32ch;
   margin: 0;
   color: white;
-  font-size: clamp(1.08rem, 0.94rem + 0.55vw, 1.42rem);
-  line-height: 1.6;
+  font-size: clamp(1rem, 0.9rem + 0.42vw, 1.24rem);
+  line-height: 1.52;
   font-weight: 600;
 }
 
@@ -496,6 +496,10 @@ onBeforeUnmount(() => {
     max-width: 16ch;
   }
 
+  .testimonials-stage__intro {
+    min-height: 23rem;
+  }
+
   .testimonial-bubble {
     min-height: 23rem;
   }
@@ -504,22 +508,28 @@ onBeforeUnmount(() => {
     width: min(100%, 36rem);
   }
 
+  .testimonial-bubble__portrait {
+    width: clamp(6rem, 16vw, 7.5rem);
+  }
+
   .testimonials-summary {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 640px) {
-  .testimonial-slide {
-    padding: 0;
-  }
-
   .testimonial-bubble {
     padding: 1.4rem;
   }
 
+  .testimonial-bubble__portrait {
+    width: clamp(5.8rem, 22vw, 7rem);
+  }
+
   .testimonial-bubble__quote {
     max-width: none;
+    font-size: clamp(0.98rem, 0.92rem + 0.3vw, 1.08rem);
+    line-height: 1.48;
   }
 }
 </style>

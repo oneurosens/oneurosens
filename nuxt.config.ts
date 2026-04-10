@@ -12,7 +12,10 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/favicon/apple-touch-icon.png' },
         { rel: 'manifest', href: '/favicon/site.webmanifest' }
       ],
-      meta: [{ name: 'theme-color', content: '#ffffff' }]
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'theme-color', content: '#ffffff' }
+      ]
     }
   },
   css: ['~/assets/css/variables.css', '~/assets/css/base.css', '~/assets/css/formes.css', '~/assets/css/components.css'],
