@@ -290,6 +290,14 @@
   box-shadow: none;
 }
 
+.site-main__content .btn:disabled {
+  opacity: 0.62;
+  cursor: not-allowed;
+  transform: none;
+  background-size: 50.5% 100%, 50.5% 100%, auto;
+  color: var(--btn-fg);
+}
+
 .site-main__content .cta-row > .btn:first-child:nth-last-child(2),
 .site-main__content .cta-row > .btn:first-child:nth-last-child(2) ~ .btn {
   flex: 1 1 15.5rem;

@@ -113,7 +113,12 @@
               </label>
 
               <div class="contact-form__actions">
-                <BaseButton>Envoyer la demande</BaseButton>
+                <BaseButton type="submit" :disabled="isSendingContactForm">
+                  {{ isSendingContactForm ? 'Envoi en cours...' : 'Envoyer la demande' }}
+                </BaseButton>
+                <p v-if="contactFormFeedback" :class="['form-feedback', `form-feedback--${contactFormFeedback.type}`]">
+                  {{ contactFormFeedback.message }}
+                </p>
               </div>
             </form>
           </article>
@@ -357,7 +362,12 @@
             </div>
 
             <div class="registration-form__actions">
-              <BaseButton class="registration-form__submit">Envoyer l'inscription</BaseButton>
+              <BaseButton class="registration-form__submit" type="submit" :disabled="isSendingRegistrationForm">
+                {{ isSendingRegistrationForm ? 'Envoi en cours...' : "Envoyer l'inscription" }}
+              </BaseButton>
+              <p v-if="registrationFormFeedback" :class="['form-feedback', `form-feedback--${registrationFormFeedback.type}`]">
+                {{ registrationFormFeedback.message }}
+              </p>
             </div>
           </form>
         </div>
@@ -374,6 +384,7 @@ import iconMail from '~/assets/img/contact/icone-mail.png'
 import iconTel from '~/assets/img/contact/icone-tel.png'
 import mascotteParapluie from '~/assets/img/mascotte-parapluie.png'
 import { CATALOGUE_DOWNLOAD_NAME, CATALOGUE_DOWNLOAD_URL } from '~/utils/catalogueDownload'
+import { REGISTRATION_DOWNLOAD_NAME, REGISTRATION_DOWNLOAD_URL } from '~/utils/registrationDownload'
 
 const contactSubjectOptions = [
   'demande de formation',
@@ -392,7 +403,7 @@ const contactForm = ref({
   message: ''
 })
 
-const registrationForm = ref({
+const createRegistrationForm = () => ({
   type: 'individual',
   enterpriseName: '',
   structureManager: '',
@@ -416,62 +427,120 @@ const registrationForm = ref({
   signatureName: ''
 })
 
+const registrationForm = ref(createRegistrationForm())
 const isRegistrationModalOpen = ref(false)
-const emailTarget = 'oneurosens.formation@gmail.com'
+const isSendingContactForm = ref(false)
+const isSendingRegistrationForm = ref(false)
+const contactFormFeedback = ref<{ type: 'success' | 'error', message: string } | null>(null)
+const registrationFormFeedback = ref<{ type: 'success' | 'error', message: string } | null>(null)
+const runtimeConfig = useRuntimeConfig()
+const web3formsAccessKey = runtimeConfig.public.web3formsAccessKey
+const formRecipient = runtimeConfig.public.formRecipient
 
-const buildMailtoLink = (subject: string, body: string) =>
-  `mailto:${emailTarget}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+const submitToWeb3Forms = async (data: Record<string, string>) => {
+  if (!web3formsAccessKey) {
+    throw new Error('Clé Web3Forms manquante')
+  }
 
-const submitContactForm = () => {
-  const body = [
-    `Nom / prenom : ${contactForm.value.fullName}`,
-    `Email : ${contactForm.value.email}`,
-    `Telephone : ${contactForm.value.phone || '-'}`,
-    `Objet : ${contactForm.value.subject}`,
-    '',
-    'Message :',
-    contactForm.value.message
-  ].join('\n')
+  const response = await $fetch<{ success: boolean, message?: string }>('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: {
+      access_key: web3formsAccessKey,
+      ...data
+    }
+  })
 
-  window.location.href = buildMailtoLink(`Contact site - ${contactForm.value.subject}`, body)
+  if (!response.success) {
+    throw new Error(response.message || 'Echec Web3Forms')
+  }
 }
 
-const submitRegistrationForm = () => {
-  const specificLines = registrationForm.value.type === 'intra'
-    ? [
-        `Type d'inscription : intra-entreprise`,
-        `Nom de l'entreprise / association : ${registrationForm.value.enterpriseName}`,
-        `Nom du responsable de la structure : ${registrationForm.value.structureManager}`,
-        `Nombre de personnes a former : ${registrationForm.value.traineeCount}`,
-        `Nom de l'OPCO : ${registrationForm.value.opcoName || '-'}`
-      ]
-    : [
-        `Type d'inscription : personne individuelle`,
-        `Nom : ${registrationForm.value.lastName}`,
-        `Prenom : ${registrationForm.value.firstName}`,
-        `Date de naissance : ${registrationForm.value.birthDate || '-'}`,
-        `Adresse : ${registrationForm.value.address || '-'}`,
-        `Telephone : ${registrationForm.value.phone || '-'}`,
-        `Email : ${registrationForm.value.email || '-'}`,
-        `Nom de la structure employeur : ${registrationForm.value.employerName || '-'}`,
-        `Profession : ${registrationForm.value.profession || '-'}`
-      ]
+const resetContactForm = () => {
+  contactForm.value = {
+    fullName: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  }
+}
 
-  const commonLines = [
-    '',
-    `Intitule de(s) formation(s) : ${registrationForm.value.trainingTitle}`,
-    `Dates de(s) formation(s) : ${registrationForm.value.trainingDates}`,
-    '',
-    'Protection des donnees et droits a l image :',
-    `- Collecte des donnees personnelles : ${registrationForm.value.dataConsent ? 'Oui' : 'Non'}`,
-    `- Droit a l'image : ${registrationForm.value.imageConsent ? 'Oui' : 'Non'}`,
-    `- Informations / newsletters : ${registrationForm.value.newsletterConsent ? 'Oui' : 'Non'}`,
-    `Situation de handicap : ${registrationForm.value.handicap || '-'}`,
-    `Date : ${registrationForm.value.signatureDate || '-'}`,
-    `Nom pour signature : ${registrationForm.value.signatureName || '-'}`
-  ]
+const submitContactForm = async () => {
+  isSendingContactForm.value = true
+  contactFormFeedback.value = null
 
-  window.location.href = buildMailtoLink('Inscription formation - site web', [...specificLines, ...commonLines].join('\n'))
+  try {
+    await submitToWeb3Forms({
+      subject: `Contact site - ${contactForm.value.subject}`,
+      from_name: 'Site O Neuro Sens',
+      full_name: contactForm.value.fullName,
+      email: contactForm.value.email,
+      phone: contactForm.value.phone || '-',
+      contact_subject: contactForm.value.subject,
+      message: contactForm.value.message,
+      botcheck: ''
+    })
+
+    resetContactForm()
+    contactFormFeedback.value = {
+      type: 'success',
+      message: `Votre demande a bien ete envoyee a ${formRecipient}.`
+    }
+  } catch {
+    contactFormFeedback.value = {
+      type: 'error',
+      message: "L'envoi a echoue. Verifiez la configuration email du serveur puis reessayez."
+    }
+  } finally {
+    isSendingContactForm.value = false
+  }
+}
+
+const submitRegistrationForm = async () => {
+  isSendingRegistrationForm.value = true
+  registrationFormFeedback.value = null
+
+  try {
+    await submitToWeb3Forms({
+      subject: 'Inscription formation - site web',
+      from_name: 'Site O Neuro Sens',
+      registration_type: registrationForm.value.type === 'intra' ? 'intra-entreprise' : 'personne individuelle',
+      enterprise_name: registrationForm.value.enterpriseName || '-',
+      structure_manager: registrationForm.value.structureManager || '-',
+      trainee_count: registrationForm.value.traineeCount || '-',
+      opco_name: registrationForm.value.opcoName || '-',
+      last_name: registrationForm.value.lastName || '-',
+      first_name: registrationForm.value.firstName || '-',
+      birth_date: registrationForm.value.birthDate || '-',
+      address: registrationForm.value.address || '-',
+      phone: registrationForm.value.phone || '-',
+      email: registrationForm.value.email || '-',
+      employer_name: registrationForm.value.employerName || '-',
+      profession: registrationForm.value.profession || '-',
+      training_title: registrationForm.value.trainingTitle,
+      training_dates: registrationForm.value.trainingDates,
+      data_consent: registrationForm.value.dataConsent ? 'Oui' : 'Non',
+      image_consent: registrationForm.value.imageConsent ? 'Oui' : 'Non',
+      newsletter_consent: registrationForm.value.newsletterConsent ? 'Oui' : 'Non',
+      handicap: registrationForm.value.handicap || '-',
+      signature_date: registrationForm.value.signatureDate || '-',
+      signature_name: registrationForm.value.signatureName || '-',
+      botcheck: ''
+    })
+
+    registrationForm.value = createRegistrationForm()
+    registrationFormFeedback.value = {
+      type: 'success',
+      message: `L'inscription a bien ete envoyee a ${formRecipient}.`
+    }
+  } catch {
+    registrationFormFeedback.value = {
+      type: 'error',
+      message: "L'envoi a echoue. Verifiez la configuration email du serveur puis reessayez."
+    }
+  } finally {
+    isSendingRegistrationForm.value = false
+  }
 }
 
 const openRegistrationModal = () => {
@@ -480,6 +549,7 @@ const openRegistrationModal = () => {
 
 const closeRegistrationModal = () => {
   isRegistrationModalOpen.value = false
+  registrationFormFeedback.value = null
 }
 
 const handleKeydown = (event: KeyboardEvent) => {
@@ -737,6 +807,21 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
+}
+
+.form-feedback {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.form-feedback--success {
+  color: #116149;
+}
+
+.form-feedback--error {
+  color: #ab2f2f;
 }
 
 .registration-actions {

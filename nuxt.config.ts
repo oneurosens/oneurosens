@@ -2,6 +2,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
   devtools: { enabled: false },
   ssr: true,
+  runtimeConfig: {
+    public: {
+      web3formsAccessKey: process.env.NUXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '',
+      formRecipient: process.env.NUXT_PUBLIC_FORM_RECIPIENT || 'oneurosens@proton.me'
+    }
+  },
   app: {
     head: {
       link: [
