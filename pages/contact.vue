@@ -437,6 +437,29 @@ const runtimeConfig = useRuntimeConfig()
 const web3formsAccessKey = runtimeConfig.public.web3formsAccessKey
 const formRecipient = runtimeConfig.public.formRecipient
 
+const isValidEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+
+const cleanWeb3FormsPayload = (data: Record<string, string>) =>
+  Object.fromEntries(
+    Object.entries(data).filter(([, value]) => value.trim() !== '')
+  )
+
+const getErrorMessage = (error: unknown) => {
+  if (error && typeof error === 'object' && 'data' in error) {
+    const data = (error as { data?: { message?: string } }).data
+
+    if (data?.message) {
+      return data.message
+    }
+  }
+
+  if (error instanceof Error && error.message) {
+    return error.message
+  }
+
+  return "L'envoi a echoue. Verifiez la configuration email puis reessayez."
+}
+
 const submitToWeb3Forms = async (data: Record<string, string>) => {
   if (!web3formsAccessKey) {
     throw new Error('Clé Web3Forms manquante')
@@ -444,10 +467,10 @@ const submitToWeb3Forms = async (data: Record<string, string>) => {
 
   const response = await $fetch<{ success: boolean, message?: string }>('https://api.web3forms.com/submit', {
     method: 'POST',
-    body: {
+    body: cleanWeb3FormsPayload({
       access_key: web3formsAccessKey,
       ...data
-    }
+    })
   })
 
   if (!response.success) {
@@ -486,10 +509,10 @@ const submitContactForm = async () => {
       type: 'success',
       message: `Votre demande a bien ete envoyee a ${formRecipient}.`
     }
-  } catch {
+  } catch (error) {
     contactFormFeedback.value = {
       type: 'error',
-      message: "L'envoi a echoue. Verifiez la configuration email du serveur puis reessayez."
+      message: getErrorMessage(error)
     }
   } finally {
     isSendingContactForm.value = false
@@ -499,6 +522,9 @@ const submitContactForm = async () => {
 const submitRegistrationForm = async () => {
   isSendingRegistrationForm.value = true
   registrationFormFeedback.value = null
+
+  const registrationEmail = registrationForm.value.email.trim()
+  const hasValidRegistrationEmail = registrationEmail !== '' && isValidEmail(registrationEmail)
 
   try {
     await submitToWeb3Forms({
@@ -514,7 +540,8 @@ const submitRegistrationForm = async () => {
       birth_date: registrationForm.value.birthDate || '-',
       address: registrationForm.value.address || '-',
       phone: registrationForm.value.phone || '-',
-      email: registrationForm.value.email || '-',
+      participant_email: registrationEmail || '-',
+      replyto: hasValidRegistrationEmail ? registrationEmail : '',
       employer_name: registrationForm.value.employerName || '-',
       profession: registrationForm.value.profession || '-',
       training_title: registrationForm.value.trainingTitle,
@@ -533,10 +560,10 @@ const submitRegistrationForm = async () => {
       type: 'success',
       message: `L'inscription a bien ete envoyee a ${formRecipient}.`
     }
-  } catch {
+  } catch (error) {
     registrationFormFeedback.value = {
       type: 'error',
-      message: "L'envoi a echoue. Verifiez la configuration email du serveur puis reessayez."
+      message: getErrorMessage(error)
     }
   } finally {
     isSendingRegistrationForm.value = false
