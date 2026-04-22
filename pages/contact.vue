@@ -507,7 +507,7 @@ const submitContactForm = async () => {
     resetContactForm()
     contactFormFeedback.value = {
       type: 'success',
-      message: `Votre demande a bien ete envoyee a ${formRecipient}.`
+      message: 'Votre demande a bien ete envoyee.'
     }
   } catch (error) {
     contactFormFeedback.value = {
@@ -558,7 +558,7 @@ const submitRegistrationForm = async () => {
     registrationForm.value = createRegistrationForm()
     registrationFormFeedback.value = {
       type: 'success',
-      message: `L'inscription a bien ete envoyee a ${formRecipient}.`
+      message: "L'inscription a bien ete envoyee."
     }
   } catch (error) {
     registrationFormFeedback.value = {
