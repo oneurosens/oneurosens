@@ -2,7 +2,7 @@
   <section class="testimonials-page">
     <div class="container">
       <div class="testimonials-head">
-        <p class="eyebrow">Leurs avis</p>
+        <!--<p class="eyebrow">Leurs avis</p>-->
         <h1>Témoignages</h1>
         <p class="testimonials-intro">
           Des retours issus de <strong>formations et accompagnements de terrain</strong> menés auprès de professionnelles
@@ -79,7 +79,7 @@
       </div>
 
       <div class="testimonials-next-actions">
-        <p>Vous voulez passer des témoignages à une demande concrète ?</p>
+        <!--<p>Vous voulez passer des témoignages à une demande concrète ?</p>-->
         <div class="cta-row">
           <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME">Télécharger le catalogue</BaseButton>
           <BaseButton to="/contact" variant="secondary">Parler de votre besoin</BaseButton>
@@ -275,6 +275,9 @@ onBeforeUnmount(() => {
 .testimonials-stage__intro h2 {
   max-width: 12ch;
   margin-bottom: 0;
+  font-size: clamp(1.55rem, 1.2rem + 1vw, 2.35rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 .testimonials-controls {
@@ -454,7 +457,6 @@ onBeforeUnmount(() => {
   gap: var(--space-5);
   margin-bottom: var(--space-6);
   padding-top: clamp(1.75rem, 4vw, 2.6rem);
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 82%, white);
 }
 
 .testimonials-summary article {
@@ -476,7 +478,6 @@ onBeforeUnmount(() => {
   gap: var(--space-4);
   justify-items: center;
   padding-top: var(--space-5);
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 82%, white);
 }
 
 .testimonials-next-actions p {

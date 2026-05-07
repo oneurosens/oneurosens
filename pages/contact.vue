@@ -3,7 +3,7 @@
     <div class="container contact-flow">
       <section class="contact-hero" aria-labelledby="contact-title">
         <div class="contact-hero__intro">
-          <p class="eyebrow">Contacter l’équipe, cadrer votre demande et avancer rapidement.</p>
+          <!--<p class="eyebrow">Contacter l’équipe, cadrer votre demande et avancer rapidement.</p>-->
           <h1 id="contact-title">Contact</h1>
           <p class="contact-hero__lead">
             Un point d’entrée simple pour vos <strong>demandes de formation</strong>, vos questions d’<strong>inscription</strong>,
@@ -15,7 +15,7 @@
         <div class="contact-hero__grid">
           <div class="contact-direct-wrap">
             <div class="contact-direct__head">
-              <p class="eyebrow">Les informations essentielles, presentées sans detour.</p>
+              <!--<p class="eyebrow">Les informations essentielles, presentées sans detour.</p>-->
               <h2>Coordonnees</h2>
             </div>
 
@@ -127,7 +127,7 @@
 
       <section class="contact-details" aria-labelledby="details-title">
         <div class="contact-section-head">
-          <p class="eyebrow">Trois repères utiles pour la suite.</p>
+          <!--<p class="eyebrow">Trois repères utiles pour la suite.</p>-->
           <h2 id="details-title">Informations pratiques</h2>
         </div>
 
@@ -787,8 +787,8 @@ p {
 }
 
 .contact-form-card__head p:last-child {
-  color: var(--color-text-soft);
-  line-height: 1.65;
+  color: var(--color-text-body);
+  line-height: var(--line-height-base);
   padding-bottom: 1rem;
   border-bottom: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
 }
@@ -871,7 +871,6 @@ p {
   justify-content: space-between;
   gap: var(--space-4);
   padding-top: var(--space-4);
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 74%, white);
 }
 
 .contact-next-actions p {
@@ -949,9 +948,9 @@ p {
 .contact-panel__text {
   margin: 0;
   max-width: 24ch;
-  line-height: 1.68;
-  font-size: clamp(1rem, 0.98rem + 0.22vw, 1.12rem);
-  color: var(--color-text-soft);
+  line-height: var(--line-height-base);
+  font-size: var(--font-size-body);
+  color: var(--color-text-body);
 }
 
 .contact-panel__text--strong {
@@ -963,7 +962,6 @@ p {
 .contact-panel__note {
   gap: 0.7rem;
   padding-top: 1rem;
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
 }
 
 .contact-panel__note ul,
@@ -976,10 +974,21 @@ p {
 }
 
 .contact-panel__note li {
-  padding-left: 1rem;
-  border-left: 2px solid color-mix(in srgb, var(--color-primary) 28%, white);
+  display: grid;
+  grid-template-columns: 0.55rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  padding-left: 0;
   color: var(--color-text);
   line-height: 1.55;
+}
+
+.contact-panel__note li::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.45rem;
+  background: var(--page-tint, var(--color-accent));
 }
 
 .finance-list li {

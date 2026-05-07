@@ -2,7 +2,7 @@
   <section class="formations-page">
     <div class="container">
       <div class="formations-head">
-        <p class="eyebrow">Nos thématiques de formations</p>
+        <!--<p class="eyebrow">Nos thématiques de formations</p>-->
         <h1>Formations</h1>
         <p class="formations-intro">
           Des thématiques conçues pour répondre à des <strong>besoins de terrain récurrents</strong>, avec une approche
@@ -223,7 +223,6 @@ const trainingThemes = [
   display: grid;
   gap: 0.6rem;
   padding-top: var(--space-2);
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
 }
 
 .formations-aside__trust-title {
@@ -244,10 +243,21 @@ const trainingThemes = [
 }
 
 .formations-aside__trust li {
-  padding-left: 1rem;
-  border-left: 2px solid color-mix(in srgb, var(--color-primary) 28%, white);
+  display: grid;
+  grid-template-columns: 0.55rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  padding-left: 0;
   color: var(--color-text);
   line-height: 1.55;
+}
+
+.formations-aside__trust li::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.45rem;
+  background: var(--page-tint, var(--color-accent));
 }
 
 .formations-list {
@@ -300,8 +310,9 @@ const trainingThemes = [
 .formation-item__content p {
   margin: 0;
   max-width: none;
-  font-size: var(--font-size-100);
-  line-height: 1.5;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-base);
+  color: var(--color-text-body);
 }
 
 @media (max-width: 980px) {

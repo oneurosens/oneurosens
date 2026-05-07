@@ -3,7 +3,7 @@
     <div class="container qsn-flow">
       <section class="qsn-hero" aria-labelledby="qsn-title">
         <div class="qsn-hero__intro">
-          <p class="eyebrow">Un organisme de formation porté par le terrain, la relation et la transmission.</p>
+          <!--<p class="eyebrow">Un organisme de formation porté par le terrain, la relation et la transmission.</p>-->
           <h1 id="qsn-title">Qui sommes-nous ?</h1>
           <p class="qsn-hero__lead">
             <strong>Ô Neuro Sens Formations</strong> est un organisme de formation certifié <strong>Qualiopi</strong>
@@ -55,10 +55,8 @@
                 <p class="qsn-info-strip__title">Les formations peuvent se dérouler</p>
                 <ul>
                   <li>dans vos locaux</li>
-                  <li>dans notre centre de formation</li>
+                  <li>dans notre centre de formation : 1315 Route de Cocoyer au Gosier - Guadeloupe </li>
                 </ul>
-                <p><strong>1315 Route de Cocoyer au Gosier</strong></p>
-                <p><strong>Guadeloupe</strong></p>
               </div>
             </article>
 
@@ -77,7 +75,7 @@
 
       <section class="qsn-team" aria-labelledby="team-title">
         <div class="qsn-team__head theme-tint-panel">
-          <p class="eyebrow">Deux profils complémentaires, une même exigence de qualité humaine et professionnelle.</p>
+          <!--<p class="eyebrow">Deux profils complémentaires, une même exigence de qualité humaine et professionnelle.</p>-->
           <h2 id="team-title">L'équipe</h2>
           <p class="qsn-team__lead">
             La direction de l'organisme s'appuie sur des <strong>profils de terrain</strong> aux compétences distinctes
@@ -149,7 +147,7 @@
 
       <section class="qsn-values" aria-labelledby="values-title">
         <div class="qsn-values__head">
-          <p class="eyebrow">Une pédagogie rigoureuse, articulée autour de l'humain, de la science et du terrain.</p>
+          <!--<p class="eyebrow">Une pédagogie rigoureuse, articulée autour de l'humain, de la science et du terrain.</p>-->
           <h2 id="values-title">Nos valeurs</h2>
           <p class="values__quote">
             Nous ne sommes pas des <strong>êtres logiques avec des émotions</strong>, mais des <strong>êtres émotifs</strong>
@@ -251,8 +249,8 @@ p {
 
 .qsn-hero__lead {
   max-width: 44rem;
-  font-size: var(--font-size-300);
-  color: var(--color-text);
+  font-size: var(--font-size-body);
+  color: var(--color-text-body);
 }
 
 .qsn-hero__grid {
@@ -314,8 +312,8 @@ p {
 
 .qsn-callout p {
   margin: 0;
-  color: #353841;
-  line-height: 1.68;
+  color: var(--color-text-body);
+  line-height: var(--line-height-base);
 }
 
 .qsn-team {
@@ -339,7 +337,7 @@ p {
 .qsn-team__lead {
   max-width: 34rem;
   margin: 0;
-  color: #454850;
+  color: var(--color-text-body);
 }
 
 .leaders-grid {
@@ -393,7 +391,7 @@ p {
 
 .leader__role {
   margin: 0;
-  color: #53565d;
+  color: var(--color-text-body);
   font-weight: 700;
   line-height: 1.35;
   text-align: center;
@@ -402,8 +400,8 @@ p {
 .leader__text,
 .leader__quote {
   margin: 0;
-  color: #2f3237;
-  line-height: 1.66;
+  color: var(--color-text-body);
+  line-height: var(--line-height-base);
 }
 
 .leader__subtitle {
@@ -425,7 +423,7 @@ p {
   grid-template-columns: 14px 1fr;
   gap: 0.5rem;
   align-items: start;
-  color: #2f3237;
+  color: var(--color-text-body);
 }
 
 .leader__list img {
@@ -499,8 +497,8 @@ p {
 
 .values-card p {
   margin: 0;
-  color: #34373c;
-  line-height: 1.66;
+  color: var(--color-text-body);
+  line-height: var(--line-height-base);
 }
 
 .values-card--lead p {
@@ -527,7 +525,6 @@ p {
   gap: var(--space-4);
   justify-items: center;
   padding-top: var(--space-4);
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 74%, white);
 }
 
 .qsn-team__head.theme-tint-panel,
@@ -543,14 +540,7 @@ p {
   font-weight: var(--font-weight-semibold);
 }
 
-.qsn-values::after {
-  content: "";
-  display: block;
-  width: min(100%, 72rem);
-  height: 1px;
-  margin-top: clamp(1.25rem, 2vw, 1.8rem);
-  background: color-mix(in srgb, var(--color-border-strong) 46%, white);
-}
+
 
 @media (max-width: 980px) {
   .qsn-hero__grid,

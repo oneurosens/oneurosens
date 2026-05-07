@@ -107,13 +107,21 @@ h4 {
 
 p {
   margin: 0 0 var(--space-4);
-  color: var(--color-text-soft);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-base);
+  color: var(--color-text-body);
   max-width: 70ch;
 }
 
 li {
-  color: var(--color-text-muted);
-  line-height: var(--line-height-loose);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-base);
+  color: var(--color-text-body);
+}
+
+p strong,
+li strong {
+  color: inherit;
 }
 
 a {
@@ -194,8 +202,9 @@ button:focus-visible {
 
 .section-intro {
   max-width: 68ch;
-  font-size: var(--font-size-300);
-  line-height: var(--line-height-loose);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-base);
+  color: var(--color-text-body);
   margin-bottom: var(--space-5);
 }
 

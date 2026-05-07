@@ -61,6 +61,7 @@
   --font-size-500: clamp(1.5rem, 1.32rem + 0.7vw, 1.92rem);
   --font-size-600: clamp(1.9rem, 1.55rem + 1.15vw, 2.65rem);
   --font-size-700: clamp(2.3rem, 1.7rem + 1.95vw, 3.6rem);
+  --font-size-body: var(--font-size-200);
 
   --font-weight-regular: 400;
   --font-weight-semibold: 700;
@@ -69,6 +70,7 @@
   --line-height-tight: 1.2;
   --line-height-base: 1.65;
   --line-height-loose: 1.78;
+  --color-text-body: var(--color-text-muted);
 
   /* Spacing scale */
   --space-1: 0.25rem;

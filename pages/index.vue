@@ -3,33 +3,26 @@
     <section class="home-hero">
       <div class="container">
         <div class="home-grid home-grid--hero">
+          <div class="hero-visuals">
+            <figure class="hero-visual hero-visual--logo">
+              <img :src="logoInfobulle" alt="Infobulle Ô Neuro Sens" loading="lazy">
+            </figure>
+          </div>
+
           <div class="hero-copy">
-            <p class="eyebrow">Notre mission : former les professionnels de l’enfance, de l’éducation et de la famille.</p>
             <h1 class="hero-title">
               Des formations qui transforment les pratiques de terrain
             </h1>
-            <div class="hero-keywords">
-              <span class="label-chip label-chip--blue">Neurosciences affectives</span>
-              <span class="label-chip label-chip--mint">Compétences psychosociales</span>
-              <span class="label-chip label-chip--coral">Parentalité</span>
-              <span class="label-chip label-chip--gold">Inclusion & handicap</span>
-            </div>
             <p class="hero-lead">
               <strong>Ô Neuro Sens Formations</strong> conçoit des <strong>formations innovantes</strong> basées sur une
               <strong>pédagogie active</strong> et des outils immédiatement mobilisables pour les
               <strong>professionnels</strong>, les <strong>structures</strong> et les <strong>familles</strong>.
             </p>
-            <div class="cta-row cta-row--hero">
-              <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME" class="hero-cta-primary">Télécharger le catalogue</BaseButton>
-              <BaseButton to="/contact" variant="secondary">Parler de votre besoin</BaseButton>
-            </div>
-
           </div>
 
-          <div class="hero-visuals">
-            <figure class="hero-visual hero-visual--logo">
-              <img :src="logoInfobulle" alt="Infobulle Ô Neuro Sens" loading="lazy">
-            </figure>
+          <div class="cta-row cta-row--hero">
+            <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME" class="hero-cta-primary">Télécharger le catalogue</BaseButton>
+            <BaseButton to="/contact" variant="secondary">Parler de votre besoin</BaseButton>
           </div>
         </div>
       </div>
@@ -82,9 +75,8 @@
           </figure>
 
           <div class="story-panel theme-tint-panel">
-            <p class="eyebrow">Un organisme ancré dans le terrain, la relation et la transmission.</p>
+            <!--<p class="eyebrow">Un organisme ancré dans le terrain, la relation et la transmission.</p>-->
             <h2>Qui sommes-nous?</h2>
-            <h3>Notre pédagogie</h3>
             <p>
               Nous accompagnons les professionnels avec une <strong>pédagogie claire, incarnée et accessible</strong>.
               Chaque intervention apporte des <strong>repères solides</strong> sans se couper du quotidien des équipes.
@@ -109,7 +101,7 @@
       <div class="container">
         <div class="home-grid home-grid--themes">
           <div class="themes-side theme-tint-panel">
-            <p class="eyebrow">Des formations pensées pour des besoins professionnels concrets et identifiables.</p>
+            <!--<p class="eyebrow">Des formations pensées pour des besoins professionnels concrets et identifiables.</p>-->
             <h2>Nos thématiques de formation</h2>
             <p class="themes-intro">
               Les contenus se déploient en <strong>modules, ateliers ou parcours plus longs</strong>. Ils peuvent être
@@ -156,7 +148,7 @@
       <div class="container">
         <div class="home-grid home-grid--actions">
           <div class="actions-copy theme-tint-panel">
-            <p class="eyebrow">Un accompagnement au plus près du terrain pour passer du constat à l'action.</p>
+            <!--<p class="eyebrow">Un accompagnement au plus près du terrain pour passer du constat à l'action.</p>-->
             <h2>Prestations</h2>
             <p>
               Nous intervenons dans les structures pour <strong>observer les situations</strong>, clarifier les besoins,
@@ -175,12 +167,15 @@
           </div>
 
           <div class="actions-listing" aria-label="Prestations proposées">
-            <article
-              v-for="item in serviceOfferings"
-              :key="item"
-            >
-              <strong>{{ item }}</strong>
-            </article>
+            <h3 class="actions-listing__title">Prestations proposées</h3>
+            <ul class="actions-listing__list">
+              <li
+                v-for="item in serviceOfferings"
+                :key="item"
+              >
+                {{ item }}
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -190,8 +185,8 @@
       <div class="container">
         <div class="references-layout">
           <div class="references-head">
-            <p class="eyebrow">Ils nous font confiance</p>
-            <h2>Références</h2>
+            <!--<p class="eyebrow"></p>-->
+            <h2>Ils nous font confiance</h2>
             <p>
               Des <strong>structures, collectivités et partenaires locaux</strong> s’appuient déjà sur Ô Neuro Sens pour
               <strong>former, ajuster ou renforcer leurs pratiques</strong>.
@@ -233,7 +228,7 @@
           </figure>
 
           <div class="final-copy">
-            <p class="eyebrow">Un point d’entrée simple pour comprendre l’offre et préparer votre demande.</p>
+            <!--<p class="eyebrow">Un point d’entrée simple pour comprendre l’offre et préparer votre demande.</p>-->
             <h2>Télécharger le catalogue</h2>
             <p>
               Le catalogue permet d’<strong>explorer les thématiques</strong>, de préparer une demande de formation et
@@ -331,13 +326,12 @@ const serviceOfferings = [
   position: relative;
 }
 
-
-.home-section {
-  padding-block: clamp(4.25rem, 7vw, 6.5rem);
+.home-hero {
+  padding-block: clamp(1.25rem, 2.4vw, 2.2rem) clamp(1.1rem, 2.4vw, 2rem);
 }
 
 .home-section {
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 72%, white);
+  padding-block: clamp(4.25rem, 7vw, 6.5rem);
 }
 
 .home-grid {
@@ -357,7 +351,8 @@ const serviceOfferings = [
 }
 
 .home-grid--hero {
-  align-items: center;
+  align-items: start;
+  min-height: clamp(25rem, 31vw, 29rem);
 }
 
 .hero-copy,
@@ -373,7 +368,10 @@ const serviceOfferings = [
 }
 
 .hero-copy {
-  grid-column: 1 / 7;
+  grid-column: 7 / 13;
+  align-self: start;
+  max-width: 35rem;
+  padding-top: clamp(0.8rem, 2vw, 1.55rem);
 }
 
 .story-panel,
@@ -395,20 +393,30 @@ const serviceOfferings = [
 }
 
 .hero-title {
-  
-  margin-bottom: 0;
+margin-bottom: 0;
+  max-width: none;
   color: var(--color-ink-700);
+  font-size: clamp(2.65rem, 1.9rem + 2vw, 4.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  text-wrap: auto;
+
 }
 
 .hero-lead {
-  max-width: 56ch;
-  font-size: var(--font-size-300);
-  color: var(--color-text);
+  max-width: 31rem;
+  margin: 0;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-base);
+  color: var(--color-text-body);
 }
 
 .cta-row--hero {
-  margin-top: 0.25rem;
-  margin-bottom: clamp(1.2rem, 2.5vw, 2rem);
+  grid-column: 4 / 10;
+  justify-self: center;
+  margin-top: clamp(0.5rem, 1.2vw, 1rem);
+  margin-bottom: 0;
 }
 
 .hero-cta-primary {
@@ -425,7 +433,6 @@ const serviceOfferings = [
   display: grid;
   gap: 0.35rem;
   padding-top: var(--space-3);
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 68%, white);
 }
 
 .hero-assurance__title {
@@ -442,48 +449,15 @@ const serviceOfferings = [
   max-width: 56ch;
 }
 
-.hero-keywords {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-}
-
-.label-chip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2rem;
-  padding: 0.35rem 0.7rem;
-  border: 0;
-  border-radius: 999px;
-  color: var(--color-text);
-  font-size: var(--font-size-100);
-  font-weight: var(--font-weight-semibold);
-}
-
-.label-chip--blue {
-  background: color-mix(in srgb, var(--color-sky-200) 70%, white);
-}
-
-.label-chip--mint {
-  background: color-mix(in srgb, var(--color-mint-200) 78%, white);
-}
-
-.label-chip--coral {
-  background: color-mix(in srgb, var(--color-soft) 70%, white);
-}
-
-.label-chip--gold {
-  background: color-mix(in srgb, var(--color-apricot-200) 80%, white);
-}
-
 .hero-visuals {
   position: relative;
-  grid-column: 7 / 13;
+  grid-column: 1 / 7;
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
   align-items: start;
-  min-height: 39rem;
+  align-self: start;
+  min-height: clamp(25rem, 31vw, 29rem);
   overflow: visible;
   z-index: 3;
 }
@@ -519,14 +493,18 @@ const serviceOfferings = [
   display: grid;
   place-items: center;
   grid-column: 1 / -1;
-  min-height: 34rem;
-  padding: clamp(1.75rem, 3vw, 2.8rem);
+  min-height: clamp(25rem, 31vw, 29rem);
+  padding: clamp(0.75rem, 1.6vw, 1.15rem);
   position: relative;
   z-index: 1;
 }
 
+
+
 .hero-visual--logo img {
-  width: min(100%, 29rem);
+  position: relative;
+  z-index: 1;
+  width: min(100%, 25.5rem);
   height: auto;
   object-fit: contain;
 }
@@ -645,7 +623,6 @@ const serviceOfferings = [
   gap: clamp(1.5rem, 3vw, 3rem);
   margin-top: clamp(1.8rem, 3vw, 2.8rem);
   padding-top: clamp(1.4rem, 2vw, 2rem);
-  border-top: 1px solid color-mix(in srgb, var(--color-border) 70%, white);
 }
 
 .story-side__card--list {
@@ -661,8 +638,19 @@ const serviceOfferings = [
 }
 
 .editorial-list li {
-  padding-left: 1rem;
-  border-left: 2px solid color-mix(in srgb, var(--color-accent) 45%, white);
+  display: grid;
+  grid-template-columns: 0.55rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  padding-left: 0;
+}
+
+.editorial-list li::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.45rem;
+  background: var(--page-tint, var(--color-accent));
 }
 
 .themes-visual {
@@ -683,8 +671,9 @@ const serviceOfferings = [
 .themes-intro {
   margin: 0;
   max-width: 34rem;
-  font-size: clamp(1.02rem, 1rem + 0.18vw, 1.16rem);
-  line-height: 1.72;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-base);
+  color: var(--color-text-body);
 }
 
 .themes-side h2 {
@@ -806,9 +795,9 @@ const serviceOfferings = [
 .themes-footnote {
   margin: 0;
   max-width: 18rem;
-  color: var(--color-text-soft);
-  font-size: 0.9rem;
-  line-height: 1.5;
+  color: var(--color-text-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-base);
 }
 
 .actions-copy .cta-row {
@@ -836,30 +825,43 @@ const serviceOfferings = [
 .actions-listing {
   display: grid;
   grid-column: 1 / 13;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1rem, 1.8vw, 1.4rem) clamp(1.2rem, 2vw, 1.8rem);
+  gap: clamp(1rem, 1.8vw, 1.4rem);
   margin-top: var(--space-3);
 }
 
-.actions-listing article {
-  display: grid;
-  align-content: start;
-  gap: 0.45rem;
-  min-height: 100%;
-  padding: 1rem 0 0;
-  border-top: 2px solid color-mix(in srgb, var(--color-accent) 34%, white);
+.actions-listing__title {
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(1.2rem, 1rem + 0.5vw, 1.45rem);
 }
 
-.actions-listing strong {
+.actions-listing__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.95rem clamp(1.2rem, 2vw, 1.8rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.actions-listing__list li {
+  position: relative;
+  padding-left: 1.15rem;
   color: var(--color-text);
   font-size: var(--font-size-200);
-  line-height: 1.4;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.45;
 }
 
-.actions-listing span {
-  color: var(--color-text-soft);
-  font-size: var(--font-size-100);
-  line-height: 1.65;
+.actions-listing__list li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 0.45rem;
+  aspect-ratio: 1;
+  background: var(--page-tint, var(--color-accent));
+  transform: translateY(-50%);
 }
 
 .home-section--references {
@@ -950,10 +952,21 @@ const serviceOfferings = [
 }
 
 .references-note__list li {
-  padding-left: 0.95rem;
-  border-left: 2px solid color-mix(in srgb, var(--color-secondary) 28%, white);
+  display: grid;
+  grid-template-columns: 0.55rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  padding-left: 0;
   color: var(--color-text);
   line-height: 1.55;
+}
+
+.references-note__list li::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.45rem;
+  background: var(--page-tint, var(--color-accent));
 }
 
 .references-grid {
@@ -967,16 +980,19 @@ const serviceOfferings = [
 .references-grid__item {
   display: grid;
   place-items: center;
-  min-height: 6.4rem;
-  padding: var(--space-4);
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  padding: clamp(1rem, 2vw, 1.4rem);
   border-right: 1px solid color-mix(in srgb, var(--color-border) 88%, white);
   border-bottom: 1px solid color-mix(in srgb, var(--color-border) 88%, white);
   background: color-mix(in srgb, white 68%, transparent);
 }
 
 .references-grid__item img {
-  max-width: 100%;
-  max-height: 2.9rem;
+  max-width: 82%;
+  max-height: 4.75rem;
+  width: auto;
+  height: auto;
   object-fit: contain;
   mix-blend-mode: multiply;
 }
@@ -1034,15 +1050,26 @@ const serviceOfferings = [
 }
 
 .final-points li {
-  padding-left: 1rem;
-  border-left: 2px solid color-mix(in srgb, var(--color-primary) 44%, white);
+  display: grid;
+  grid-template-columns: 0.55rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  padding-left: 0;
   color: var(--color-text);
+}
+
+.final-points li::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.45rem;
+  background: var(--page-tint, var(--color-accent));
 }
 
 .final-note {
   margin: -0.2rem 0 0;
-  color: var(--color-text-soft);
-  font-size: var(--font-size-100);
+  color: var(--color-text-body);
+  font-size: var(--font-size-body);
 }
 
 @media (max-width: 1100px) {
@@ -1082,6 +1109,7 @@ const serviceOfferings = [
 
   .hero-copy,
   .hero-visuals,
+  .cta-row--hero,
   .story-panel,
   .story-photo--large,
   .story-side,
@@ -1104,6 +1132,11 @@ const serviceOfferings = [
     padding-left: 0;
   }
 
+  .hero-copy {
+    padding-top: 0;
+    max-width: none;
+  }
+
   .hero-visuals,
   .themes-visual,
   .actions-editorial,
@@ -1118,6 +1151,27 @@ const serviceOfferings = [
 
   .hero-visuals {
     grid-template-columns: 1fr;
+  }
+
+  .cta-row--hero {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+    justify-self: stretch;
+    margin-top: 0;
+  }
+
+  .cta-row--hero > * {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-visual--logo {
+    min-height: auto;
+  }
+
+  .hero-visual--logo::before {
+    inset: 12% 8% 10% 10%;
   }
 
   .story-support,
@@ -1185,10 +1239,27 @@ const serviceOfferings = [
     padding-block: var(--space-8);
   }
 
-  .themes-tiles,
-  .actions-listing,
-  .references-grid {
+  .cta-row--hero {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .themes-tiles {
     grid-template-columns: 1fr;
+  }
+
+  .references-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .references-grid__item {
+    aspect-ratio: auto;
+    min-height: 6.75rem;
+    padding: 0.9rem;
+  }
+
+  .references-grid__item img {
+    max-width: 78%;
+    max-height: 3.5rem;
   }
 
   .actions-copy.theme-tint-panel {
@@ -1210,9 +1281,9 @@ const serviceOfferings = [
     width: 100%;
   }
 
-  .actions-listing article {
-    gap: 0.35rem;
-    padding-top: 0.85rem;
+  .actions-listing__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem 1rem;
   }
 
   .themes-side.theme-tint-panel {
@@ -1220,6 +1291,16 @@ const serviceOfferings = [
   }
 
   .hero-note {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .cta-row--hero {
+    grid-template-columns: 1fr;
+  }
+
+  .actions-listing__list {
     grid-template-columns: 1fr;
   }
 }
