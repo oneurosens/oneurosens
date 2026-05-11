@@ -76,7 +76,7 @@
 
           <div class="story-panel theme-tint-panel">
             <!--<p class="eyebrow">Un organisme ancré dans le terrain, la relation et la transmission.</p>-->
-            <h2>Qui sommes-nous?</h2>
+            <h2>Qui sommes-nous ?</h2>
             <p>
               Nous accompagnons les professionnels avec une <strong>pédagogie claire, incarnée et accessible</strong>.
               Chaque intervention apporte des <strong>repères solides</strong> sans se couper du quotidien des équipes.

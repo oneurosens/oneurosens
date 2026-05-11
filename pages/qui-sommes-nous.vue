@@ -19,7 +19,7 @@
               <div>
                 <p class="qsn-highlight__title">Notre mission</p>
                 <p>
-                  <strong>Sensibiliser, informer et former</strong> les professionnels oeuvrant dans le domaine de
+                  <strong>Sensibiliser, informer et former</strong> les professionnels œuvrant dans le domaine de
                   l’enfance, de la famille, de l’éducation et du handicap, ainsi que les parents désireux d’améliorer
                   les <strong>relations intra-familiales</strong>.
                 </p>
@@ -43,7 +43,7 @@
               <div>
                 <p class="qsn-info-strip__title">Une équipe pluridisciplinaire</p>
                 <p>
-                  Nous elaborons nos formations avec des <strong>professionnels du terrain</strong> et des
+                  Nous élaborons nos formations avec des <strong>professionnels du terrain</strong> et des
                   <strong>formateurs pour adultes</strong>, tous experts dans leur domaine.
                 </p>
               </div>
@@ -63,10 +63,10 @@
             <article class="qsn-callout" aria-label="Profils mobilisés selon les besoins">
               <p>
                 Selon les besoins, nous nous appuyons notamment sur des profils de
-                <strong>puericultrice</strong>, <strong>assistante de service social</strong>,
+                <strong>puéricultrice</strong>, <strong>assistante de service social</strong>,
                 <strong>psychologue</strong>, <strong>sage-femme</strong> et
-                <strong>psychomotricien(ne)</strong> pour garder un ancrage concret, credible et au plus pres des
-                realites de terrain.
+                <strong>psychomotricien(ne)</strong> pour garder un ancrage concret, crédible et au plus près des
+                réalités de terrain.
               </p>
             </article>
           </div>
@@ -79,7 +79,7 @@
           <h2 id="team-title">L'équipe</h2>
           <p class="qsn-team__lead">
             La direction de l'organisme s'appuie sur des <strong>profils de terrain</strong> aux compétences distinctes
-            mais convergentes: <strong>former, accompagner et transmettre avec clarté</strong>.
+            mais convergentes : <strong>former, accompagner et transmettre avec clarté</strong>.
           </p>
         </div>
 
@@ -138,7 +138,7 @@
             </div>
 
             <p class="leader__quote">
-              “Mon approche relie la relation d’aide, la prevention du stress et des outils concrets pour soutenir les
+              “Mon approche relie la relation d’aide, la prévention du stress et des outils concrets pour soutenir les
               professionnels, les enfants et les familles.”
             </p>
           </article>

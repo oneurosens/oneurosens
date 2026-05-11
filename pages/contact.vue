@@ -7,7 +7,7 @@
           <h1 id="contact-title">Contact</h1>
           <p class="contact-hero__lead">
             Un point d’entrée simple pour vos <strong>demandes de formation</strong>, vos questions d’<strong>inscription</strong>,
-            vos <strong>demandes d'informations complementaires</strong>, vos <strong>demandes de RDV</strong> ou de
+            vos <strong>demandes d’informations complémentaires</strong>, vos <strong>demandes de RDV</strong> ou de
             <strong>financement</strong>.
           </p>
         </div>
@@ -16,14 +16,14 @@
           <div class="contact-direct-wrap">
             <div class="contact-direct__head">
               <!--<p class="eyebrow">Les informations essentielles, presentées sans detour.</p>-->
-              <h2>Coordonnees</h2>
+              <h2>Coordonnées</h2>
             </div>
 
             <div class="contact-direct">
               <article class="contact-direct__item">
                 <img :src="iconTel" alt="" aria-hidden="true" class="contact-direct__icon" loading="lazy">
                 <div>
-                  <p class="contact-direct__label">Par telephone ou WhatsApp</p>
+                  <p class="contact-direct__label">Par téléphone ou WhatsApp</p>
                   <p class="contact-direct__value">06 90 67 88 63</p>
                   <p class="contact-direct__value">06 90 48 21 99</p>
                 </div>
@@ -54,7 +54,7 @@
             <div class="contact-form-card__head">
               <h2 id="contact-form-title">Écrivez-nous</h2>
               <p>
-                Un message structure pour orienter rapidement votre demande.
+                Un message structuré pour orienter rapidement votre demande.
               </p>
             </div>
 
@@ -65,8 +65,8 @@
                     v-model.trim="contactForm.fullName"
                     type="text"
                     autocomplete="name"
-                    placeholder="Nom / prenom"
-                    aria-label="Nom / prenom"
+                    placeholder="Nom / prénom"
+                    aria-label="Nom / prénom"
                     required
                   >
                 </label>
@@ -89,14 +89,14 @@
                     v-model.trim="contactForm.phone"
                     type="tel"
                     autocomplete="tel"
-                    placeholder="Telephone"
-                    aria-label="Telephone"
+                    placeholder="Téléphone"
+                    aria-label="Téléphone"
                   >
                 </label>
 
                 <label class="form-field">
                   <select v-model="contactForm.subject" aria-label="Objet" required>
-                    <option value="" disabled>Selectionner un objet</option>
+                    <option value="" disabled>Sélectionner un objet</option>
                     <option v-for="option in contactSubjectOptions" :key="option" :value="option">{{ option }}</option>
                   </select>
                 </label>
@@ -143,8 +143,8 @@
 
             <div class="contact-panel__body">
               <p class="contact-panel__text">
-                Vous pouvez soit <strong>telecharger la fiche PDF</strong>, soit passer par le
-                <strong>formulaire d'inscription en ligne</strong> pour transmettre directement votre demande.
+                Vous pouvez soit <strong>télécharger la fiche PDF</strong>, soit passer par le
+                <strong>formulaire d’inscription en ligne</strong> pour transmettre directement votre demande.
               </p>
               <div class="registration-actions">
                 <BaseButton @click="openRegistrationModal">Ouvrir le formulaire d'inscription</BaseButton>
@@ -172,7 +172,7 @@
               </ul>
 
               <p class="contact-panel__text contact-panel__text--strong">
-                Nous pouvons vous aider a identifier la bonne piste selon votre situation.
+                Nous pouvons vous aider à identifier la bonne piste selon votre situation.
               </p>
             </div>
           </article>
@@ -188,19 +188,19 @@
 
             <div class="contact-panel__body contact-panel__body--support">
               <p class="contact-panel__text">
-                Nous vous aidons a <strong>clarifier votre besoin de formation ou d'accompagnement</strong>, a choisir le
-                bon mode de contact et a preparer les <strong>pieces utiles</strong>.
+                Nous vous aidons à <strong>clarifier votre besoin de formation ou d’accompagnement</strong>, à choisir le
+                bon mode de contact et à préparer les <strong>pièces utiles</strong>.
               </p>
               <p class="contact-panel__text">
-                Vous devez repondre a un <strong>appel a projet</strong> ? Nous sommes a votre ecoute pour vous soutenir
-                dans cette demarche.
+                Vous devez répondre à un <strong>appel à projets</strong> ? Nous sommes à votre écoute pour vous soutenir
+                dans cette démarche.
               </p>
             </div>
           </article>
         </div>
 
         <div class="contact-next-actions">
-          <p>Vous voulez d'abord explorer l'offre avant d'echanger ?</p>
+          <p>Vous voulez d’abord explorer l’offre avant d’échanger ?</p>
           <BaseButton :href="CATALOGUE_DOWNLOAD_URL" :download="CATALOGUE_DOWNLOAD_NAME" variant="secondary">Télécharger le catalogue</BaseButton>
         </div>
       </section>
@@ -255,7 +255,7 @@
 
               <div class="form-row">
                 <label class="form-field">
-                  <span>Nombre de personnes a former</span>
+                  <span>Nombre de personnes à former</span>
                   <input v-model.trim="registrationForm.traineeCount" type="number" min="1" inputmode="numeric" required>
                 </label>
                 <label class="form-field">
@@ -272,7 +272,7 @@
                   <input v-model.trim="registrationForm.lastName" type="text" required>
                 </label>
                 <label class="form-field">
-                  <span>Prenom</span>
+                  <span>Prénom</span>
                   <input v-model.trim="registrationForm.firstName" type="text" required>
                 </label>
               </div>
@@ -283,7 +283,7 @@
                   <input v-model="registrationForm.birthDate" type="date">
                 </label>
                 <label class="form-field">
-                  <span>Telephone</span>
+                  <span>Téléphone</span>
                   <input v-model.trim="registrationForm.phone" type="tel" autocomplete="tel">
                 </label>
               </div>
@@ -312,7 +312,7 @@
 
             <div class="registration-section registration-card">
               <label class="form-field">
-                <span>Intitule de(s) formation(s)</span>
+                <span>Intitulé de(s) formation(s)</span>
                 <input v-model.trim="registrationForm.trainingTitle" type="text" required>
               </label>
 
@@ -323,23 +323,23 @@
             </div>
 
             <fieldset class="registration-consents registration-card">
-              <legend>Protection des donnees et droits a l'image</legend>
+              <legend>Protection des données et droits à l’image</legend>
               <label>
                 <input v-model="registrationForm.dataConsent" type="checkbox">
-                <span>J'autorise l'organisme de formation a collecter mes donnees personnelles.</span>
+                <span>J’autorise l’organisme de formation à collecter mes données personnelles.</span>
               </label>
               <label>
                 <input v-model="registrationForm.imageConsent" type="checkbox">
-                <span>J'autorise l'organisme a me prendre en photo a des fins pedagogiques ou de communication.</span>
+                <span>J’autorise l’organisme à me prendre en photo à des fins pédagogiques ou de communication.</span>
               </label>
               <label>
                 <input v-model="registrationForm.newsletterConsent" type="checkbox">
-                <span>J'autorise l'envoi par mail d'informations relatives aux formations et newsletters.</span>
+                <span>J’autorise l’envoi par mail d’informations relatives aux formations et newsletters.</span>
               </label>
             </fieldset>
 
             <fieldset class="registration-handicap registration-card">
-              <legend>Etes vous en situation de handicap ?</legend>
+              <legend>Êtes-vous en situation de handicap ?</legend>
               <label>
                 <input v-model="registrationForm.handicap" type="radio" value="oui" name="handicap">
                 <span>Oui</span>
@@ -388,9 +388,9 @@ import { REGISTRATION_DOWNLOAD_NAME, REGISTRATION_DOWNLOAD_URL } from '~/utils/r
 
 const contactSubjectOptions = [
   'demande de formation',
-  "demande d'informations complementaires",
-  'demande de RDV telephonique',
-  'demande de RDV en presentiel',
+  'demande d’informations complémentaires',
+  'demande de RDV téléphonique',
+  'demande de RDV en présentiel',
   'demande de financement',
   'autre demande'
 ]
@@ -457,7 +457,7 @@ const getErrorMessage = (error: unknown) => {
     return error.message
   }
 
-  return "L'envoi a echoue. Verifiez la configuration email puis reessayez."
+  return "L’envoi a échoué. Vérifiez la configuration email puis réessayez."
 }
 
 const submitToWeb3Forms = async (data: Record<string, string>) => {
@@ -474,7 +474,7 @@ const submitToWeb3Forms = async (data: Record<string, string>) => {
   })
 
   if (!response.success) {
-    throw new Error(response.message || 'Echec Web3Forms')
+    throw new Error(response.message || 'Échec Web3Forms')
   }
 }
 
@@ -507,7 +507,7 @@ const submitContactForm = async () => {
     resetContactForm()
     contactFormFeedback.value = {
       type: 'success',
-      message: 'Votre demande a bien ete envoyee.'
+      message: 'Votre demande a bien été envoyée.'
     }
   } catch (error) {
     contactFormFeedback.value = {
@@ -558,7 +558,7 @@ const submitRegistrationForm = async () => {
     registrationForm.value = createRegistrationForm()
     registrationFormFeedback.value = {
       type: 'success',
-      message: "L'inscription a bien ete envoyee."
+      message: 'L’inscription a bien été envoyée.'
     }
   } catch (error) {
     registrationFormFeedback.value = {

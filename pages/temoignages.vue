@@ -144,7 +144,7 @@ const testimonials: Testimonial[] = [
     name: 'Fabienne T.',
     role: 'Responsable animation chargée de projet',
     quote:
-      'Au retour de formation, je trouve mes animateurs changés: avec une <strong>posture professionnelle qui a évolué</strong>, une attitude plus posée et bienveillante envers les jeunes de la MJC.',
+      'Au retour de formation, je trouve mes animateurs changés : avec une <strong>posture professionnelle qui a évolué</strong>, une attitude plus posée et bienveillante envers les jeunes de la MJC.',
     portrait: fabiennePortrait,
     theme: 'coral'
   }
